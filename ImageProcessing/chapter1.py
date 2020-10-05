@@ -34,9 +34,9 @@ def show_img(this_img):
 def next_image():
     cv2.destroyAllWindows()
     global index
-    _thisImg = cv2.imread(img_array[index])
     if len(img_array)-1 > index:
         index += 1
+    _thisImg = cv2.imread(img_array[index])
     show_img(_thisImg)
 
     return
@@ -45,10 +45,9 @@ def next_image():
 def prev_image():
     cv2.destroyAllWindows()
     global index
-    _thisImg = cv2.imread(img_array[index])
     if index > 0:
         index -= 1
-
+    _thisImg = cv2.imread(img_array[index])
     show_img(_thisImg)
     return
 
