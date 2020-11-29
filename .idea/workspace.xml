@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="23086124-ac8d-4f13-83a0-10c18acd2ea2" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -7,8 +25,22 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/Ancsak01/szakdolgozat" />
+      </set>
+    </option>
   </component>
   <component name="ProjectId" id="1iSloxgZwS5HDzPS2n1ngN0jsYY" />
   <component name="ProjectViewState">
@@ -17,7 +49,16 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/ImageProcessing" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ImageProcessing" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tryba\Documents\GitHub\szakdolgozat\ImageProcessing\src" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tryba\Documents\GitHub\szakdolgozat\ImageProcessing" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -53,7 +94,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ImageProcessing/chapter1.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\tryba\Documents\GitHub\szakdolgozat\ImageProcessing\src\chapter1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -74,14 +115,81 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="1577" y="171" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601909288047">
       <screen x="1440" y="132" width="1366" height="768" />
     </state>
     <state x="1577" y="171" key="#com.intellij.execution.impl.EditConfigurationsDialog/62.0.1378.900/1440.132.1366.768@1440.132.1366.768" timestamp="1601909288047" />
+    <state width="1376" height="440" key="DebuggerActiveHint" timestamp="1605607901325">
+      <screen x="62" y="0" width="1378" height="900" />
+    </state>
+    <state width="1376" height="440" key="DebuggerActiveHint/62.0.1378.900/1440.132.1366.768@62.0.1378.900" timestamp="1605607901325" />
     <state x="1903" y="271" key="FileChooserDialogImpl" timestamp="1601909247649">
       <screen x="1440" y="132" width="1366" height="768" />
     </state>
     <state x="1903" y="271" key="FileChooserDialogImpl/62.0.1378.900/1440.132.1366.768@1440.132.1366.768" timestamp="1601909247649" />
+    <state width="1357" height="192" key="GridCell.Tab.0.bottom" timestamp="1606682626671">
+      <screen x="62" y="0" width="1378" height="900" />
+    </state>
+    <state width="1345" height="192" key="GridCell.Tab.0.bottom/62.0.1378.900/1440.132.1366.768@1440.132.1366.768" timestamp="1601909550107" />
+    <state width="1357" height="192" key="GridCell.Tab.0.bottom/62.0.1378.900/1440.132.1366.768@62.0.1378.900" timestamp="1606682626671" />
+    <state width="1357" height="192" key="GridCell.Tab.0.bottom/62.0.1378.900@62.0.1378.900" timestamp="1604432755642" />
+    <state width="1357" height="192" key="GridCell.Tab.0.center" timestamp="1606682626670">
+      <screen x="62" y="0" width="1378" height="900" />
+    </state>
+    <state width="1345" height="192" key="GridCell.Tab.0.center/62.0.1378.900/1440.132.1366.768@1440.132.1366.768" timestamp="1601909550106" />
+    <state width="1357" height="192" key="GridCell.Tab.0.center/62.0.1378.900/1440.132.1366.768@62.0.1378.900" timestamp="1606682626670" />
+    <state width="1357" height="192" key="GridCell.Tab.0.center/62.0.1378.900@62.0.1378.900" timestamp="1604432755641" />
+    <state width="1357" height="192" key="GridCell.Tab.0.left" timestamp="1606682626670">
+      <screen x="62" y="0" width="1378" height="900" />
+    </state>
+    <state width="1345" height="192" key="GridCell.Tab.0.left/62.0.1378.900/1440.132.1366.768@1440.132.1366.768" timestamp="1601909550106" />
+    <state width="1357" height="192" key="GridCell.Tab.0.left/62.0.1378.900/1440.132.1366.768@62.0.1378.900" timestamp="1606682626670" />
+    <state width="1357" height="192" key="GridCell.Tab.0.left/62.0.1378.900@62.0.1378.900" timestamp="1604432755641" />
+    <state width="1357" height="192" key="GridCell.Tab.0.right" timestamp="1606682626670">
+      <screen x="62" y="0" width="1378" height="900" />
+    </state>
+    <state width="1345" height="192" key="GridCell.Tab.0.right/62.0.1378.900/1440.132.1366.768@1440.132.1366.768" timestamp="1601909550106" />
+    <state width="1357" height="192" key="GridCell.Tab.0.right/62.0.1378.900/1440.132.1366.768@62.0.1378.900" timestamp="1606682626670" />
+    <state width="1357" height="192" key="GridCell.Tab.0.right/62.0.1378.900@62.0.1378.900" timestamp="1604432755641" />
+    <state width="1357" height="292" key="GridCell.Tab.1.bottom" timestamp="1606682495462">
+      <screen x="62" y="0" width="1378" height="900" />
+    </state>
+    <state width="1357" height="292" key="GridCell.Tab.1.bottom/62.0.1378.900/1440.132.1366.768@62.0.1378.900" timestamp="1606682495462" />
+    <state width="1357" height="292" key="GridCell.Tab.1.center" timestamp="1606682495462">
+      <screen x="62" y="0" width="1378" height="900" />
+    </state>
+    <state width="1357" height="292" key="GridCell.Tab.1.center/62.0.1378.900/1440.132.1366.768@62.0.1378.900" timestamp="1606682495462" />
+    <state width="1357" height="292" key="GridCell.Tab.1.left" timestamp="1606682495462">
+      <screen x="62" y="0" width="1378" height="900" />
+    </state>
+    <state width="1357" height="292" key="GridCell.Tab.1.left/62.0.1378.900/1440.132.1366.768@62.0.1378.900" timestamp="1606682495462" />
+    <state width="1357" height="292" key="GridCell.Tab.1.right" timestamp="1606682495462">
+      <screen x="62" y="0" width="1378" height="900" />
+    </state>
+    <state width="1357" height="292" key="GridCell.Tab.1.right/62.0.1378.900/1440.132.1366.768@62.0.1378.900" timestamp="1606682495462" />
+    <state x="252" y="95" key="SettingsEditor" timestamp="1606033847449">
+      <screen x="62" y="0" width="1378" height="900" />
+    </state>
+    <state x="252" y="95" key="SettingsEditor/62.0.1378.900@62.0.1378.900" timestamp="1606033847449" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="res" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
