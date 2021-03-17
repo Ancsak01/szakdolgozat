@@ -13,10 +13,9 @@ class ReadImage:
         alter = pytesseract.image_to_string(pic, lang='hun', config='--psm 6')
         hImg, wImg, _ = pic.shape
         boxes = pytesseract.image_to_boxes(pic)
-        concatable = ""
         for b in boxes.splitlines():
             b = b.split(' ')
-            concatable.join(b[0])
+            print(b)
             x,y,w,h = int(b[1]), int(b[2]), int(b[3]), int(b[4])
             cv2.rectangle(pic, (x, hImg-y), (w, hImg-h), (0, 0, 255), 3)
             cv2.putText(pic, b[0], (x, hImg-y+25), cv2.FONT_HERSHEY_COMPLEX, 1, (50, 50 ,255), 2)

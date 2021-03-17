@@ -74,12 +74,11 @@ def change():
     isItThreshold = True
     show_img(_thisImg, img_array[index])
 
-
 a = widgets.FloatText()
 b = widgets.FloatSlider()
-display(a, b)
+display(a,b)
 
-my_link = widgets.jslink((a, 'value'), (b, 'value'))
+mylink = widgets.jslink((a, 'value'), (b, 'value'))
 
 # p = tk.Button(top, text="Previous image", command=prev_image)
 # b = tk.Button(top, text="Next image", command=next_image)

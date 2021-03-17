@@ -19,7 +19,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23086124-ac8d-4f13-83a0-10c18acd2ea2" name="Default Changelist" comment="" />
+    <list default="true" id="23086124-ac8d-4f13-83a0-10c18acd2ea2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/szakdolgozat.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/szakdolgozat.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/Egy hangon.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/Elohim.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/src/ReadImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/ImageProcessing/src/ReadImage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/src/chapter1.py" beforeDir="false" afterPath="$PROJECT_DIR$/ImageProcessing/src/chapter1.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,8 +58,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ImageProcessing" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ImageProcessing/src/chapter1.py" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -89,12 +98,12 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Python38\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ImageProcessing" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ImageProcessing/src" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\tryba\Documents\GitHub\szakdolgozat\ImageProcessing\src\chapter1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ImageProcessing/src/chapter1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -126,64 +135,6 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="1577" y="171" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601909288047">
-      <screen x="1440" y="132" width="1366" height="768" />
-    </state>
-    <state x="1577" y="171" key="#com.intellij.execution.impl.EditConfigurationsDialog/62.0.1378.900/1440.132.1366.768@1440.132.1366.768" timestamp="1601909288047" />
-    <state width="1376" height="440" key="DebuggerActiveHint" timestamp="1605607901325">
-      <screen x="62" y="0" width="1378" height="900" />
-    </state>
-    <state width="1376" height="440" key="DebuggerActiveHint/62.0.1378.900/1440.132.1366.768@62.0.1378.900" timestamp="1605607901325" />
-    <state x="1903" y="271" key="FileChooserDialogImpl" timestamp="1601909247649">
-      <screen x="1440" y="132" width="1366" height="768" />
-    </state>
-    <state x="1903" y="271" key="FileChooserDialogImpl/62.0.1378.900/1440.132.1366.768@1440.132.1366.768" timestamp="1601909247649" />
-    <state width="1357" height="192" key="GridCell.Tab.0.bottom" timestamp="1606682626671">
-      <screen x="62" y="0" width="1378" height="900" />
-    </state>
-    <state width="1345" height="192" key="GridCell.Tab.0.bottom/62.0.1378.900/1440.132.1366.768@1440.132.1366.768" timestamp="1601909550107" />
-    <state width="1357" height="192" key="GridCell.Tab.0.bottom/62.0.1378.900/1440.132.1366.768@62.0.1378.900" timestamp="1606682626671" />
-    <state width="1357" height="192" key="GridCell.Tab.0.bottom/62.0.1378.900@62.0.1378.900" timestamp="1604432755642" />
-    <state width="1357" height="192" key="GridCell.Tab.0.center" timestamp="1606682626670">
-      <screen x="62" y="0" width="1378" height="900" />
-    </state>
-    <state width="1345" height="192" key="GridCell.Tab.0.center/62.0.1378.900/1440.132.1366.768@1440.132.1366.768" timestamp="1601909550106" />
-    <state width="1357" height="192" key="GridCell.Tab.0.center/62.0.1378.900/1440.132.1366.768@62.0.1378.900" timestamp="1606682626670" />
-    <state width="1357" height="192" key="GridCell.Tab.0.center/62.0.1378.900@62.0.1378.900" timestamp="1604432755641" />
-    <state width="1357" height="192" key="GridCell.Tab.0.left" timestamp="1606682626670">
-      <screen x="62" y="0" width="1378" height="900" />
-    </state>
-    <state width="1345" height="192" key="GridCell.Tab.0.left/62.0.1378.900/1440.132.1366.768@1440.132.1366.768" timestamp="1601909550106" />
-    <state width="1357" height="192" key="GridCell.Tab.0.left/62.0.1378.900/1440.132.1366.768@62.0.1378.900" timestamp="1606682626670" />
-    <state width="1357" height="192" key="GridCell.Tab.0.left/62.0.1378.900@62.0.1378.900" timestamp="1604432755641" />
-    <state width="1357" height="192" key="GridCell.Tab.0.right" timestamp="1606682626670">
-      <screen x="62" y="0" width="1378" height="900" />
-    </state>
-    <state width="1345" height="192" key="GridCell.Tab.0.right/62.0.1378.900/1440.132.1366.768@1440.132.1366.768" timestamp="1601909550106" />
-    <state width="1357" height="192" key="GridCell.Tab.0.right/62.0.1378.900/1440.132.1366.768@62.0.1378.900" timestamp="1606682626670" />
-    <state width="1357" height="192" key="GridCell.Tab.0.right/62.0.1378.900@62.0.1378.900" timestamp="1604432755641" />
-    <state width="1357" height="292" key="GridCell.Tab.1.bottom" timestamp="1606682495462">
-      <screen x="62" y="0" width="1378" height="900" />
-    </state>
-    <state width="1357" height="292" key="GridCell.Tab.1.bottom/62.0.1378.900/1440.132.1366.768@62.0.1378.900" timestamp="1606682495462" />
-    <state width="1357" height="292" key="GridCell.Tab.1.center" timestamp="1606682495462">
-      <screen x="62" y="0" width="1378" height="900" />
-    </state>
-    <state width="1357" height="292" key="GridCell.Tab.1.center/62.0.1378.900/1440.132.1366.768@62.0.1378.900" timestamp="1606682495462" />
-    <state width="1357" height="292" key="GridCell.Tab.1.left" timestamp="1606682495462">
-      <screen x="62" y="0" width="1378" height="900" />
-    </state>
-    <state width="1357" height="292" key="GridCell.Tab.1.left/62.0.1378.900/1440.132.1366.768@62.0.1378.900" timestamp="1606682495462" />
-    <state width="1357" height="292" key="GridCell.Tab.1.right" timestamp="1606682495462">
-      <screen x="62" y="0" width="1378" height="900" />
-    </state>
-    <state width="1357" height="292" key="GridCell.Tab.1.right/62.0.1378.900/1440.132.1366.768@62.0.1378.900" timestamp="1606682495462" />
-    <state x="252" y="95" key="SettingsEditor" timestamp="1606033847449">
-      <screen x="62" y="0" width="1378" height="900" />
-    </state>
-    <state x="252" y="95" key="SettingsEditor/62.0.1378.900@62.0.1378.900" timestamp="1606033847449" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
