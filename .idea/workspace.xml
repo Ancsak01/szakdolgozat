@@ -20,14 +20,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23086124-ac8d-4f13-83a0-10c18acd2ea2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/szakdolgozat.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/szakdolgozat.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/Egy hangon.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/Elohim.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ImageProcessing/src/ReadImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/ImageProcessing/src/ReadImage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ImageProcessing/src/chapter1.py" beforeDir="false" afterPath="$PROJECT_DIR$/ImageProcessing/src/chapter1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Amim van.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Biztos pont vagy Jézus.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Bízzál én lelkem h-moll.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Dicsérem Neved.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Egy hangon(hm).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Egy hangon.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Elohim.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Erőt adsz minden helyzetben.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Ez az a nap (eljött a nap).JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Fel sem foghatom.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Fényeddel(A-dúr).JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Fényeddel.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Ha indul a dicséret.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Ha úgy érzem.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Hadd Legyen Jézus.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Hová mehetnék.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Hozsánna (látom az..).JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Hálám hozzád száll.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Háztetőkről hirdetem.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Hús-vér templom.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Átadom magam(I surrender).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/samples/images/Értem folyt a vér.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/src/.ipynb_checkpoints/Untitled-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing/src/Untitled.ipynb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
