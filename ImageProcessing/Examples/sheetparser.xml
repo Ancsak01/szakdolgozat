@@ -1,0 +1,103 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+ <sheet>
+    <key>
+        <note>C</note>
+        <chord>major</chord>
+    </key>
+    <segment id="1">
+        <note>C</note>
+        <text>Tied a dicsőség, </text>
+        <position>csős</position>
+    </segment>
+    <segment id="2">
+        <note>em7</note>
+        <text>és imádás,\n</text>
+        <position>im</position>
+    </segment>
+    <segment id="3">
+        <note>F</note>
+        <text>Felemeljük </text>
+        <position>me</position>
+    </segment>
+    <segment id="4">
+        <note>dm</note>
+        <text>kezeinket\n</text>
+        <position>in</position>
+    </segment>
+    <segment id="5">
+        <note>F/G</note>
+        <text>És dicsérjük </text>
+        <position>csé</position>
+    </segment>
+    <segment id="6">
+        <note>G</note>
+        <text>szent neved!\n</text>
+        <position>ved</position>
+    </segment>
+    <segment id="7">
+        <note>G7</note>
+        <text>Ó, Hatal</text>
+        <position>Hat</position>
+    </segment>
+    <segment id="8">
+        <note>C</note>
+        <text>mas, </text>
+        <position>mas</position>
+    </segment>
+    <segment id="9">
+        <note>am</note>
+        <text>Keze nagy csodákat tesz,\n</text>
+        <position>tesz</position>
+    </segment>
+    <segment id="10">
+        <note>F</note>
+        <text>Vele senki nem ér fel, </text>
+        <position>fel</position>
+    </segment>
+    <segment id="11">
+        <note>dm7</note>
+        <text>Vele </text>
+        <position>Ve</position>
+    </segment>
+    <segment id="12">
+        <note>G</note>
+        <text>senki nem ér </text>
+        <position>se</position>
+    </segment>
+    <segment id="13">
+        <note>G7</note>
+        <text>fel.\n</text>
+        <position>fel</position>
+    </segment>
+    <segment id="14">
+        <note>G7</note>
+        <text>Ó, Hatal</text>
+        <position>Hat</position>
+    </segment>
+    <segment id="15">
+        <note>C</note>
+        <text>mas, </text>
+        <position>mas</position>
+    </segment>
+    <segment id="16">
+        <note>am</note>
+        <text>ó, Hatalmas, </text>
+        <position>mas</position>
+    </segment>
+    <segment id="17">
+        <note>F</note>
+        <text>ó, Hatalmas,</text>
+        <position>mas</position>
+    </segment>
+    <segment id="18">
+        <note>G7</note>
+        <text> ó, Hatal</text>
+        <position> ó</position>
+    </segment>
+    <segment id="19">
+        <note>C</note>
+        <text>mas!</text>
+        <position>mas</position>
+    </segment>
+
+ </sheet>
