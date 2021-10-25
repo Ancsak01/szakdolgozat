@@ -7,7 +7,7 @@
     <segment id="1">
         <note>C</note>
         <text>Tied a dicsőség, </text>
-        <position>csős</position>
+        <position>őség</position>
     </segment>
     <segment id="2">
         <note>em7</note>
@@ -17,7 +17,7 @@
     <segment id="3">
         <note>F</note>
         <text>Felemeljük </text>
-        <position>me</position>
+        <position>elj</position>
     </segment>
     <segment id="4">
         <note>dm</note>
@@ -47,17 +47,17 @@
     <segment id="9">
         <note>am</note>
         <text>Keze nagy csodákat tesz,\n</text>
-        <position>tesz</position>
+        <position>esz,</position>
     </segment>
     <segment id="10">
         <note>F</note>
-        <text>Vele senki nem ér fel, </text>
+        <text>Vele senki nem ér fel</text>
         <position>fel</position>
     </segment>
     <segment id="11">
         <note>dm7</note>
-        <text>Vele </text>
-        <position>Ve</position>
+        <text>, Vele </text>
+        <position>, Ve</position>
     </segment>
     <segment id="12">
         <note>G</note>
