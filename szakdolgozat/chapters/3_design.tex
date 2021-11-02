@@ -10,39 +10,170 @@ Ebben a fejezetben az implementáció nem kell, hogy túl nagy szerepet kapjon.
 Ez még csak a tervezési fázis.
 (Nyilván ha olyan a téma, hogy magának az implementációnak a módjával foglalkozik, adott formális nyelvet mutat be, úgy a kódpéldákat már innen sem lehet kihagyni.)
 
-\Section{Táblázatok}
-
-Táblázatokhoz a \texttt{table} környezetet ajánlott használni.
-Erre egy minta \aref{tab:minta}. táblázat.
-A hivatkozáshoz az egyedi \texttt{label} értéke konvenció szerint \texttt{tab:} prefixszel kezdődik.
-
-\begin{table}[h]
-\centering
-\caption{Minta táblázat. A táblázat felirata a táblázat felett kell legyen!}
-\label{tab:minta}
-\begin{tabular}{l|c|c|}
-a & b & c \\
-\hline
-1 & 2 & 3 \\
-4 & 5 & 6 \\
-\hline
-\end{tabular}
-\end{table}
-
-\Section{Ábrák}
-
-Ábrákat a \texttt{figure} környezettel lehet használni.
-A használatára egy példa \aref{fig:cimer}. ábrán látható.
-Az \texttt{includegraphics} parancsba 
-Az ábrák felirata az ábra alatt kell legyen.
-Az ábrák hivatkozásához használt nevet konvenció szerint \texttt{fig:}-el célszerű kezdeni.
-
+\Section{RDF használata}
+Az esetünkben felhasznált adatok ábrázolására a következőképpen nézne ki az RDF modell. Az akkord reprezentálná a hármasok közül a témát, vagyis a subject-et, mivel azt kellene először definiálni. Az akkord, ami más néven hármas hangzat, alapvetően három hangból épül fel. Van a fő hang, ami tegyük fel, ha C-dúr akkordot akarunk modellezni, az a C hang lesz, erre épül a dúr esetében a nagy terc, ami az E hangot fogja adni, valamint a C hanghoz igazított kvint távolságra levő G hang. Tehát a C-dúr akkordot a C E és G hangokból lehet összeállítani, ezek egyben fokok is, amiket predikátumként fogunk jelölni, hogy melyik hang az akkord hanyadik foka. Ezt a következő ábrán lehet látni.
 \begin{figure}[h]
-\centering
-\includegraphics[scale=0.3]{images/me_logo.png}
-\caption{A Miskolci Egyetem címere.}
-\label{fig:cimer}
+	\includegraphics[scale=1]{images/rdf_graph.png}
+	\caption{Szemantikai ábrázolás az RDF szerint.}
+	\label{fig:graph1}
 \end{figure}
+Az ábrán látható, hogy egy akkord meghatározásához 3 él vezet kifelé, ugye ezek jelzik, hogy melyik fokon található a C-dúr akkord hangjai (rendre I., III. és V. fok ) és az objektumok maguk a hangok, ahova az él mutat. Ebben az esetben meg is lenne oldva az akkordok reprezentálása RDF modell szerint, viszont a kottába való visszahelyezéskor a programnak szükséges tudnia azt is, hogy pontosan hova illessze vissza a megfelelő akkordot egy transzponálás esetében, mikor is a hangnem változik, és a kottába szereplő akkordok kicserélődnek. 
+Ilyenkor szintén használva a gráf elméletét az akkord alatti szövegrész lesz az objektum az él pedig elnevezve a pozíció lesz. Ugyanis a kottában szereplő szöveg nem változik ugye csak az akkordok, ha bármilyen művelet kerül végrehajtásra. Többféle probléma merülhet fel, abban az esetben, ha statikusan akarom használni a doboz-t amit az akkordhoz kivág a program a szöveggel együtt, akkor annak a méretét egy kalkulált értékből kell kapnia, ami illeszkedik a megfelelő felbontáshoz, mert hogy a felbontás különböző egyes kották képeinél.
+
+
+\Section{Kotta tárolási példák}
+\begin{large}
+	Music XML
+\end{large}
+\begin{lstlisting}
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE score-partwise PUBLIC
+"-//Recordare//DTD MusicXML 1.1 Partwise//EN"
+"http://www.musicxml.org/dtds/partwise.dtd">
+  <score-partwise>
+    <part-list>
+      <score-part id="P1">
+        <part-name>Music</part-name>
+      </score-part>
+    </part-list>
+    <part id="P1">
+      <measure number="1">
+        <attributes>
+          <divisions>1</divisions>
+          <key>
+            <fifths>0</fifths>
+          </key>
+          <beats>4</beats>
+          <beat-type>4</beat-type>
+          <clef>
+            <sign>G</sign>
+            <line>2</line>
+          </clef>
+        </attributes>
+        <note>
+          <pitch>
+            <step>C</step>
+            <octave>4</octave>
+          </pitch>
+          <duration>4</duration>
+          <type>whole</type>
+        </note>
+      </measure>
+    </part>
+  </score-partwise>
+\end{lstlisting}
+
+Ez a MusicXML egyik példája, a kotta tárolására. Mivel a minta adat, tehát az itt jelenlevő kották másképpen épülnek fel, ahogy az feljebb is említésre került, így egy saját xml valahogy így nézne ki
+
+\begin{large}
+	Saját kottatárolási módszer
+\end{large}
+\begin{comment}
+\begin{lstlisting}
+	<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+	<sheet>
+	<key>
+	<note>C</note>
+	<chord>major</chord>
+	</key>
+	<segment id="1">
+	<note>C</note>
+	<text>Tied a dicsőség, </text>
+	<position>őség</position>
+	</segment>
+	<segment id="2">
+	<note>em7</note>
+	<text>és imádás,\n</text>
+	<position>im</position>
+	</segment>
+	<segment id="3">
+	<note>F</note>
+	<text>Felemeljük </text>
+	<position>elj</position>
+	</segment>
+	<segment id="4">
+	<note>dm</note>
+	<text>kezeinket\n</text>
+	<position>in</position>
+	</segment>
+	<segment id="5">
+	<note>F/G</note>
+	<text>És dicsérjük </text>
+	<position>csé</position>
+	</segment>
+	<segment id="6">
+	<note>G</note>
+	<text>szent neved!\n</text>
+	<position>ved</position>
+	</segment>
+	<segment id="7">
+	<note>G7</note>
+	<text>Ó, Hatal</text>
+	<position>Hat</position>
+	</segment>
+	<segment id="8">
+	<note>C</note>
+	<text>mas, </text>
+	<position>mas</position>
+	</segment>
+	<segment id="9">
+	<note>am</note>
+	<text>Keze nagy csodákat tesz,\n</text>
+	<position>esz,</position>
+	</segment>
+	<segment id="10">
+	<note>F</note>
+	<text>Vele senki nem ér fel</text>
+	<position>fel</position>
+	</segment>
+	<segment id="11">
+	<note>dm7</note>
+	<text>, Vele </text>
+	<position>, Ve</position>
+	</segment>
+	<segment id="12">
+	<note>G</note>
+	<text>senki nem ér </text>
+	<position>se</position>
+	</segment>
+	<segment id="13">
+	<note>G7</note>
+	<text>fel.\n</text>
+	<position>fel</position>
+	</segment>
+	<segment id="14">
+	<note>G7</note>
+	<text>Ó, Hatal</text>
+	<position>Hat</position>
+	</segment>
+	<segment id="15">
+	<note>C</note>
+	<text>mas, </text>
+	<position>mas</position>
+	</segment>
+	<segment id="16">
+	<note>am</note>
+	<text>ó, Hatalmas, </text>
+	<position>mas</position>
+	</segment>
+	<segment id="17">
+	<note>F</note>
+	<text>ó, Hatalmas,</text>
+	<position>mas</position>
+	</segment>
+	<segment id="18">
+	<note>G7</note>
+	<text> ó, Hatal</text>
+	<position> ó</position>
+	</segment>
+	<segment id="19">
+	<note>C</note>
+	<text>mas!</text>
+	<position>mas</position>
+	</segment>
+	</sheet>
+\end{lstlisting}
+\end{comment}
 
 \Section{További környezetek}
 
