@@ -20,6 +20,15 @@ Az esetünkben felhasznált adatok ábrázolására a következőképpen nézne 
 Az ábrán látható, hogy egy akkord meghatározásához 3 él vezet kifelé, ugye ezek jelzik, hogy melyik fokon található a C-dúr akkord hangjai (rendre I., III. és V. fok ) és az objektumok maguk a hangok, ahova az él mutat. Ebben az esetben meg is lenne oldva az akkordok reprezentálása RDF modell szerint, viszont a kottába való visszahelyezéskor a programnak szükséges tudnia azt is, hogy pontosan hova illessze vissza a megfelelő akkordot egy transzponálás esetében, mikor is a hangnem változik, és a kottába szereplő akkordok kicserélődnek. 
 Ilyenkor szintén használva a gráf elméletét az akkord alatti szövegrész lesz az objektum az él pedig elnevezve a pozíció lesz. Ugyanis a kottában szereplő szöveg nem változik ugye csak az akkordok, ha bármilyen művelet kerül végrehajtásra. Többféle probléma merülhet fel, abban az esetben, ha statikusan akarom használni a doboz-t amit az akkordhoz kivág a program a szöveggel együtt, akkor annak a méretét egy kalkulált értékből kell kapnia, ami illeszkedik a megfelelő felbontáshoz, mert hogy a felbontás különböző egyes kották képeinél.
 
+\Section{Tesseract használata}
+A tesseract nevezetű ocr szoftvert használom a karakterfelismerésre a dolgozatban, nevezetesen a pytesseract függvénykönyvtárat. Ez alapvetően a Google OCR motorja, amit implementáltak python környezetben. Önmagába álló szkriptként is használható, és széles körben felismer különböző kiterjesztésű képeket, mint például a jpeg, png, gif, bmp, tiff és egyéb másokat, habár ugyanúgy megvannak a korlátai is, amiről majd később térek ki részletesebben. Elsőként mivel hogy különálló maga a program ezért PATH-ba kellett helyezni, amivel sajnos meggyűlt a baj, mivel hogy nem ismerte fel az operációs rendszer. Így a következőképpen oldottam meg, hogy használható legyen:
+\begin{python}
+import pytesseract
+	
+local_path =  r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = local_path
+\end{python}
+A lokális környezetbe való fejlesztés erejéig volt használatba ez az elérési útvonal.
 
 \Section{Kotta tárolási példák}
 \begin{large}
@@ -192,11 +201,28 @@ Ami pedig a dúr akkordokat jellemzik:
 	\item[--]az akkord nagybetűvel van
 \end{itemize}
 	
-Ezeket amikor képes megkülönböztetni a program, akkor ennek megfelelően fogja tudni lementeni a note mellé azt a property-t ami jelöli, hogy az akkord az mol vagy dúr. Legyen a neve mondjuk tone.Ebből kiindulva így nézne ki az egyik szegmens:
+Ezeket amikor képes megkülönböztetni a program, akkor ennek megfelelően fogja tudni lementeni a note mellé azt a property-t ami jelöli, hogy az akkord az mol vagy dúr. Legyen a neve mondjuk tone. Ebből kiindulva így nézne ki az egyik szegmens:
 \begin{xml}
 <segment id="12">
   <chord>
     <note>G</note>
+    <tone>major</tone>
+  </chord>
+  <text>senki nem ér </text>
+  <position>se</position>
+</segment>
+\end{xml}
+
+Miután meg lehet különböztetni a mol-t a dúrtól, ezután mivel akkordról beszélünk, ami legtöbb esetben hármas hangzat, azt is fel kell osztani. Az akkord a hang diatonikus I. III. és V. fokából épül fel, valahogy így nézne ki, ha letárolnánk xml adatstruktúrába csak egy szegmensét:
+\begin{xml}
+<segment id="12">
+  <chord>
+    <note>G</note>
+    <measures>
+    	<I>G</I>
+    	<III>H</III>
+    	<V>D</V>
+    </measures
     <tone>major</tone>
   </chord>
   <text>senki nem ér </text>

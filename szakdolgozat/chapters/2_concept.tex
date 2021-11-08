@@ -12,6 +12,56 @@ Ez a kapcsolati struktúra úgy működik, hogy a két forrás adja a csomópont
 
 \Section{OCR bemutatása}
 
+Az OCR jelentése: Optical Character Recognition, tehát Optikai Karakterfelismerés. Ez az eszköz szükséges ahhoz, hogy a kép, amit a program beolvas szöveggé alakuljon.
+
+\begin{quotation}
+	Az optikai karakterfelismerés vagy optikai karakterolvasás, amelyet (angol megfelelője után) gyakran rövidítenek OCR-ként, a gépelt, kézzel írt vagy nyomtatott szövegek gépi kódolású, mechanikus vagy elektronikus átalakítása. Ez alapulhat akár beolvasott dokumentumon vagy dokumentumfotón, akár más képen (például tájképen lévő jelzés, hirdetőtáblán szereplő szöveg vagy tévéműsor feliratos szövege esetén). Széles körben használják a nyomtatott papíradatbázisok információs bejegyzését - legyen az útlevél, számlák, bankszámlakivonatok, számítógépes bevételek, névjegykártyák, levelek, statikus adatok kinyomtatása vagy bármilyen megfelelő dokumentáció - ez a digitalizálás megszokott módja. Ezzel lehet szövegeket olyan formába hozni, hogy azok elektronikusan szerkeszthetők, kereshetők, kompaktabban tárolhatók, online megjeleníthetők legyenek, és olyan gépi folyamatokban fel lehessen használni ezeket, mint a kognitív számítástechnika, a gépi fordítás és a szövegbányászat. Az OCR a mintafelismerés, a mesterséges intelligencia és a számítógépes látás kutatási területe. A korai verziókat az egyes karakterek képével kellett betanítani, és egyszerre csak egy betűtípussal lehetett dolgozni. Jelenleg gyakoriak a fejlett rendszerek, amelyek nagyfokú felismerési pontosságot képesek előállítani a legtöbb betűtípus esetében, és számos digitális képfájlformátumot támogatnak bemenetként. Egyes rendszerek képesek formázott kimenet reprodukálására, amely szorosan megközelíti az eredeti oldal elrendezését, beleértve a képeket, oszlopokat és más nem szöveges összetevőket is.
+\end{quotation}
+
+\SubSection{Előfeldolgozás}
+\begin{quotation}
+	Az OCR szoftver gyakran "előfeldolgozza" a képeket, hogy javítsa a sikeres felismerés esélyeit. Technikák:
+	\begin{itemize}
+		\item De-skew - Ha a dokumentumot szkennelés közben nem igazították, akkor lehet, hogy néhány fokot óramutató járásával megegyező irányban vagy az óramutató járásával ellentétes irányba
+		kell billenteni annak érdekében, hogy a szövegsorok vízszintes vagy függőlegesek legyenek.
+		
+		\item Despeckle - a pozitív és negatív foltok, simítóélek eltávolítása
+		
+		\item Binarizáció - Egy kép színből vagy szürkeárnyalatosból fekete-fehérre konvertálható (úgynevezett "bináris kép", mert két szín van). A binarizáció feladata a szöveg (vagy bármely
+		más kívánt képkomponens) háttérről való elválasztásának egyszerű módja. A binarizáció feladata maga is szükséges, mivel a legtöbb kereskedelmi felismerési algoritmus csak bináris képeken működik, mivel ez egyszerűbbnek bizonyul. Ezen túlmenően a binarizációs lépés hatékonysága jelentős mértékben befolyásolja a karakterfelismerő szakasz minőségét, és az adott bemeneti képtípushoz alkalmazott binárisítás kiválasztásakor gondos döntéseket hoznak; mivel a bináris eredmény eléréséhez használt binarizációs módszer minősége a bemeneti kép típusától függ (szkennelt dokumentum, jelenet szöveges kép, történelmi romlott dokumentum stb.).
+		
+		\item Vonal eltávolítása - Tisztítja meg a nem glifikus dobozokat és vonalakat
+		
+		\item Elrendezési elemzés vagy "zónázás" - Az oszlopokat, bekezdéseket, feliratokat stb. Különösen fontos a többoszlopos elrendezéseknél és táblázatoknál.
+		
+		\item Vonal és szó észlelése - A szó- és karakterformák alapvonalát határozza meg, szükség esetén elválasztja a szavakat.
+		
+		\item Script felismerés - A többnyelvű dokumentumokban a szkript változhat a szavak szintjén, és ezért a szkript azonosítása szükséges, mielőtt a megfelelő OCR-t meg lehetne hívni az
+		adott parancsfájl kezelésére.
+		
+		\item Karakter izolálás vagy "szegmentálás" - A karakterenkénti OCR-nél a képelemek miatt több karaktert kell elkülöníteni; A tárgyak miatt több darabra bontott karaktereket kell
+		csatlakoztatni.
+		
+		\item 	Karakter izolálás vagy "szegmentálás" - A karakterenkénti OCR-nél a képelemek miatt több karaktert kell elkülöníteni; A tárgyak miatt több darabra bontott karaktereket kell
+		csatlakoztatni.
+		
+		\item A képarány és a méretarány normalizálása
+		
+		\item A rögzített hangmagasságú betűtípusok szegmentálása viszonylag egyszerűen megvalósítható úgy, hogy a képet egy egységes rácshoz igazítja, amely alapján a függőleges rácsvonalak a legkevésbé gyakran keresztezik a fekete területeket. Az arányos betűtípusokhoz kifinomultabb technikákra van szükség, mivel a betűk közötti hely néha nagyobb lehet, mint a szavak között, és a függőleges vonalak több karaktert metszhetnek.
+	\end{itemize}
+\end{quotation}
+
+\SubSection{Karakterfelismerés}
+\begin{quotation}
+	A központi OCR algoritmusnak két alapvető típusa létezik, amelyek rangsorolt listát hozhatnak létre a jelölt karakterekből.
+	
+	A mátrix illesztése magában foglalja a kép és a tárolt karakterjel összehasonlítását pixel-pixel alapon; azt is nevezik "mintaillesztésnek", "mintázatfelismerésnek" vagy "kép korrelációnak". Ez a bemeneti glifin a kép többi részéből való helyes izolálásán alapul, és a tárolt glifin hasonló betűtípussal és ugyanazon a skálán található. Ez a technika a legjobban a géppel írott szöveggel működik, és nem működik jól, ha új betűtípusokat talál. Ez az a technika, amelyet a korai fizikai fotocella alapú OCR megvalósít, közvetlenül.
+	
+	A jellemzők kivonása a karakterjeleket "vonásoknak, zárt hurkoknak, vonaliránynak és vonalak metszéspontjainak" "funkciókra" bontja. A kivonási jellemzők csökkentik az ábrázolást, és a felismerési folyamatot számszerűsítővé teszi. Ezeket a tulajdonságokat egy absztrakt vektorszerű ábrázolással hasonlítják össze, amely egy vagy több glifil prototípusra csökkenthető. A számítógépes látás jellemzői felismerésének általános technikái alkalmazhatók az ilyen típusú OCR-re, amelyet általában az "intelligens" kézírás-felismerés és valójában a legmodernebb OCR-szoftverek látnak. A legközelebbi szomszédos osztályozók, mint például a k-legközelebbi szomszédok algoritmusa, a tárolt karakterjel-jellemzőkkel rendelkező képtulajdonságok összehasonlítására és a legközelebbi mérkőzés kiválasztására szolgál.
+	
+	Olyan szoftver, mint a Cuneiform és a Tesseract két karakteres megközelítést alkalmaz a karakterfelismerésre. A második áthaladást „adaptív felismerésnek” nevezzük, és az első lépésben nagy bizalommal felismert betűformákat használjuk, hogy jobban felismerjék a második betű többi betűjét. Ez előnyös a szokatlan betűtípusok vagy az alacsony minőségű szkennelés esetén, ahol a betűtípus torz (pl. Homályos vagy elhalványult).
+\end{quotation}
+
 A fejezet tartalma témától függően változhat. Az alábbiakat attól függően különböző arányban tartalmazhatják.
 \begin{itemize}
 \item Irodalomkutatás. Amennyiben a dolgozat egy módszer kidolgozására, kifejlesztésére irányul, akkor itt lehet részletesen végignézni (módszertani vagy időrendi bontásban), hogy az eddigiekben milyen eredmények születtek a témakörben.
