@@ -28,12 +28,20 @@ import pytesseract
 local_path =  r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 pytesseract.pytesseract.tesseract_cmd = local_path
 \end{python}
-A lokális környezetbe való fejlesztés erejéig volt használatba ez az elérési útvonal.
+A lokális környezetbe való fejlesztés erejéig volt használatba ez az elérési útvonal. A függvénykönyvtárnak az image to string nevű metódusát használtam arra, hogy a képből szöveg váljon. Paraméterként megadható, hogy ugye mely képekből kell a szöveget kiolvasni, és többek között, amit használtam én is az a nyelv megadása, valamint konfigurációt is meg tudtam adni. A pontosság az elején zavaró volt, mert túlságosan zajos volt a kép sokszor, ahhoz, hogy az OCR megfelelően ki tudja venni, hogy mely karakterről is van szó. Ehhez az egyik megolás az volt, hogy jobban lehessen manipulálni a bemeneti képet, amivel dolgozik a Tesseract.
+\newpage
+\Section{Szemantikus ábrázolás RDF-el}
+
+\begin{figure}[h]
+	\includegraphics[scale=0.2]{images/rdf_graph_2.png}
+	\caption{Konkrét szemantikai ábrázolása a dalnak.}
+	\label{fig:graph2}
+\end{figure}
+
+A 3.2-es ábrán látható, hogy az adott példa kottánkban hogy nézne ki egy szegmens. A szegmens most jelen esetben az akkord és az ahhoz tartozó szöveg leírása. A jelenlegi kottához 19 db ilyen szegmens tartozik, indexelve az akkord alapján, tehát 19 akkord van a dalban. 
 
 \Section{Kotta tárolási példák}
-\begin{large}
-	Music XML
-\end{large}
+\SubSection{Music XML}
 \begin{xml}
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE score-partwise PUBLIC
@@ -74,9 +82,7 @@ A lokális környezetbe való fejlesztés erejéig volt használatba ez az elér
 
 Ez a MusicXML egyik példája, a kotta tárolására. Mivel a minta adat, tehát az itt jelenlevő kották másképpen épülnek fel, ahogy az feljebb is említésre került, így egy saját xml valahogy így nézne ki
 
-\begin{large}
-	Saját kottatárolási módszer
-\end{large}
+\SubSection{Saját kottatárolási módszer XML-ben}
 \begin{xml}
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
   <sheet>

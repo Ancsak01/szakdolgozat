@@ -1,7 +1,7 @@
 \Chapter{Megvalósítás}
 
 \Section{Kezdetek}
-A legelején egy egyszerű python applikációba szerettem volna megvalósítani a megjelenítést és magát az egész projektet. Ehhez a TKInter nevű könyvtárat szándékoztam használni, állítható értékekkel, hogy megfigyeljem melyik érték kombinációval a legcélszerűbb a kép beolvasása és az adatok kinyerése onnan. Leegyszerűsített használatra, csak a sima akkordokkal foglalkozva ugye a kék színű akkordokat szándékoztam kinyerni a képből. Végül a csúszkákat félretéve manuálisan írtam át az értékeket, egy numpy (python függvénykönyvtár, többynire tömbkezeléssel kapcsolatos) tömbbe csomagoltam be ezeket.
+A legelején egy egyszerű python applikációba szerettem volna megvalósítani a megjelenítést és magát az egész projektet. Ehhez a TKInter nevű könyvtárat szándékoztam használni, állítható értékekkel, hogy megfigyeljem melyik érték kombinációval a legcélszerűbb a kép beolvasása és az adatok kinyerése onnan. Leegyszerűsített használatra, csak a sima akkordokkal foglalkozva ugye a kék színű akkordokat szándékoztam kinyerni a képből. Végül a csúszkákat félretéve manuálisan írtam át az értékeket, egy numpy (python függvénykönyvtár, többnyire tömbkezeléssel kapcsolatos) tömbbe csomagoltam be ezeket. Ezek az értékek kellettek ahhoz, hogy meghatározzam a cv2-nek, hogy milyen színskálába szeretném kiszedni az akkordokat. Kísérleteztem azzal, hogy ha változtatom a skálát, akkor milyen pontossággal tudja visszaadni csak az akkordokat(amik kékkel vannak feltüntetve) a képről. Az volt a terv, hogy akkor ez mint bemeneti kép lesz majd kiolvasva a képből az OCR segítségével.
 
 Ez a fejezet mutatja be a megvalósítás lépéseit.
 Itt lehet az esetlegesen előforduló technikai nehézségeket említeni.

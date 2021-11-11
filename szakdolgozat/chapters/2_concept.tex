@@ -7,7 +7,11 @@ Subject – predicate  - object
 Az RDF az egy interneten levő adatokhoz tartozó standard modell. Lehetővé teszi, hogy adat összefésülést hajtson végre még abban az esetben is, mikor a séma alatt szereplő adatok hiányosak, és kifejezetten támogatja a séma fejlődését az adatok megváltoztatása nélkül.
 Az RDF az URI-val nevezi meg azt a kapcsolatot, amivel a link működik az interneten, hogy egyik pontból a másikba elnavigáljon. (Ezt nevezzük hármasoknak) Ezzel az egyszerű modellel lehetővé válik az, hogy struktúrált vagy félig struktúrált adathalmazok is keverhetővé, közzétehetővé és megoszthatóvá váljanak.
 
-Ez a kapcsolati struktúra úgy működik, hogy a két forrás adja a csomópontokat, és az él pedig a kapcsolat nevét. Lényegében ez egy gráf, a csomópont a forrás az él pedig a predikátum, így ha két webhelyet szeretnék összekötni, akkor a kiinduló webhely lesz a téma(subject) a link megnevezés, ami átirányítja a másik csomópontba, az lesz a predikátum(predicate) és ahova érkezik pedig az objektum(object).
+Ez a kapcsolati struktúra úgy működik, hogy a két forrás adja a csomópontokat, és az él pedig a kapcsolat nevét. Lényegében ez egy gráf, a csomópont a forrás az él pedig a predikátum, így ha két webhelyet szeretnék összekötni, akkor a kiinduló webhely lesz a tárgy(subject) a link megnevezés, ami átirányítja a másik csomópontba, az lesz a predikátum(predicate) és ahova érkezik pedig az objektum(object).
+
+Az RDF subject-je(tárgya) az vagy valamely egységes erőforrás-azonosító(URI) vagy egy üres elem, mind a kettő erőforrásra mutat. Azok az erőforrások amik üres elemre mutatnak, azokat nevezzük névtelen erőforrásnak.Ezek közvetlenül nem azonosíthatók az RDF-ből. A predicate(predikátum) az egy olyan URI(link) ami egyben kapcsolatot is jelent és a forrásra mutat. Az object(objektum) az egy URI vagy üres elem vagy egy Unicode szöveg literál. Az RDF 1.1-től kezdve az IRI(Internationalized Resource Identifier) standardizálta az URI-kat.
+
+A szemantikus web alapú alkalmazásokban és a relatíve elterjedt alkalmazásokban, amik RDF-et használnak, mint az RSS, vagy a FOAF(Friend of a Friend), az erőforrások olyan URI-k, amelyek szándékos mutatók, és használhatók arra, hogy konkrét adatokat érjenek el a World Wide Web-en, röviden interneten.De az RDF az nem csak az internet erőforrásainak a leírására van limitálva. Tulajdonképpen az az URI, amely megnevez, vagyis mutat egy erőforrásra, annak nem kell hivatkozásnak lennie. Például, ha van egy URI amely "http:"-vel kezdődik és tárgy szerepe van az RDF-ben, akkor sem kell egy olyan hivatkozásra mutatnia, amely csak HTTP-n keresztül érhető el, vagy nem is kell, hogy egy kézzel fogható interneten elérhető erőforrás legyen, mivel abszolút mindent mutathat az URI. Azonban van közös megegyezés azzal kapcsolatban, hogy egy csupasz URI(ami nem tartalmaz \# szimbólumot) ami 300-al kezdődő státuszkóddal tér vissza egy HTTP GET kérésre, annak egy internet alapú erőforrásra kell mutatni, amely sikeresen elérhető lett.
 
 
 \Section{OCR bemutatása}
@@ -75,8 +79,3 @@ Szerepelhetnek képek és észrevételek a viszonyításként bemutatott alkalma
 Ehhez tartozhatnak forgatókönyvek (\textit{scenario}-k).
 A szemléletesség kedvéért lehet hozzájuk képernyőkép vázlatokat is készíteni, vagy a használati eseteket más módon szemléltetni.
 \end{itemize}
-
-\Section{Amit csak említés szintjén érdemes szerepeltetni}
-
-Az olvasóról annyit feltételezhetünk, hogy programozásban valamilyen szinten járatos, és a matematikai alapfogalmakkal sem ebben a dolgozatban kell megismertetni.
-A speciális eszközök, programozási nyelvek, matematikai módszerekk és jelölések persze jó, hogy ha említésre kerülnek, de nem kell nagyon belemenni a közismertnek tekinthető dolgokba.
