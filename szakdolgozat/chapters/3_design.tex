@@ -38,9 +38,45 @@ A lokális környezetbe való fejlesztés erejéig volt használatba ez az elér
 	\label{fig:graph2}
 \end{figure}
 
-A 3.2-es ábrán látható, hogy az adott példa kottánkban hogy nézne ki egy szegmens. A szegmens most jelen esetben az akkord és az ahhoz tartozó szöveg leírása. A jelenlegi kottához 19 db ilyen szegmens tartozik, indexelve az akkord alapján, tehát 19 akkord van a dalban. A kiinduló elemből az első elágazás az id-hoz vezet, nagyon egyszerűen, ez csak az azonosító száma a dalban szereplő szegmensnek. Ezek alapján például úgy csináltam meg a programot, hogy egy tömb adatstruktúrába adtam meg neki, hogy melyik szegmensnél történik a sortörés, és azoknál a szegmenseknél belefut a program egy plusz ágba, ahol sortörés és a változók újrainicializálása történik. Onnantól következik a pozíció, ami azt a szövegrészt tárolja a szegmensből, ami egyedien azonosítja, hogy az akkord pontosan hol helyezkedik el a szegmensben, egyenlőre ez egy változó hosszúságú string, de érdemes meghatározni, hogy 3 esetleg 4 hosszúsággal történjen ugye a kiolvasás a következetesség szempontjából. A következő elágazás a szövegre mutat, tehát ami konkrétan benne lesz majd a végkifejletbe, ebből származik a pozíció, amiről fentebb szó volt már. Ezután következik az akkord, ami a jelenlegi ábrázolásba úgy néz ki, hogy a szegmens akkordja az egy C, viszont a tonika az külön meghatározandó, vagyis, hogy dúr vagy mol az adott akkord. Az akkordból 3 predikátum mutat objektumokra és ez az amiből felépül egy akkord. Az első fok mutat az alaphangra, a harmadik a tercére az alaphangnak, amiből megállapítható, hogy mol vagy dúr az akkord, mert ha mol, akkor az alaphangra épített kis tercről van szó ami jelen esetben nem így van, hiszen a C - re épített nagy terc a G hang, tehát ez az akkord dúr. És a harmadik objektum az ötödik fok, tehát az alaphang, vagyis a C hang tiszta kvintre levő távolsága, azaz a H hang.
+A 3.2-es ábrán látható, hogy az adott példa kottánkban hogy nézne ki egy szegmens. A szegmens most jelen esetben az akkord és az ahhoz tartozó szöveg leírása. A jelenlegi kottához 19 db ilyen szegmens tartozik, indexelve az akkord alapján, tehát 19 akkord van a dalban. A kiinduló elemből az első elágazás az id-hoz vezet, nagyon egyszerűen, ez csak az azonosító száma a dalban szereplő szegmensnek. Ezek alapján például úgy csináltam meg a programot, hogy egy tömb adatstruktúrába adtam meg neki, hogy melyik szegmensnél történik a sortörés, és azoknál a szegmenseknél belefut a program egy plusz ágba, ahol sortörés és a változók újrainicializálása történik. Onnantól következik a pozíció, ami azt a szövegrészt tárolja a szegmensből, ami egyedien azonosítja, hogy az akkord pontosan hol helyezkedik el a szegmensben, egyenlőre ez egy változó hosszúságú string, de érdemes meghatározni, hogy 3 esetleg 4 hosszúsággal történjen ugye a kiolvasás a következetesség szempontjából. 
+\par 
+A következő elágazás a szövegre mutat, tehát ami konkrétan benne lesz majd a végkifejletbe, ebből származik a pozíció, amiről fentebb szó volt már. Ezután következik az akkord, ami a jelenlegi ábrázolásba úgy néz ki, hogy a szegmens akkordja az egy C, viszont a tonika az külön meghatározandó, vagyis, hogy dúr vagy mol az adott akkord. Az akkordból 3 predikátum mutat objektumokra és ez az amiből felépül egy akkord. Az első fok mutat az alaphangra, a harmadik a tercére az alaphangnak, amiből megállapítható, hogy mol vagy dúr az akkord, mert ha mol, akkor az alaphangra épített kis tercről van szó ami jelen esetben nem így van, hiszen a C - re épített nagy terc az E hang, tehát ez az akkord dúr. És a harmadik objektum az ötödik fok, tehát az alaphang, vagyis a C hang tiszta kvintre levő távolsága, azaz a G hang.\newpage
 
- J\Section{Kotta tárolási példák}
+\begin{figure}[h]
+	\includegraphics[scale=0.2]{images/rdf_graph_3.png}
+	\caption{Egy másik szegmens leírása}
+	\label{fig:graph3}
+\end{figure}
+
+Ebben a szegmensben figyelhető meg, hogy az akkordhoz tartozik egy per basszus hang, ami most a G hang. Ez a kottában a következőképpen jelenik meg: \texttt{F/G} ekkor, az F kék színnel, míg a G az piros színnel van jelölve. Ahogy látható a 3.3-as ábrán is ez nem az akkordhoz tartozik, hanem magához a szegmenshez, tehát nem az akkordot írja le ez az objektum, hanem a szegmenst. \par
+A basszus hang, amikor nincs jelölve, akkor az akkord alaphangja, általában az akkord diatonikus harmadik foka szokott lenni még a basszus hang, de ez egy teljesen változó hang ilyen szempontból. Abban az esetben, ha kellene változó szeparáló elem, akkor külön lenne szedve valószínűleg, hogy a szegmenshez tartozna egy sima basszus, annak lenne a hangja a G és a szeparáló elem lenne mondjuk a \textbackslash. De mivel egységes a szeparáló elem a basszus hangnál ezért ez nem is szükséges, egyébként a szeparáló elem: \texttt{/}.
+\par
+Ha ugyanazt a szegmenst nézzük, akkor behozható a következő eset, amikor ugyanis meg kellene határozni, hogy az akkord az mol vagy dúr tonikájú. Ez mindenképpen egy olyan jelölő, ami az akkordot írja le, tehát azon belül szerepelne ez, és ahogy lesz szó arról, hogy miként épül fel egy hármas, így látni fogjuk majd, hogy a bemeneti oldalról miként lesz megkülönböztethető. Erről bővebben az XML beolvasása szekcióban lesz szó.
+\par
+\newpage
+
+\begin{figure}[h]
+	\includegraphics[scale=0.2]{images/rdf_graph_4.png}
+	\caption{Bővített leírása a szegmensnek}
+	\label{fig:graph4}
+\end{figure}
+A tonika az egy olyan predikátum, amivel leírható, hogy a hármashangzat, tehát az akkord az mol hangzású, avagy dúr hangzású, ami a kimenetnél abban hordozza a jelentőséget, hogy szemantikusan kisbetűvel -,és m-el végződve legyen megjelenítve az akkord vagy egyszerűen nagybetűvel. A 3.4 -es ábra mutatja, hogy az akkord a tonika predikátummal kiegészítve már 4 objektummal van leírva.
+\par
+Amikor meg tudjuk határozni a tonikát, akkor jöhet a következő lépés, ami arról szólna, hogy mi történik akkor, amikor a bemeneti kottában előfordul olyan, hogy transzponált akkord, és mi is ez valójában? Tömören, amikor an egy dal, az egy meghatározott hangnemben van.
+\newpage
+\begin{figure}[h]
+	\includegraphics[scale=0.3]{../ImageProcessing/samples/images/27. zsoltár.JPG}
+	\caption{Példa dal a transzponálás leírására}
+	\label{fig:song1}
+\end{figure}
+\newpage
+\begin{figure}[h]
+	\includegraphics[scale=0.16]{images/rdf_graph_5.png}
+	\caption{Szegmens leírása ahol transzponálás is van}
+	\label{fig:graph5}
+\end{figure}
+
+\Section{Kotta tárolási példák}
 \SubSection{Music XML}
 \begin{xml}
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
