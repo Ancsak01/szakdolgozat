@@ -1,27 +1,19 @@
 \Chapter{Tervezés}
 
-Itt kezdődik a dolgozat lényegi része, úgy értve, hogy a saját munka bemutatása.
-Jellemzően ebben szerepelni szoktak blokkdiagramok, a program struktúrájával foglalkozó leírások.
-Ehhez célszerű UML ábrákat (például osztály- és szekvenciadiagramokat) használni.
-
-Amennyiben a dolgozat inkább kutatás jellegű, úgy itt lehet konkretizálni a kutatási módszertant, a kutatás tervezett lépéseit, az indoklást, hogy mit, miért és miért pont úgy érdemes csinálni, ahogyan az a későbbiekben majd részletezésre kerül.
-
-Ebben a fejezetben az implementáció nem kell, hogy túl nagy szerepet kapjon.
-Ez még csak a tervezési fázis.
-(Nyilván ha olyan a téma, hogy magának az implementációnak a módjával foglalkozik, adott formális nyelvet mutat be, úgy a kódpéldákat már innen sem lehet kihagyni.)
-
 \Section{RDF használata}
 Az esetünkben felhasznált adatok ábrázolására a következőképpen nézne ki az RDF modell. Az akkord reprezentálná a hármasok közül a témát, vagyis a subject-et, mivel azt kellene először definiálni. Az akkord, ami más néven hármas hangzat, alapvetően három hangból épül fel. Van a fő hang, ami tegyük fel, ha C-dúr akkordot akarunk modellezni, az a C hang lesz, erre épül a dúr esetében a nagy terc, ami az E hangot fogja adni, valamint a C hanghoz igazított kvint távolságra levő G hang. Tehát a C-dúr akkordot a C E és G hangokból lehet összeállítani, ezek egyben fokok is, amiket predikátumként fogunk jelölni, hogy melyik hang az akkord hanyadik foka. Ezt a következő ábrán lehet látni.
+\par
 \begin{figure}[h]
-	\includegraphics[scale=1]{images/rdf_graph.png}
+	\includegraphics[scale=0.5]{images/rdf_graph.png}
 	\caption{Szemantikai ábrázolás az RDF szerint.}
 	\label{fig:graph1}
 \end{figure}
-Az ábrán látható, hogy egy akkord meghatározásához 3 él vezet kifelé, ugye ezek jelzik, hogy melyik fokon található a C-dúr akkord hangjai (rendre I., III. és V. fok ) és az objektumok maguk a hangok, ahova az él mutat. Ebben az esetben meg is lenne oldva az akkordok reprezentálása RDF modell szerint, viszont a kottába való visszahelyezéskor a programnak szükséges tudnia azt is, hogy pontosan hova illessze vissza a megfelelő akkordot egy transzponálás esetében, mikor is a hangnem változik, és a kottába szereplő akkordok kicserélődnek. 
-Ilyenkor szintén használva a gráf elméletét az akkord alatti szövegrész lesz az objektum az él pedig elnevezve a pozíció lesz. Ugyanis a kottában szereplő szöveg nem változik ugye csak az akkordok, ha bármilyen művelet kerül végrehajtásra. Többféle probléma merülhet fel, abban az esetben, ha statikusan akarom használni a doboz-t amit az akkordhoz kivág a program a szöveggel együtt, akkor annak a méretét egy kalkulált értékből kell kapnia, ami illeszkedik a megfelelő felbontáshoz, mert hogy a felbontás különböző egyes kották képeinél.
+\newpage
+Az ábrán látható, hogy egy akkord meghatározásához 3 él vezet kifelé, ugye ezek jelzik, hogy melyik fokon található a C-dúr akkord hangjai (rendre I., III. és V. fok ) és az objektumok maguk a hangok, ahova az él mutat. Ebben az esetben meg is lenne oldva az akkordok ábrázolása RDF modell szerint, viszont a kottába való visszahelyezéskor a programnak szükséges tudnia azt is, hogy pontosan hova illessze vissza a megfelelő akkordot egy transzponálás esetében, mikor is a hangnem változik, és a kottába szereplő akkordok kicserélődnek. 
+Ilyenkor szintén használva a gráf elméletét az akkord alatti szövegrész lesz az objektum az él pedig elnevezve a pozíció lesz. Ugyanis a kottában szereplő szöveg nem változik ugye csak az akkordok, ha bármilyen művelet kerül végrehajtásra. Többféle probléma merülhet fel, abban az esetben, ha statikusan akarom használni a doboz-t amit az akkordhoz kivág a program a szöveggel együtt, akkor annak a méretét egy kalkulált értékből kell kapnia, ami illeszkedik a megfelelő felbontáshoz, mert ahogy a felbontás különbözik az egyes kották képeinél, úgy változik a doboz mérete is arányosan.
 
 \Section{Tesseract használata}
-A tesseract nevezetű ocr szoftvert használom a karakterfelismerésre a dolgozatban, nevezetesen a pytesseract függvénykönyvtárat. Ez alapvetően a Google OCR motorja, amit implementáltak python környezetben. Önmagába álló szkriptként is használható, és széles körben felismer különböző kiterjesztésű képeket, mint például a jpeg, png, gif, bmp, tiff és egyéb másokat, habár ugyanúgy megvannak a korlátai is, amiről majd később térek ki részletesebben. Elsőként mivel hogy különálló maga a program ezért PATH-ba kellett helyezni, amivel sajnos meggyűlt a baj, mivel hogy nem ismerte fel az operációs rendszer. Így a következőképpen oldottam meg, hogy használható legyen:
+A tesseract nevezetű OCR szoftvert használom a karakterfelismerésre a dolgozatban, nevezetesen a pytesseract függvénykönyvtárat. Ez alapvetően a Google OCR motorja, amit implementáltak python környezetben. Önmagába álló szkriptként is használható, és széles körben felismer különböző kiterjesztésű képeket, mint például a jpeg, png, gif, bmp, tiff és egyéb másokat, habár ugyanúgy megvannak a korlátai is, amiről majd később térek ki részletesebben. Elsőként mivel hogy különálló maga a program ezért PATH-ba kellett helyezni, amivel sajnos meggyűlt a baj, mivel hogy nem ismerte fel az operációs rendszer. Így a következőképpen oldottam meg, hogy használható legyen:
 \begin{python}
 import pytesseract
 	
@@ -33,150 +25,155 @@ A lokális környezetbe való fejlesztés erejéig volt használatba ez az elér
 \Section{Kotta tárolási példák}
 \SubSection{Music XML}
 \begin{xml}
-	<?xml version="1.1" encoding="UTF-8" standalone="no"?>
-	<!DOCTYPE score-partwise PUBLIC
-	"-//Recordare//DTD MusicXML 1.1 Partwise//EN"
-	"http://www.musicxml.org/dtds/partwise.dtd">
-	<score-partwise>
-	<part-list>
-	<score-part id="P1">
-	<part-name>Music</part-name>
-	</score-part>
-	</part-list>
-	<part id="P1">
-	<measure number="1">
-	<attributes>
-	<divisions>1</divisions>
-	<key>
-	<fifths>0</fifths>
-	</key>
-	<beats>4</beats>
-	<beat-type>4</beat-type>
-	<clef>
-	<sign>G</sign>
-	<line>2</line>
-	</clef>
-	</attributes>
-	<note>
-	<pitch>
-	<step>C</step>
-	<octave>4</octave>
-	</pitch>
-	<duration>4</duration>
-	<type>whole</type>
-	</note>
-	</measure>
-	</part>
-	</score-partwise>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 1.1 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
+<score-partwise>
+   <part-list>
+      <score-part id="P1">
+         <part-name>Music</part-name>
+      </score-part>
+   </part-list>
+   <part id="P1">
+      <measure number="1">
+         <attributes>
+            <divisions>1</divisions>
+            <key>
+               <fifths>0</fifths>
+            </key>
+            <beats>4</beats>
+            <beat-type>4</beat-type>
+            <clef>
+               <sign>G</sign>
+               <line>2</line>
+            </clef>
+         </attributes>
+         <note>
+            <pitch>
+               <step>C</step>
+               <octave>4</octave>
+            </pitch>
+            <duration>4</duration>
+            <type>whole</type>
+         </note>
+      </measure>
+   </part>
+</score-partwise>
 \end{xml}
 
-Ez a MusicXML egyik példája, a kotta tárolására. Mivel a minta adat, tehát az itt jelenlevő kották másképpen épülnek fel, ahogy az feljebb is említésre került, így egy saját xml valahogy így nézne ki
-
+Ez a MusicXML egyik példája, a kotta tárolására. A mintaadathalmaz, tehát a kották, másképpen épülnek fel, nincsenek vonalak, vagy hangjegyek, ez egy ún. akkordos kotta, ami a következőképpen néz ki
+\newpage
 \SubSection{Saját kottatárolási módszer XML-ben}
+\begin{figure}[h]
+	\includegraphics[scale=0.3]{../ImageProcessing/samples/images/Tied a dicsőség.JPG}
+	\caption{A példa kotta.}
+	\label{fig:song1}
+\end{figure}
+
+Ezt a példakottát használva, ha tárolni szeretnénk xml-be, az akkordokat, valamint a szöveget és azt, hogy az akkord az mely szövegrész felett helyezkedik el, mint az akkord pozíciója, akkor az egy ilyen xml-t eredményezne:
+
 \begin{xml}
-	<?xml version="1.1" encoding="UTF-8" standalone="no"?>
-	<sheet>
-	<key>
-	<note>C</note>
-	<chord>major</chord>
-	</key>
-	<segment id="1">
-	<note>C</note>
-	<text>Tied a dicsőség, </text>
-	<position>őség</position>
-	</segment>
-	<segment id="2">
-	<note>em7</note>
-	<text>és imádás,\n</text>
-	<position>im</position>
-	</segment>
-	<segment id="3">
-	<note>F</note>
-	<text>Felemeljük </text>
-	<position>elj</position>
-	</segment>
-	<segment id="4">
-	<note>dm</note>
-	<text>kezeinket\n</text>
-	<position>in</position>
-	</segment>
-	<segment id="5">
-	<note>F/G</note>
-	<text>És dicsérjük </text>
-	<position>csé</position>
-	</segment>
-	<segment id="6">
-	<note>G</note>
-	<text>szent neved!\n</text>
-	<position>ved</position>
-	</segment>
-	<segment id="7">
-	<note>G7</note>
-	<text>Ó, Hatal</text>
-	<position>Hat</position>
-	</segment>
-	<segment id="8">
-	<note>C</note>
-	<text>mas, </text>
-	<position>mas</position>
-	</segment>
-	<segment id="9">
-	<note>am</note>
-	<text>Keze nagy csodákat tesz,\n</text>
-	<position>esz,</position>
-	</segment>
-	<segment id="10">
-	<note>F</note>
-	<text>Vele senki nem ér fel</text>
-	<position>fel</position>
-	</segment>
-	<segment id="11">
-	<note>dm7</note>
-	<text>, Vele </text>
-	<position>, Ve</position>
-	</segment>
-	<segment id="12">
-	<note>G</note>
-	<text>senki nem ér </text>
-	<position>se</position>
-	</segment>
-	<segment id="13">
-	<note>G7</note>
-	<text>fel.\n</text>
-	<position>fel</position>
-	</segment>
-	<segment id="14">
-	<note>G7</note>
-	<text>Ó, Hatal</text>
-	<position>Hat</position>
-	</segment>
-	<segment id="15">
-	<note>C</note>
-	<text>mas, </text>
-	<position>mas</position>
-	</segment>
-	<segment id="16">
-	<note>am</note>
-	<text>ó, Hatalmas, </text>
-	<position>mas</position>
-	</segment>
-	<segment id="17">
-	<note>F</note>
-	<text>ó, Hatalmas,</text>
-	<position>mas</position>
-	</segment>
-	<segment id="18">
-	<note>G7</note>
-	<text> ó, Hatal</text>
-	<position> ó</position>
-	</segment>
-	<segment id="19">
-	<note>C</note>
-	<text>mas!</text>
-	<position>mas</position>
-	</segment>
-	</sheet>
-	
+<?xml version="1.0" encoding="UTF-8"?>
+<sheet>
+   <key>
+      <note>C</note>
+      <chord>major</chord>
+   </key>
+   <segment id="1">
+      <note>C</note>
+      <text>Tied a dicsőség,</text>
+      <position>őség</position>
+   </segment>
+   <segment id="2">
+      <note>em7</note>
+      <text>és imádás,\n</text>
+      <position>im</position>
+   </segment>
+   <segment id="3">
+      <note>F</note>
+      <text>Felemeljük</text>
+      <position>elj</position>
+   </segment>
+   <segment id="4">
+      <note>dm</note>
+      <text>kezeinket\n</text>
+      <position>in</position>
+   </segment>
+   <segment id="5">
+      <note>F/G</note>
+      <text>És dicsérjük</text>
+      <position>csé</position>
+   </segment>
+   <segment id="6">
+      <note>G</note>
+      <text>szent neved!\n</text>
+      <position>ved</position>
+   </segment>
+   <segment id="7">
+      <note>G7</note>
+      <text>Ó, Hatal</text>
+      <position>Hat</position>
+   </segment>
+   <segment id="8">
+      <note>C</note>
+      <text>mas,</text>
+      <position>mas</position>
+   </segment>
+   <segment id="9">
+      <note>am</note>
+      <text>Keze nagy csodákat tesz,\n</text>
+      <position>esz,</position>
+   </segment>
+   <segment id="10">
+      <note>F</note>
+      <text>Vele senki nem ér fel</text>
+      <position>fel</position>
+   </segment>
+   <segment id="11">
+      <note>dm7</note>
+      <text>, Vele</text>
+      <position>, Ve</position>
+   </segment>
+   <segment id="12">
+      <note>G</note>
+      <text>senki nem ér</text>
+      <position>se</position>
+   </segment>
+   <segment id="13">
+      <note>G7</note>
+      <text>fel.\n</text>
+      <position>fel</position>
+   </segment>
+   <segment id="14">
+      <note>G7</note>
+      <text>Ó, Hatal</text>
+      <position>Hat</position>
+   </segment>
+   <segment id="15">
+      <note>C</note>
+      <text>mas,</text>
+      <position>mas</position>
+   </segment>
+   <segment id="16">
+      <note>am</note>
+      <text>ó, Hatalmas,</text>
+      <position>mas</position>
+   </segment>
+   <segment id="17">
+      <note>F</note>
+      <text>ó, Hatalmas,</text>
+      <position>mas</position>
+   </segment>
+   <segment id="18">
+      <note>G7</note>
+      <text>ó, Hatal</text>
+      <position>ó</position>
+   </segment>
+   <segment id="19">
+      <note>C</note>
+      <text>mas!</text>
+      <position>mas</position>
+   </segment>
+</sheet>
 \end{xml}
 
 Szegmensekre van bontva az adott akkord és a hozzátartozó szöveg. Minden szegmens kap egy id-t ami a sortöréshez szükséges az első verzió szerint. A szegmensen belül a note tárolja az akkordot, a text a blokkhoz tartozó szöveget, a position pedig tárolja az akkord elhelyezkedését a szöveg felett. Python-ba ehhez készült egy szemléltető program, ami ezt az xml-t jeleníti meg egyenlőre konzolon.
@@ -199,42 +196,54 @@ Ami pedig a dúr akkordokat jellemzik:
 
 Ezeket amikor képes megkülönböztetni a program, akkor ennek megfelelően fogja tudni lementeni a note mellé azt a property-t ami jelöli, hogy az akkord az mol vagy dúr. Legyen a neve mondjuk tone. Ebből kiindulva így nézne ki az egyik szegmens:
 \begin{xml}
-	<segment id="12">
-	<chord>
-	<note>G</note>
-	<tone>major</tone>
-	</chord>
-	<text>senki nem ér </text>
-	<position>se</position>
-	</segment>
+<segment id="12">
+   <chord>
+      <note>G</note>
+      <tone>major</tone>
+   </chord>
+   <text>senki nem ér</text>
+   <position>se</position>
+</segment>
 \end{xml}
 
 Miután meg lehet különböztetni a mol-t a dúrtól, ezután mivel akkordról beszélünk, ami legtöbb esetben hármas hangzat, azt is fel kell osztani. Az akkord a hang diatonikus I. III. és V. fokából épül fel, valahogy így nézne ki, ha letárolnánk xml adatstruktúrába csak egy szegmensét:
 \begin{xml}
-	<segment id="12">
-	<chord>
-	<note>G</note>
-	<measures>
-	<I>G</I>
-	<III>H</III>
-	<V>D</V>
-	</measures
-	<tone>major</tone>
-	</chord>
-	<text>senki nem ér </text>
-	<position>se</position>
-	</segment>
+<segment id="12">
+   <chord>
+      <note>G</note>
+      <measures>
+         <I>G</I>
+         <III>H</III>
+         <V>D</V>
+      </measures>
+      <tone>major</tone>
+   </chord>
+   <text>senki nem ér</text>
+   <position>se</position>
+</segment>
 \end{xml}
 
+\Section{RDF szerializációk}
+\SubSection{RDF/XML}
+\SubSection{RDFa}
+\SubSection{Turtle felhasználása}
+\begin{itemize}
+\item A Turtle-ről néhány szó(https://www.w3.org/TR/turtle/)
+\item Hogyan használható a jelen esetben
+\item Esetek leírása Turtle-el
+\end{itemize}
+
 \Section{Szemantikus ábrázolás RDF-el}
+
+
 
 \begin{figure}[h]
 	\includegraphics[scale=0.3]{images/rdf_graph_2.png}
 	\caption{Konkrét szemantikai ábrázolása a dalnak.}
 	\label{fig:graph2}
 \end{figure}
-
-A 3.2-es ábrán látható, hogy az adott példa kottánkban hogy nézne ki egy szegmens. A szegmens most jelen esetben az akkord és az ahhoz tartozó szöveg leírása. A jelenlegi kottához 19 db ilyen szegmens tartozik, indexelve az akkord alapján, tehát 19 akkord van a dalban. A kiinduló elemből az első elágazás az id-hoz vezet, nagyon egyszerűen, ez csak az azonosító száma a dalban szereplő szegmensnek. Ezek alapján például úgy csináltam meg a programot, hogy egy tömb adatstruktúrába adtam meg neki, hogy melyik szegmensnél történik a sortörés, és azoknál a szegmenseknél belefut a program egy plusz ágba, ahol sortörés és a változók újrainicializálása történik. Onnantól következik a pozíció, ami azt a szövegrészt tárolja a szegmensből, ami egyedien azonosítja, hogy az akkord pontosan hol helyezkedik el a szegmensben, egyenlőre ez egy változó hosszúságú string, de érdemes meghatározni, hogy 3 esetleg 4 hosszúsággal történjen ugye a kiolvasás a következetesség szempontjából. 
+\par
+A 3.3-as ábrán látható, hogy az adott példa kottánkban hogy nézne ki egy szegmens. A szegmens most jelen esetben az akkord és az ahhoz tartozó szöveg leírása. A jelenlegi kottához 19 db ilyen szegmens tartozik, indexelve az akkord alapján, tehát 19 akkord van a dalban. A kiinduló elemből az első elágazás az id-hoz vezet, nagyon egyszerűen, ez csak az azonosító száma a dalban szereplő szegmensnek. Ezek alapján például úgy csináltam meg a programot, hogy egy tömb adatstruktúrába adtam meg neki, hogy melyik szegmensnél történik a sortörés, és azoknál a szegmenseknél belefut a program egy plusz ágba, ahol sortörés és a változók újrainicializálása történik. Onnantól következik a pozíció, ami azt a szövegrészt tárolja a szegmensből, ami egyedien azonosítja, hogy az akkord pontosan hol helyezkedik el a szegmensben, egyenlőre ez egy változó hosszúságú string, de érdemes meghatározni, hogy 3 esetleg 4 hosszúsággal történjen ugye a kiolvasás a következetesség szempontjából. 
 \par 
 A következő elágazás a szövegre mutat, tehát ami konkrétan benne lesz majd a végkifejletbe, ebből származik a pozíció, amiről fentebb szó volt már. Ezután következik az akkord, ami a jelenlegi ábrázolásba úgy néz ki, hogy a szegmens akkordja az egy C, viszont a tonika az külön meghatározandó, vagyis, hogy dúr vagy mol az adott akkord. Az akkordból 3 predikátum mutat objektumokra és ez az amiből felépül egy akkord. Az első fok mutat az alaphangra, a harmadik a tercére az alaphangnak, amiből megállapítható, hogy mol vagy dúr az akkord, mert ha mol, akkor az alaphangra épített kis tercről van szó ami jelen esetben nem így van, hiszen a C - re épített nagy terc az E hang, tehát ez az akkord dúr. És a harmadik objektum az ötödik fok, tehát az alaphang, vagyis a C hang tiszta kvintre levő távolsága, azaz a G hang.\newpage
 
@@ -244,10 +253,10 @@ A következő elágazás a szövegre mutat, tehát ami konkrétan benne lesz maj
 	\label{fig:graph3}
 \end{figure}
 
-Ebben a szegmensben figyelhető meg, hogy az akkordhoz tartozik egy per basszus hang, ami most a G hang. Ez a kottában a következőképpen jelenik meg: \texttt{F/G} ekkor, az F kék színnel, míg a G az piros színnel van jelölve. Ahogy látható a 3.3-as ábrán is ez nem az akkordhoz tartozik, hanem magához a szegmenshez, tehát nem az akkordot írja le ez az objektum, hanem a szegmenst. \par
+Ebben a szegmensben figyelhető meg, hogy az akkordhoz tartozik egy per basszus hang, ami most a G hang. Ez a kottában a következőképpen jelenik meg: \texttt{F/G} ekkor, az F kék színnel, míg a G az piros színnel van jelölve. Ahogy látható a 3.4-es ábrán is ez nem az akkordhoz tartozik, hanem magához a szegmenshez, tehát nem az akkordot írja le ez az objektum, hanem a szegmenst. \par
 A basszus hang, amikor nincs jelölve, akkor az akkord alaphangja, általában az akkord diatonikus harmadik foka szokott lenni még a basszus hang, de ez egy teljesen változó hang ilyen szempontból. Abban az esetben, ha kellene változó szeparáló elem, akkor külön lenne szedve valószínűleg, hogy a szegmenshez tartozna egy sima basszus, annak lenne a hangja a G és a szeparáló elem lenne mondjuk a \textbackslash. De mivel egységes a szeparáló elem a basszus hangnál ezért ez nem is szükséges, egyébként a szeparáló elem: \texttt{/}.
 \par
-Ha ugyanazt a szegmenst nézzük, akkor behozható a következő eset, amikor ugyanis meg kellene határozni, hogy az akkord az mol vagy dúr tonikájú. Ez mindenképpen egy olyan jelölő, ami az akkordot írja le, tehát azon belül szerepelne ez, és ahogy lesz szó arról, hogy miként épül fel egy hármas, így látni fogjuk majd, hogy a bemeneti oldalról miként lesz megkülönböztethető. Erről bővebben az XML beolvasása szekcióban lesz szó.
+Ha ugyanazt a szegmenst nézzük, akkor behozható a következő eset, amikor ugyanis meg kellene határozni, hogy az akkord az mol vagy dúr tonikájú. Ez mindenképpen egy olyan jelölő, ami az akkordot írja le, tehát azon belül szerepelne ez, és ahogy lesz szó arról, hogy miként épül fel egy hármas, így látni fogjuk majd, hogy a bemeneti oldalról miként lesz megkülönböztethető.
 \par
 \newpage
 
@@ -256,29 +265,58 @@ Ha ugyanazt a szegmenst nézzük, akkor behozható a következő eset, amikor ug
 	\caption{Bővített leírása a szegmensnek}
 	\label{fig:graph4}
 \end{figure}
-A tonika az egy olyan predikátum, amivel leírható, hogy a hármashangzat, tehát az akkord az mol hangzású, avagy dúr hangzású, ami a kimenetnél abban hordozza a jelentőséget, hogy szemantikusan kisbetűvel -,és m-el végződve legyen megjelenítve az akkord vagy egyszerűen nagybetűvel. A 3.4 -es ábra mutatja, hogy az akkord a tonika predikátummal kiegészítve már 4 objektummal van leírva.
+A tonika az egy olyan predikátum, amivel leírható, hogy a hármashangzat, tehát az akkord az mol hangzású, avagy dúr hangzású, ami a kimenetnél abban hordozza a jelentőséget, hogy szemantikusan kisbetűvel -,és m-el végződve legyen megjelenítve az akkord vagy egyszerűen nagybetűvel. A 3.5-ös ábra mutatja, hogy az akkord a tonika predikátummal kiegészítve már 4 objektummal van leírva.
 \par
 Amikor meg tudjuk határozni a tonikát, akkor jöhet a következő lépés, ami arról szólna, hogy mi történik akkor, amikor a bemeneti kottában előfordul olyan, hogy transzponált akkord, és mi is ez valójában? Tömören, amikor an egy dal, az egy meghatározott hangnemben van.
 \newpage
 \begin{figure}[h]
 	\includegraphics[scale=0.3]{../ImageProcessing/samples/images/27. zsoltár.JPG}
-	\caption{Példa dal a transzponálás leírására}
-	\label{fig:song1}
+	\caption{Példa kotta a transzponálás leírására}
+	\label{fig:song2}
 \end{figure}
+Ez a következő példakotta, ami abban különbözik, az eddigitől, hogy a zölddel, valamint narancssárgával jelölt akkordok is megjelennek, amik egyébként a transzponálást jelzik dal közben. Sűrűsödnek az akkordok, itt a doboz-kezelést úgy kellene megoldani, hogy több akkordot is egybefogni, például, ahol egy-két szóköz van közötte és azt egybe kezelni. A zárójeles szeparátor egyértelműen mutatná, hogy itt transzponált akkordról van szó, viszont az utolsó előtt sor fölött látható, hogy kékkel jelölt zárójeles akkord van. Az az ismétlést hivatott jelezni, így a szeparátor nem adja meg egyértelműen, hogy most az akkord az transzponált e. A transzponáltságot tehát mindenképp a szín fogja eldönteni.
+
+A következő esetek merülhetnek fel ezzel a kottával kapcsolatban:
+\begin{center}
+	\begin{tabular}{ |p{7cm}|p{7cm}| }
+		\hline
+		Eset(ek) & Megoldás\\ 
+		\hline
+		\begin{itemize}
+			\item[--] Sűrűsödött akkordok
+			\item[--] Zsúfoltság
+			\item[--] Pozíció szempontjából esélyes, hogy félreindexelés történik
+			\item[--] A substringet nem is találná meg a program, és az lehet nem is létezne hozzá
+		\end{itemize} & A doboz-kezelést át kell formázni úgy, hogy képes legyen több akkordot is egybesűríteni és ezáltal a pozíciót rendesen belőni, és emellett az egybesűrűsített akkordok egymástól levő távolságát is megtartani \\ 
+		\hline
+	\end{tabular}
+\end{center}
 \newpage
 \begin{figure}[h]
-	\includegraphics[scale=0.3]{images/rdf_graph_5.png}
+	\includegraphics[scale=0.29]{images/rdf_graph_5.png}
 	\caption{Szegmens leírása ahol transzponálás is van}
 	\label{fig:graph5}
 \end{figure}
 \newpage
 \begin{figure}[h]
-	\includegraphics[scale=0.3]{images/rdf_graph_6.png}
+	\includegraphics[scale=0.29]{images/rdf_graph_6.png}
 	\caption{Szegmens leírása ahol a transzponálásban basszus hang van}
 	\label{fig:graph6}
 \end{figure}
 
-
+\Section{Ábrázolás előnyei, hátrányai}
+\SubSection{Irányított gráf ábrázolás}
+\begin{center}
+	\begin{tabular}{ |p{7cm}|p{7cm}| }
+		\hline
+		Előnyök & Hátrányok\\
+		\hline
+		Részletesen leírható bármilyen alany az ábrázolással & A gyökér, vagyis a kiinduló elem Szegmens-ként lett elnevezve, viszont mint elnevezés létezik csak, a gyökér elem hiánya \\ 
+		\hline
+		Az elnevezett élekkel pontosan megadható az, hogy mi jellemzi az alanyt & Az egy-egy kapcsolat miatt, nem lehet meghatározni ugyanazon predikátum alatt több tulajdonságot az alanyról\\
+		\hline
+	\end{tabular}
+\end{center}
 
 \Section{További környezetek}
 
