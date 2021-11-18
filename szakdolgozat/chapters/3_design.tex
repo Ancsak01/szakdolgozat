@@ -331,6 +331,14 @@ A sima ábrázolásban látható, hogy a legbonyolultabb kotta szegmens az már 
 	\caption{Szegmens alternatív leírása}
 	\label{fig:graph7}
 \end{figure}
+\newpage
+Változtatások:
+\begin{itemize}
+	\item[--] Egyetlen objektum tartozhat más alanyokhoz
+	\item[--] Az akkordokhoz tartozó fokok átnevezése
+\end{itemize}
+
+Ezen felül észrevehető az, hogy minden akkord, ami jelölve van, annak az első foka ugyanazt az értéket fogja kapni. Innen két irányba is mehetne az ábrázolás. Az első az lehetne, hogy akkor az akkord és a hang az külön jelentőséget képvisel, emiatt nem hivatkoztatható önmagába, tehát akkor a 3.9-es ábra maradna. A másik viszont az, hogy a predikátum egy üres objektumra mutatna, és ezáltal létezne egy új predikátum ami az üresből elemből mutatna kifelé.
 
 \Section{Ábrázolás előnyei, hátrányai}
 \SubSection{Irányított gráf ábrázolás}
@@ -346,35 +354,24 @@ A sima ábrázolásban látható, hogy a legbonyolultabb kotta szegmens az már 
 	\end{tabular}
 \end{center}
 
-\Section{További környezetek}
+\begin{figure}[h]
+	\includegraphics[scale=0.16]{images/representation_of_sheet.png}
+	\caption{A kotta első három szegmense}
+	\label{fig:repres1}
+\end{figure}
 
-A matematikai témájú dolgozatokban szükség lehet tételek és bizonyításaik megadására.
-Ehhez szintén vannak készen elérhető környezetek.
+\begin{figure}[h]
+	\includegraphics[scale=0.26]{images/representated_sheet.png}
+	\caption{Az előző ábra végeredménye}
+	\label{fig:repres2}
+\end{figure}
 
-\begin{definition}
-Ez egy definíció
-\end{definition}
-
-\begin{lemma}
-Ez egy lemma
-\end{lemma}
-
-\begin{theorem}
-Ez egy tétel
-\end{theorem}
-
-\begin{proof}
-Ez egy bizonyítás
-\end{proof}
-
-\begin{corollary}
-Ez egy tétel
-\end{corollary}
-
-\begin{remark}
-Ez egy megjegyzés
-\end{remark}
-
-\begin{example}
-Ez egy példa
-\end{example}
+\begin{center}
+	\begin{tabular}{ |p{7cm}|p{7cm}| }
+		\hline
+		Előnyök & Hátrányok\\
+		\hline
+		Az egyszerűsített ábrázolás redukálja a gráf túlságos szétterjedését & A jelenlegi kotta 19 szegmensből áll, ezt viszont így ábrázolni nem lehetne megfelelően \\ 
+		\hline
+	\end{tabular}
+\end{center}
