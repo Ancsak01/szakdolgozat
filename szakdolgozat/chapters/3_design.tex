@@ -324,6 +324,14 @@ Abban az esetben, hogyha van transzponált akkord a kottában, akkr azt egy más
 	\label{fig:graph6}
 \end{figure}
 
+A sima ábrázolásban látható, hogy a legbonyolultabb kotta szegmens az már elég szerteágazó irányított gráf lett. Itt amit érdemes megfigyelni, hogy az id, szöveg, pozíción kívül előfordulhatnak redundáns csomópontok. Például a tonika a basszus hang predikátumok többször is előfordulhatnak, sőt, ha tonikáról beszélünk, akkor ott nem történhet olyan, hogy a szegmens akkordjának a tonikája különböző legyen, mint a transzponált akkord tonikája, tehát abban az esetben az az objektum biztosan többször is szerepelne az ábrán. Mindemellett az a vizsgálata a szegmensnek, hogy transzponált-e az egy egyszerű bool értékkel van leírva, ami ugyanúgy előfordulhat az ábrán más alanyhoz rendelve. Így a következő ábrán lehet látni, hogy az egyszerűsítés érdekében hogyan lehetne ezeket az ismétlődő objektumokat megszüntetni.
+
+\begin{figure}[h]
+	\includegraphics[scale=0.26]{images/rdf_graph_7.png}
+	\caption{Szegmens alternatív leírása}
+	\label{fig:graph7}
+\end{figure}
+
 \Section{Ábrázolás előnyei, hátrányai}
 \SubSection{Irányított gráf ábrázolás}
 \begin{center}
