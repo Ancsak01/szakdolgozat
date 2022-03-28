@@ -1,5 +1,7 @@
 \Chapter{Tervezés}
 
+Ennek a szekciónak a célja bemutatni a kották tárolásának különböző módszereit. Mindemellett hangsúlyt fog kapni az, 
+
 \Section{RDF használata}
 Az esetünkben felhasznált adatok ábrázolására a következőképpen nézne ki az RDF modell. Az akkord reprezentálná a hármasok közül a témát, vagyis a subject-et, mivel azt kellene először definiálni. Az akkord, ami más néven hármas hangzat, alapvetően három hangból épül fel. Van a fő hang, ami tegyük fel, ha C-dúr akkordot akarunk modellezni, az a C hang lesz, erre épül a dúr esetében a nagy terc, ami az E hangot fogja adni, valamint a C hanghoz igazított kvint távolságra levő G hang. Tehát a C-dúr akkordot a C E és G hangokból lehet összeállítani, ezek egyben fokok is, amiket predikátumként fogunk jelölni, hogy melyik hang az akkord hanyadik foka. Ezt a következő ábrán lehet látni.
 \par
@@ -286,7 +288,7 @@ Ha ugyanazt a szegmenst nézzük, akkor behozható a következő eset, amikor ug
 \end{figure}
 A tonika az egy olyan predikátum, amivel leírható, hogy a hármashangzat, tehát az akkord az mol hangzású, avagy dúr hangzású, ami a kimenetnél abban hordozza a jelentőséget, hogy szemantikusan kisbetűvel -,és m-el végződve legyen megjelenítve az akkord vagy egyszerűen nagybetűvel. A 3.5-ös ábra mutatja, hogy az akkord a tonika predikátummal kiegészítve már 4 objektummal van leírva.
 \par
-Amikor meg tudjuk határozni a tonikát, akkor jöhet a következő lépés, ami arról szólna, hogy mi történik akkor, amikor a bemeneti kottában előfordul olyan, hogy transzponált akkord, és mi is ez valójában? Tömören, amikor an egy dal, az egy meghatározott hangnemben van.
+Amikor meg tudjuk határozni a tonikát, akkor jöhet a következő lépés, ami arról szólna, hogy mi történik akkor, amikor a bemeneti kottában előfordul olyan, hogy transzponált akkord, és mi is ez valójában? Tömören, egy dal mindig egy meghatározott hangnemben van.
 \newpage
 \begin{figure}[h]
 	\includegraphics[scale=0.3]{../ImageProcessing/samples/images/27. zsoltár.JPG}

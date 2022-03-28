@@ -1,0 +1,159 @@
+digraph ni {
+	Songname [label="Tied a dicsőség"]
+	key [label=C]
+	chord [label="dúr"]
+	"1. segment" [label="1. szegmens"]
+	11 [label=C]
+	12 [label="Tied a dicsőség, "]
+	13 [label="őség"]
+	"1. segment" -> 11
+	"1. segment" -> 12
+	"1. segment" -> 13
+	Songname -> "1. segment"
+	"2. segment" [label="2. szegmens"]
+	21 [label=em7]
+	22 [label="és imádás,\n"]
+	23 [label=im]
+	"2. segment" -> 21
+	"2. segment" -> 22
+	"2. segment" -> 23
+	Songname -> "2. segment"
+	"3. segment" [label="3. szegmens"]
+	31 [label=F]
+	32 [label="Felemeljük "]
+	33 [label=elj]
+	"3. segment" -> 31
+	"3. segment" -> 32
+	"3. segment" -> 33
+	Songname -> "3. segment"
+	"4. segment" [label="4. szegmens"]
+	41 [label=dm]
+	42 [label="kezeinket\n"]
+	43 [label=in]
+	"4. segment" -> 41
+	"4. segment" -> 42
+	"4. segment" -> 43
+	Songname -> "4. segment"
+	"5. segment" [label="5. szegmens"]
+	51 [label="F/G"]
+	52 [label="És dicsérjük "]
+	53 [label="csé"]
+	"5. segment" -> 51
+	"5. segment" -> 52
+	"5. segment" -> 53
+	Songname -> "5. segment"
+	"6. segment" [label="6. szegmens"]
+	61 [label=G]
+	62 [label="szent neved!\n"]
+	63 [label=ved]
+	"6. segment" -> 61
+	"6. segment" -> 62
+	"6. segment" -> 63
+	Songname -> "6. segment"
+	"7. segment" [label="7. szegmens"]
+	71 [label=G7]
+	72 [label="Ó, Hatal"]
+	73 [label=Hat]
+	"7. segment" -> 71
+	"7. segment" -> 72
+	"7. segment" -> 73
+	Songname -> "7. segment"
+	"8. segment" [label="8. szegmens"]
+	81 [label=C]
+	82 [label="mas, "]
+	83 [label=mas]
+	"8. segment" -> 81
+	"8. segment" -> 82
+	"8. segment" -> 83
+	Songname -> "8. segment"
+	"9. segment" [label="9. szegmens"]
+	91 [label=am]
+	92 [label="Keze nagy csodákat tesz,\n"]
+	93 [label="esz,"]
+	"9. segment" -> 91
+	"9. segment" -> 92
+	"9. segment" -> 93
+	Songname -> "9. segment"
+	"10. segment" [label="10. szegmens"]
+	101 [label=F]
+	102 [label="Vele senki nem ér fel"]
+	103 [label=fel]
+	"10. segment" -> 101
+	"10. segment" -> 102
+	"10. segment" -> 103
+	Songname -> "10. segment"
+	"11. segment" [label="11. szegmens"]
+	111 [label=dm7]
+	112 [label=", Vele "]
+	113 [label=", Ve"]
+	"11. segment" -> 111
+	"11. segment" -> 112
+	"11. segment" -> 113
+	Songname -> "11. segment"
+	"12. segment" [label="12. szegmens"]
+	121 [label=G]
+	122 [label="senki nem ér "]
+	123 [label=se]
+	"12. segment" -> 121
+	"12. segment" -> 122
+	"12. segment" -> 123
+	Songname -> "12. segment"
+	"13. segment" [label="13. szegmens"]
+	131 [label=G7]
+	132 [label="fel.\n"]
+	133 [label="fel."]
+	"13. segment" -> 131
+	"13. segment" -> 132
+	"13. segment" -> 133
+	Songname -> "13. segment"
+	"14. segment" [label="14. szegmens"]
+	141 [label=G7]
+	142 [label="Ó, Hatal"]
+	143 [label=Hat]
+	"14. segment" -> 141
+	"14. segment" -> 142
+	"14. segment" -> 143
+	Songname -> "14. segment"
+	"15. segment" [label="15. szegmens"]
+	151 [label=C]
+	152 [label="mas, "]
+	153 [label=mas]
+	"15. segment" -> 151
+	"15. segment" -> 152
+	"15. segment" -> 153
+	Songname -> "15. segment"
+	"16. segment" [label="16. szegmens"]
+	161 [label=am]
+	162 [label="ó, Hatalmas, "]
+	163 [label=mas]
+	"16. segment" -> 161
+	"16. segment" -> 162
+	"16. segment" -> 163
+	Songname -> "16. segment"
+	"17. segment" [label="17. szegmens"]
+	171 [label=F]
+	172 [label="ó, Hatalmas,"]
+	173 [label=mas]
+	"17. segment" -> 171
+	"17. segment" -> 172
+	"17. segment" -> 173
+	Songname -> "17. segment"
+	"18. segment" [label="18. szegmens"]
+	181 [label=G7]
+	182 [label=" ó, Hatal"]
+	183 [label=" ó"]
+	"18. segment" -> 181
+	"18. segment" -> 182
+	"18. segment" -> 183
+	Songname -> "18. segment"
+	"19. segment" [label="19. szegmens"]
+	191 [label=C]
+	192 [label="mas!"]
+	193 [label=mas]
+	"19. segment" -> 191
+	"19. segment" -> 192
+	"19. segment" -> 193
+	Songname -> "19. segment"
+	Songname -> key
+	Songname -> chord
+}
