@@ -1,0 +1,67 @@
+digraph g {
+    rankdir=LR
+    Sheet [label=""]
+
+    subgraph segment_0 {
+
+        segment_0_ID [label=""]
+        segment_0_Position [label=""]
+        segment_0_Text [label=""]
+        segment_0_Bass_note [label=""]
+        segment_0_Chord [label=""]
+        segment_0_Tone [label=""]
+        segment_0_Deg1 [label=""]
+        segment_0_Deg5 [label=""]
+        segment_0_ID -> segment_0_Position [label="position"]
+        segment_0_ID -> segment_0_Text [label="text"]
+        segment_0_ID -> segment_0_Chord [label="chord"]
+        segment_0_Chord -> segment_0_Tone [label="tone"]
+        segment_0_Chord -> segment_0_Deg1 [label="I."]
+        segment_0_Chord -> segment_0_Bass_note [label="III."]
+        segment_0_Chord -> segment_0_Deg5 [label="V."]
+        segment_0_Chord -> segment_0_Bass_note [label="bass note"]
+    }
+
+    subgraph segment_1 {
+
+        segment_1_ID [label=""]
+        segment_1_Position [label=""]
+        segment_1_Text [label=""]
+        segment_1_Bass_note [label=""]
+        segment_1_Chord [label=""]
+        segment_1_Deg1 [label=""]
+        segment_1_Deg5 [label=""]
+        segment_1_ID -> segment_1_Position [label="position"]
+        segment_1_ID -> segment_1_Text [label="text"]
+        segment_1_ID -> segment_1_Chord [label="chord"]
+        segment_1_Chord -> segment_0_Tone [label="tone"]
+        segment_1_Chord -> segment_1_Deg1 [label="I."]
+        segment_1_Chord -> segment_1_Bass_note [label="III."]
+        segment_1_Chord -> segment_1_Deg5 [label="V."]
+        segment_1_Chord -> segment_1_Bass_note [label="bass note"]
+    }
+
+    subgraph segment_2 {
+
+        segment_2_ID [label=""]
+        segment_2_Position [label=""]
+        segment_2_Text [label=""]
+        segment_2_Bass_note [label=""]
+        segment_2_Chord [label=""]
+        segment_2_Deg1 [label=""]
+        segment_2_Deg5 [label=""]
+        segment_2_Tone [label=""]
+        segment_2_ID -> segment_2_Position [label="position"]
+        segment_2_ID -> segment_2_Text [label="text"]
+        segment_2_ID -> segment_2_Chord [label="chord"]
+        segment_2_Chord -> segment_2_Tone [label="tone"]
+        segment_2_Chord -> segment_2_Deg1 [label="I."]
+        segment_2_Chord -> segment_2_Bass_note [label="III."]
+        segment_2_Chord -> segment_2_Deg5 [label="V."]
+        segment_2_Chord -> segment_2_Bass_note [label="bass note"]
+    }
+    
+    Sheet -> segment_0_ID [label="id"]
+    Sheet -> segment_1_ID [label="id"]
+    Sheet -> segment_2_ID [label="id"]
+}

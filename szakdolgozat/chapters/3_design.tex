@@ -6,7 +6,7 @@ Ennek a szekciónak a célja bemutatni a kották tárolásának különböző m�
 Az esetünkben felhasznált adatok ábrázolására a következőképpen nézne ki az RDF modell. Az akkord reprezentálná a hármasok közül a témát, vagyis a subject-et, mivel azt kellene először definiálni. Az akkord, ami más néven hármas hangzat, alapvetően három hangból épül fel. Van a fő hang, ami tegyük fel, ha C-dúr akkordot akarunk modellezni, az a C hang lesz, erre épül a dúr esetében a nagy terc, ami az E hangot fogja adni, valamint a C hanghoz igazított kvint távolságra levő G hang. Tehát a C-dúr akkordot a C E és G hangokból lehet összeállítani, ezek egyben fokok is, amiket predikátumként fogunk jelölni, hogy melyik hang az akkord hanyadik foka. Ezt a következő ábrán lehet látni.
 \par
 \begin{figure}[h]
-	\includegraphics[scale=0.5]{images/rdf_graph.png}
+	\includegraphics[scale=1]{images/rdf_graph.png}
 	\caption{Szemantikai ábrázolás az RDF szerint.}
 	\label{fig:graph1}
 \end{figure}
@@ -90,92 +90,44 @@ Ezt a példakottát használva, ha tárolni szeretnénk xml-be, az akkordokat, v
       <text>és imádás,\n</text>
       <position>im</position>
    </segment>
-   <segment id="3">
-      <note>F</note>
-      <text>Felemeljük</text>
-      <position>elj</position>
-   </segment>
-   <segment id="4">
-      <note>dm</note>
-      <text>kezeinket\n</text>
-      <position>in</position>
-   </segment>
-   <segment id="5">
-      <note>F/G</note>
-      <text>És dicsérjük</text>
-      <position>csé</position>
-   </segment>
-   <segment id="6">
-      <note>G</note>
-      <text>szent neved!\n</text>
-      <position>ved</position>
-   </segment>
-   <segment id="7">
-      <note>G7</note>
-      <text>Ó, Hatal</text>
-      <position>Hat</position>
-   </segment>
-   <segment id="8">
-      <note>C</note>
-      <text>mas,</text>
-      <position>mas</position>
-   </segment>
-   <segment id="9">
-      <note>am</note>
-      <text>Keze nagy csodákat tesz,\n</text>
-      <position>esz,</position>
-   </segment>
-   <segment id="10">
-      <note>F</note>
-      <text>Vele senki nem ér fel</text>
-      <position>fel</position>
-   </segment>
-   <segment id="11">
-      <note>dm7</note>
-      <text>, Vele</text>
-      <position>, Ve</position>
-   </segment>
-   <segment id="12">
-      <note>G</note>
-      <text>senki nem ér</text>
-      <position>se</position>
-   </segment>
-   <segment id="13">
-      <note>G7</note>
-      <text>fel.\n</text>
-      <position>fel</position>
-   </segment>
-   <segment id="14">
-      <note>G7</note>
-      <text>Ó, Hatal</text>
-      <position>Hat</position>
-   </segment>
-   <segment id="15">
-      <note>C</note>
-      <text>mas,</text>
-      <position>mas</position>
-   </segment>
-   <segment id="16">
-      <note>am</note>
-      <text>ó, Hatalmas,</text>
-      <position>mas</position>
-   </segment>
-   <segment id="17">
-      <note>F</note>
-      <text>ó, Hatalmas,</text>
-      <position>mas</position>
-   </segment>
-   <segment id="18">
-      <note>G7</note>
-      <text>ó, Hatal</text>
-      <position>ó</position>
-   </segment>
+   ...
    <segment id="19">
       <note>C</note>
       <text>mas!</text>
       <position>mas</position>
    </segment>
 </sheet>
+\end{xml}
+
+Egy kis szó a sémáról
+
+\begin{xml}
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="sheet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="key">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="note"/>
+              <xs:element type="xs:string" name="chord"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="segment">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="note"/>
+              <xs:element type="xs:string" name="text"/>
+              <xs:element type="xs:string" name="position"/>
+            </xs:sequence>
+            <xs:attribute type="xs:byte" name="id"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
 \end{xml}
 
 Szegmensekre van bontva az adott akkord és a hozzátartozó szöveg. Minden szegmens kap egy id-t ami a sortöréshez szükséges az első verzió szerint. A szegmensen belül a note tárolja az akkordot, a text a blokkhoz tartozó szöveget, a position pedig tárolja az akkord elhelyezkedését a szöveg felett. Python-ba ehhez készült egy szemléltető program, ami ezt az xml-t jeleníti meg egyenlőre konzolon.
