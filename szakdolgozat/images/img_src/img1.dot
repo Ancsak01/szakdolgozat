@@ -1,9 +1,9 @@
 digraph g {
     rankdir=LR
     A [label=""]
-    B [label=""]
-    C [label=""]
-    D [label=""]
+    B [label="C"]
+    C [label="E"]
+    D [label="G"]
     A -> B [label="I."]
     A -> C [label="III."]
     A -> D [label="V."]
