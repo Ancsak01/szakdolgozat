@@ -6,7 +6,7 @@ Ennek a szekciónak a célja bemutatni a kották tárolásának különböző m�
 Az esetünkben felhasznált adatok ábrázolására a következőképpen nézne ki az RDF modell. Az akkord reprezentálná a hármasok közül a témát, vagyis a subject-et, mivel azt kellene először definiálni. Az akkord, ami más néven hármas hangzat, alapvetően három hangból épül fel. Van a fő hang, ami tegyük fel, ha C-dúr akkordot akarunk modellezni, az a C hang lesz, erre épül a dúr esetében a nagy terc, ami az E hangot fogja adni, valamint a C hanghoz igazított kvint távolságra levő G hang. Tehát a C-dúr akkordot a C E és G hangokból lehet összeállítani, ezek egyben fokok is, amiket predikátumként fogunk jelölni, hogy melyik hang az akkord hanyadik foka. Ezt a következő ábrán lehet látni.
 \par
 \begin{figure}[h]
-	\includegraphics[scale=1]{images/rdf_graph.png}
+	\includegraphics[scale=1]{images/img_src/rdf_graph.png}
 	\caption{Szemantikai ábrázolás az RDF szerint.}
 	\label{fig:graph1}
 \end{figure}
@@ -63,6 +63,10 @@ A lokális környezetbe való fejlesztés erejéig volt használatba ez az elér
 \end{xml}
 
 Ez a MusicXML egyik példája, a kotta tárolására. A mintaadathalmaz, tehát a kották, másképpen épülnek fel, nincsenek vonalak, vagy hangjegyek, ez egy ún. akkordos kotta, ami a következőképpen néz ki
+
+\cite{enwiki:1065665260}
+A MusicXML Michael Good találmánya és a Recordare LLC alatt történt a fejlesztése, majd 2011-ben a MakeMusic folytatta, aztán pedig 2015 óta a W3C Music Notation Community Group. Az első verziója 2004 januárjában jelent meg, később kapott olyan fejlesztéseket, amik a formázást támogatják jobban, ahogy a 2.0 verzióban már általános tömörített formátum is elérhető volt. Ebben a verzióban került bevezetésre az XSD használata, mivel eddig DTD-vel voltak definiálva.
+
 \newpage
 \SubSection{Saját kottatárolási módszer XML-ben}
 \begin{figure}[h]
@@ -211,7 +215,7 @@ A Turtle az egy leíró nyelv, a szöveges reprezentációja az RDF gráfos mego
 
 
 \begin{figure}[h]
-	\includegraphics[scale=0.3]{images/rdf_graph_2.png}
+	\includegraphics[scale=0.5]{images/img_src/rdf_graph_2.png}
 	\caption{Konkrét szemantikai ábrázolása a dalnak.}
 	\label{fig:graph2}
 \end{figure}
@@ -221,7 +225,7 @@ A 3.3-as ábrán látható, hogy az adott példa kottánkban hogy nézne ki egy 
 A következő elágazás a szövegre mutat, tehát ami konkrétan benne lesz majd a végkifejletbe, ebből származik a pozíció, amiről fentebb szó volt már. Ezután következik az akkord, ami a jelenlegi ábrázolásba úgy néz ki, hogy a szegmens akkordja az egy C, viszont a tonika az külön meghatározandó, vagyis, hogy dúr vagy mol az adott akkord. Az akkordból 3 predikátum mutat objektumokra és ez az amiből felépül egy akkord. Az első fok mutat az alaphangra, a harmadik a tercére az alaphangnak, amiből megállapítható, hogy mol vagy dúr az akkord, mert ha mol, akkor az alaphangra épített kis tercről van szó ami jelen esetben nem így van, hiszen a C - re épített nagy terc az E hang, tehát ez az akkord dúr. És a harmadik objektum az ötödik fok, tehát az alaphang, vagyis a C hang tiszta kvintre levő távolsága, azaz a G hang.\newpage
 
 \begin{figure}[h]
-	\includegraphics[scale=0.3]{images/rdf_graph_3.png}
+	\includegraphics[scale=0.5]{images/img_src/rdf_graph_3.png}
 	\caption{Egy másik szegmens leírása}
 	\label{fig:graph3}
 \end{figure}
@@ -234,7 +238,7 @@ Ha ugyanazt a szegmenst nézzük, akkor behozható a következő eset, amikor ug
 \newpage
 
 \begin{figure}[h]
-	\includegraphics[scale=0.3]{images/rdf_graph_4.png}
+	\includegraphics[scale=0.5]{images/img_src/rdf_graph_4.png}
 	\caption{Bővített leírása a szegmensnek}
 	\label{fig:graph4}
 \end{figure}
@@ -243,7 +247,7 @@ A tonika az egy olyan predikátum, amivel leírható, hogy a hármashangzat, teh
 Amikor meg tudjuk határozni a tonikát, akkor jöhet a következő lépés, ami arról szólna, hogy mi történik akkor, amikor a bemeneti kottában előfordul olyan, hogy transzponált akkord, és mi is ez valójában? Tömören, egy dal mindig egy meghatározott hangnemben van.
 \newpage
 \begin{figure}[h]
-	\includegraphics[scale=0.3]{images/samples/27_zsoltar.jpg}
+%	\includegraphics[scale=0.3]{images/samples/27_zsoltar.jpg}
 	\caption{Példa kotta a transzponálás leírására}
 	\label{fig:song2}
 \end{figure}
@@ -266,14 +270,14 @@ A következő esetek merülhetnek fel ezzel a kottával kapcsolatban:
 \end{center}
 \newpage
 \begin{figure}[h]
-	\includegraphics[scale=0.29]{images/rdf_graph_5.png}
+	\includegraphics[scale=0.5]{images/img_src/rdf_graph_5.png}
 	\caption{Szegmens leírása ahol transzponálás is van}
 	\label{fig:graph5}
 \end{figure}
 Abban az esetben, hogyha van transzponált akkord a kottában, akkr azt egy másik akkordként lehet kezelni. Ez nem egy gyakori eset, tehát lehet először ahhoz kötni, hogy az nincsen, abban az esetben a 'transzponált' nevű predikátum a 'Nem' objektumra mutat. Így viszont ugyanúgy kezelendő mint egy akkord, van tonikája és legalább 3 foka, amiből felépül az akkord.
 \newpage
 \begin{figure}[h]
-	\includegraphics[scale=0.29]{images/rdf_graph_6.png}
+	\includegraphics[scale=0.5]{images/img_src/rdf_graph_6.png}
 	\caption{Szegmens leírása ahol a transzponálásban basszus hang van}
 	\label{fig:graph6}
 \end{figure}
@@ -281,7 +285,7 @@ Abban az esetben, hogyha van transzponált akkord a kottában, akkr azt egy más
 A sima ábrázolásban látható, hogy a legbonyolultabb kotta szegmens az már elég szerteágazó irányított gráf lett. Itt amit érdemes megfigyelni, hogy az id, szöveg, pozíción kívül előfordulhatnak redundáns csomópontok. Például a tonika a basszus hang predikátumok többször is előfordulhatnak, sőt, ha tonikáról beszélünk, akkor ott nem történhet olyan, hogy a szegmens akkordjának a tonikája különböző legyen, mint a transzponált akkord tonikája, tehát abban az esetben az az objektum biztosan többször is szerepelne az ábrán. Mindemellett az a vizsgálata a szegmensnek, hogy transzponált-e az egy egyszerű bool értékkel van leírva, ami ugyanúgy előfordulhat az ábrán más alanyhoz rendelve. Így a következő ábrán lehet látni, hogy az egyszerűsítés érdekében hogyan lehetne ezeket az ismétlődő objektumokat megszüntetni.
 
 \begin{figure}[h]
-	\includegraphics[scale=0.26]{images/rdf_graph_7.png}
+	\includegraphics[scale=0.5]{images/img_src/rdf_graph_7.png}
 	\caption{Szegmens alternatív leírása}
 	\label{fig:graph7}
 \end{figure}
@@ -309,7 +313,7 @@ Ezen felül észrevehető az, hogy minden akkord, ami jelölve van, annak az els
 \end{center}
 
 \begin{figure}[h]
-	\includegraphics[scale=0.16]{images/representation_of_sheet.png}
+	\includegraphics[scale=0.5]{images/img_src/representation_of_sheet.png}
 	\caption{A kotta első három szegmense}
 	\label{fig:repres1}
 \end{figure}
