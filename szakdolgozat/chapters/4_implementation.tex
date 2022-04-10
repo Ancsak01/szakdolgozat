@@ -8,7 +8,7 @@ Kísérleteztem azzal, hogy ha változtatom a skálát, akkor milyen pontosságg
 \par
 
 \SubSection{Kimeneti példák}
-A következőkben áttértem jupyter-notebookra, hogy lehessen szétbontani, és emészthetőbbé varázsolni a kódot
+A következőkben áttértem jupyter-notebookra, hogy lehessen szétbontani, és emészthetőbbé kialakítani a kódot.
 
 \begin{python}
 this_img = cv2.imdecode(numpyarray, cv2.IMREAD_UNCHANGED)	
@@ -31,3 +31,13 @@ this_img = cv2.imdecode(numpyarray, cv2.IMREAD_UNCHANGED)
 	\caption{A kotta egyik akkordja}
 	\label{fig:output3}
 \end{figure}
+
+\Section{Tesseract használata}
+A tesseract nevezetű OCR szoftvert használom a karakterfelismerésre a dolgozatban, nevezetesen a pytesseract függvénykönyvtárat. Ez alapvetően a Google OCR motorja, amit implementáltak python környezetben. Önmagába álló szkriptként is használható, és széles körben felismer különböző kiterjesztésű képeket, mint például a jpeg, png, gif, bmp, tiff és egyéb másokat, habár ugyanúgy megvannak a korlátai is, amiről majd később térek ki részletesebben. Elsőként mivel hogy különálló maga a program ezért PATH-ba kellett helyezni, amivel sajnos meggyűlt a baj, mivel hogy nem ismerte fel az operációs rendszer. Így a következőképpen oldottam meg, hogy használható legyen:
+\begin{python}
+	import pytesseract
+	
+	local_path =  r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+	pytesseract.pytesseract.tesseract_cmd = local_path
+\end{python}
+A lokális környezetbe való fejlesztés erejéig volt használatba ez az elérési útvonal. A függvénykönyvtárnak az image to string nevű metódusát használtam arra, hogy a képből szöveg váljon. Paraméterként megadható, hogy ugye mely képekből kell a szöveget kiolvasni, és többek között, amit használtam én is az a nyelv megadása, valamint konfigurációt is meg tudtam adni. A pontosság az elején zavaró volt, mert túlságosan zajos volt a kép sokszor, ahhoz, hogy az OCR megfelelően ki tudja venni, hogy mely karakterről is van szó. Ehhez az egyik megolás az volt, hogy jobban lehessen manipulálni a bemeneti képet, amivel dolgozik a Tesseract.

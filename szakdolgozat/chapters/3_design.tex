@@ -1,28 +1,18 @@
 \Chapter{Tervezés}
 
-Ennek a szekciónak a célja bemutatni a kották tárolásának különböző módszereit. Mindemellett hangsúlyt fog kapni az, 
+Ennek a szekciónak a célja bemutatni a kották tárolásának különböző módszereit. Mindemellett hangsúlyt fog kapni az RDF modell felhasználása, valamint annak különböző szerializációját megvizsgálva megtekinthető, hogy milyen módon lehet tárolni és ezáltal lehetővé tenni a lekérdezését egy-egy kottának. Lekérdezés alatt ebben az esetben azt kell érteni, hogy az adott kotta milyen jellemzőkkel rendelkezik. Példának okán lekérdezhető a kotta hangneme, az hogy milyen akkordok szerepelnek a kottában, és más egyéb olyan információ amit hasznosítani tud a felhasználó. Vagy közvetlenül, vagy pedig közvetetten egy program segítségével.
 
 \Section{RDF használata}
 Az esetünkben felhasznált adatok ábrázolására a következőképpen nézne ki az RDF modell. Az akkord reprezentálná a hármasok közül a témát, vagyis a subject-et, mivel azt kellene először definiálni. Az akkord, ami más néven hármas hangzat, alapvetően három hangból épül fel. Van a fő hang, ami tegyük fel, ha C-dúr akkordot akarunk modellezni, az a C hang lesz, erre épül a dúr esetében a nagy terc, ami az E hangot fogja adni, valamint a C hanghoz igazított kvint távolságra levő G hang. Tehát a C-dúr akkordot a C E és G hangokból lehet összeállítani, ezek egyben fokok is, amiket predikátumként fogunk jelölni, hogy melyik hang az akkord hanyadik foka. Ezt a következő ábrán lehet látni.
 \par
 \begin{figure}[h]
 	\includegraphics[scale=1]{images/img_src/rdf_graph.png}
-	\caption{Szemantikai ábrázolás az RDF szerint.}
+	\caption{Szemantikus ábrázolás az RDF szerint.}
 	\label{fig:graph1}
 \end{figure}
 \newpage
 Az ábrán látható, hogy egy akkord meghatározásához 3 él vezet kifelé, ugye ezek jelzik, hogy melyik fokon található a C-dúr akkord hangjai (rendre I., III. és V. fok ) és az objektumok maguk a hangok, ahova az él mutat. Ebben az esetben meg is lenne oldva az akkordok ábrázolása RDF modell szerint, viszont a kottába való visszahelyezéskor a programnak szükséges tudnia azt is, hogy pontosan hova illessze vissza a megfelelő akkordot egy transzponálás esetében, mikor is a hangnem változik, és a kottába szereplő akkordok kicserélődnek. 
-Ilyenkor szintén használva a gráf elméletét az akkord alatti szövegrész lesz az objektum az él pedig elnevezve a pozíció lesz. Ugyanis a kottában szereplő szöveg nem változik ugye csak az akkordok, ha bármilyen művelet kerül végrehajtásra. Többféle probléma merülhet fel, abban az esetben, ha statikusan akarom használni a doboz-t amit az akkordhoz kivág a program a szöveggel együtt, akkor annak a méretét egy kalkulált értékből kell kapnia, ami illeszkedik a megfelelő felbontáshoz, mert ahogy a felbontás különbözik az egyes kották képeinél, úgy változik a doboz mérete is arányosan.
-
-\Section{Tesseract használata}
-A tesseract nevezetű OCR szoftvert használom a karakterfelismerésre a dolgozatban, nevezetesen a pytesseract függvénykönyvtárat. Ez alapvetően a Google OCR motorja, amit implementáltak python környezetben. Önmagába álló szkriptként is használható, és széles körben felismer különböző kiterjesztésű képeket, mint például a jpeg, png, gif, bmp, tiff és egyéb másokat, habár ugyanúgy megvannak a korlátai is, amiről majd később térek ki részletesebben. Elsőként mivel hogy különálló maga a program ezért PATH-ba kellett helyezni, amivel sajnos meggyűlt a baj, mivel hogy nem ismerte fel az operációs rendszer. Így a következőképpen oldottam meg, hogy használható legyen:
-\begin{python}
-import pytesseract
-	
-local_path =  r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-pytesseract.pytesseract.tesseract_cmd = local_path
-\end{python}
-A lokális környezetbe való fejlesztés erejéig volt használatba ez az elérési útvonal. A függvénykönyvtárnak az image to string nevű metódusát használtam arra, hogy a képből szöveg váljon. Paraméterként megadható, hogy ugye mely képekből kell a szöveget kiolvasni, és többek között, amit használtam én is az a nyelv megadása, valamint konfigurációt is meg tudtam adni. A pontosság az elején zavaró volt, mert túlságosan zajos volt a kép sokszor, ahhoz, hogy az OCR megfelelően ki tudja venni, hogy mely karakterről is van szó. Ehhez az egyik megolás az volt, hogy jobban lehessen manipulálni a bemeneti képet, amivel dolgozik a Tesseract.
+Ilyenkor szintén használva a gráf elméletét az akkord alatti szövegrész lesz az objektum, az él pedig elnevezve a pozíció lesz. Ugyanis a kottában szereplő szöveg nem változik ugye csak az akkordok, ha bármilyen művelet kerül végrehajtásra. Viszont, ha változik a szöveg, abban az esetben a pozíció is tud változni a szövegnek megfelelően. Többféle probléma merülhet fel, abban az esetben, ha statikusan akarom használni a doboz-t amit az akkordhoz kivág a program a szöveggel együtt, akkor annak a méretét egy kalkulált értékből kell kapnia, ami illeszkedik a megfelelő felbontáshoz, mert ahogy a felbontás különbözik az egyes kották képeinél, úgy változik a doboz mérete is arányosan.
 \newpage
 \Section{Kotta tárolási példák}
 \SubSection{Music XML}
@@ -136,7 +126,7 @@ Egy kis szó a sémáról
 
 Szegmensekre van bontva az adott akkord és a hozzátartozó szöveg. Minden szegmens kap egy id-t ami a sortöréshez szükséges az első verzió szerint. A szegmensen belül a note tárolja az akkordot, a text a blokkhoz tartozó szöveget, a position pedig tárolja az akkord elhelyezkedését a szöveg felett. Python-ba ehhez készült egy szemléltető program, ami ezt az xml-t jeleníti meg egyenlőre konzolon.
 
-\Section{XML beolvasás}
+\Section{XML feldolgozása}
 \SubSection{Megfigyelések}
 A jelen példában 3 részre van bontva a kotta, szöveg, akkord, pozíció. Ahhoz, hogy ebből tudjon  működni a konzolra kiiratás a megfelelő pozíciókkal, az indexelést tettem lista adatstruktúrába, hogy meglegyen mindegyik akkordnak a megfelelő pozíciója. Kétfajta adat kerül tárolásra, az egyik mindenképpen az, hogy az xml-ben megadott string alapján melyik indexű karakternél található a szegmens szövegében a string maga, mert az jelöli az akkord helyét. A másik pedig maga a string ami kiadja a kotta véglegesítését, a konkatenált akkord, - és szóközszámmal, valamint a kotta szövegével.
 
@@ -186,7 +176,34 @@ Miután meg lehet különböztetni a mol-t a dúrtól, ezután mivel akkordról 
 \SubSection{RDFa}
 
 \cite{rdfa_with_example}
-Az RDFa egy olyan ke
+Az RDFa egy olyan szerializáció, ami a legjobban egy html stílusú felépítésre hasonlít. A struktúra, valamint a hierarchia azonosítható, mindemellett biztosítja a prefix lehetőséget is és nagyon könnyen lehetővé teszi a bővítést is. A következő példában figyelhető ez meg:
+
+\begin{xml}
+<div vocab="http://xmlns.com/foaf/0.1/" resource="#12" typeof="Segment">
+    <a href="chord">G</a>
+    <span property="text">senki nem ér</span>
+    <span property="position">se</span>
+    <div property="chord" typeof="Chord">
+        <span property="note">G</span>
+        <span property="I.">G</span>
+        <span property="III.">H</span>
+        <span property="V.">D</span>
+        <span property="tone">major</span>
+    </div>
+</div>
+\end{xml}
+
+Egy fő div tag (ejtsd: teg) adja meg a kiinduló csomópontot, ez például az xml-ben volt a 
+\begin{xml}
+<segment>...</segment>
+\end{xml} tag. 
+
+\begin{figure}[h]
+	\includegraphics[scale=0.8]{images/misc/RDFa_serialization_example.jpg}
+	\caption{Az RDFa szerializáció ábrázolása.}
+	\label{fig:rdfa}
+\end{figure}
+
 
 \SubSection{Turtle felhasználása}
 \begin{itemize}
@@ -195,24 +212,36 @@ Az RDFa egy olyan ke
 \item Esetek leírása Turtle-el
 \end{itemize}
 
-A Turtle az egy leíró nyelv, a szöveges reprezentációja az RDF gráfos megoldásának.
+A Turtle egy olyan leíró nyelv, mely a szöveges reprezentációját mutatja be az RDF gráfos megjelenítésének.
 \begin{xml}
-@base <http://example.org/> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix rel: <http://www.perceive.net/schemas/relationship/> .
-
-<#green-goblin>
-	rel:enemyOf <#spiderman> ;
-	a foaf:Person ;    # in the context of the Marvel universe
-	foaf:name "Green Goblin" .
-
-<#spiderman>
-	rel:enemyOf <#green-goblin> ;
-	a foaf:Person ;
-	foaf:name "Spiderman", "Pókember"@hu .
+<http://sheet_example.com/segment> <http://sheet_example.com/segment/id> "12".
+<http://sheet_example.com/segment> <http://sheet_example.com/segment/chord> <http://sheet_example.com/segment/#chord>.
+<http://sheet_example.com/segment> <http://sheet_example.com/segment/text> "senki nem ér".
+<http://sheet_example.com/segment> <http://sheet_example.com/segment/position> "se".
+<http://sheet_example.com/segment/12/#chord> <http://sheet_example.com/segment/12/#chord/note> "G".
+<http://sheet_example.com/segment/12/#chord> <http://sheet_example.com/segment/12/#chord/I.> "G".
+<http://sheet_example.com/segment/12/#chord> <http://sheet_example.com/segment/12/#chord/III.> "H".
+<http://sheet_example.com/segment/12/#chord> <http://sheet_example.com/segment/12/#chord/V.> "D".
+<http://sheet_example.com/segment/12/#chord> <http://sheet_example.com/segment/12/#chord/tone> "major".
 \end{xml}
+
+A Turtle lehetőséget ad a base révén arra, hogy egy, a jelenleginél értelmezhetőbb reprezentációt lehessen létrehozni, mégpedig a következőképpen:
+
+\begin{xml}
+@base <http://sheet_example.com/>.
+
+<segment> <segment/id> "12".
+<segment> <segment/chord> <segment/#chord>.
+<segment> <segment/text> "senki nem ér".
+<segment> <segment/position> "se".
+<segment/12/#chord> <segment/12/#chord/note> "G".
+<segment/12/#chord> <segment/12/#chord/I.> "G".
+<segment/12/#chord> <segment/12/#chord/III.> "H".
+<segment/12/#chord> <segment/12/#chord/V.> "D".
+<segment/12/#chord> <segment/12/#chord/tone> "major".
+\end{xml}
+
+Látható, hogy a @base-ben megadott érték többször szerepel az elsőnek megadott példában, így megoldható az, hogy leegyszerűsítve egy @base annotációval olvashatóbb legyen a szerializáció. Emellett fontos megemlíteni azt, hogy ez a szerializáció úgy fordul le, ha .-al zárul le egy-egy hármas.
 
 \Section{Szemantikus ábrázolás RDF-el}
 
@@ -251,7 +280,7 @@ A tonika az egy olyan predikátum, amivel leírható, hogy a hármashangzat, teh
 Amikor meg tudjuk határozni a tonikát, akkor jöhet a következő lépés, ami arról szólna, hogy mi történik akkor, amikor a bemeneti kottában előfordul olyan, hogy transzponált akkord, és mi is ez valójában? Tömören, egy dal mindig egy meghatározott hangnemben van.
 \newpage
 \begin{figure}[h]
-%	\includegraphics[scale=0.3]{images/samples/27_zsoltar.jpg}
+	\includegraphics[scale=0.3]{images/samples/27_zsoltar.jpg}
 	\caption{Példa kotta a transzponálás leírására}
 	\label{fig:song2}
 \end{figure}
@@ -301,6 +330,10 @@ Változtatások:
 \end{itemize}
 
 Ezen felül észrevehető az, hogy minden akkord, ami jelölve van, annak az első foka ugyanazt az értéket fogja kapni. Innen két irányba is mehetne az ábrázolás. Az első az lehetne, hogy akkor az akkord és a hang az külön jelentőséget képvisel, emiatt nem hivatkoztatható önmagába, tehát akkor a 3.9-es ábra maradna. A másik viszont az, hogy a predikátum egy üres objektumra mutatna, és ezáltal létezne egy új predikátum ami az üresből elemből mutatna kifelé.
+
+\Section{Adatfeldolgozás}
+\SubSection{Kottaadatok tárolása}
+
 
 \Section{Ábrázolás előnyei, hátrányai}
 \SubSection{Irányított gráf ábrázolás}
