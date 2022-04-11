@@ -1,0 +1,107 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:key="http://sheet_example.com/key" xmlns:segment="http://sheet_example.com/segment"
+        key:chord="http://sheet_example.com/key/chord" segment:chord="http://sheet_example.com/segment/chord">
+
+    
+        <rdf:key>
+            <key:chord>C</key:chord>
+            <key:tone>major</key:tone>
+        </rdf:key>
+        <rdf:segment id="1">
+            <segment:note>C</segment:note>
+            <segment:text>Tied a dicsőség, </segment:text>
+            <segment:position>őség</segment:position>
+        </rdf:segment>
+        <rdf:segment id="2">
+            <segment:note>em7</segment:note>
+            <segment:text>és imádás,\n</segment:text>
+            <segment:position>im</segment:position>
+        </rdf:segment>
+        <rdf:segment id="3">
+            <segment:note>F</segment:note>
+            <segment:text>Felemeljük </segment:text>
+            <segment:position>elj</segment:position>
+        </rdf:segment>
+        <rdf:segment id="4">
+            <segment:note>dm</segment:note>
+            <segment:text>kezeinket\n</segment:text>
+            <segment:position>in</segment:position>
+        </rdf:segment>
+        <rdf:segment id="5">
+            <segment:note>F/G</segment:note>
+            <segment:text>És dicsérjük </segment:text>
+            <segment:position>csé</segment:position>
+        </rdf:segment>
+        <rdf:segment id="6">
+            <segment:note>G</segment:note>
+            <segment:text>szent neved!\n</segment:text>
+            <segment:position>ved</segment:position>
+        </rdf:segment>
+        <rdf:segment id="7">
+            <segment:note>G7</segment:note>
+            <segment:text>Ó, Hatal</segment:text>
+            <segment:position>Hat</segment:position>
+        </rdf:segment>
+        <rdf:segment id="8">
+            <segment:note>C</segment:note>
+            <segment:text>mas, </segment:text>
+            <segment:position>mas</segment:position>
+        </rdf:segment>
+        <rdf:segment id="9">
+            <segment:note>am</segment:note>
+            <segment:text>Keze nagy csodákat tesz,\n</segment:text>
+            <segment:position>esz,</segment:position>
+        </rdf:segment>
+        <rdf:segment id="10">
+            <segment:note>F</segment:note>
+            <segment:text>Vele senki nem ér fel</segment:text>
+            <segment:position>fel</segment:position>
+        </rdf:segment>
+        <rdf:segment id="11">
+            <segment:note>dm7</segment:note>
+            <segment:text>, Vele </segment:text>
+            <segment:position>, Ve</segment:position>
+        </rdf:segment>
+        <rdf:segment id="12">
+            <segment:note>G</segment:note>
+            <segment:text>senki nem ér </segment:text>
+            <segment:position>se</segment:position>
+        </rdf:segment>
+        <rdf:segment id="13">
+            <segment:note>G7</segment:note>
+            <segment:text>fel.\n</segment:text>
+            <segment:position>fel.</segment:position>
+        </rdf:segment>
+        <rdf:segment id="14">
+            <segment:note>G7</segment:note>
+            <segment:text>Ó, Hatal</segment:text>
+            <segment:position>Hat</segment:position>
+        </rdf:segment>
+        <rdf:segment id="15">
+            <segment:note>C</segment:note>
+            <segment:text>mas, </segment:text>
+            <segment:position>mas</segment:position>
+        </rdf:segment>
+        <rdf:segment id="16">
+            <segment:note>am</segment:note>
+            <segment:text>ó, Hatalmas, </segment:text>
+            <segment:position>mas</segment:position>
+        </rdf:segment>
+        <rdf:segment id="17">
+            <segment:note>F</segment:note>
+            <segment:text>ó, Hatalmas,</segment:text>
+            <segment:position>mas</segment:position>
+        </rdf:segment>
+        <rdf:segment id="18">
+            <segment:note>G7</segment:note>
+            <segment:text> ó, Hatal</segment:text>
+            <segment:position> ó</segment:position>
+        </rdf:segment>
+        <rdf:segment id="19">
+            <segment:note>C</segment:note>
+            <segment:text>mas!</segment:text>
+            <segment:position>mas</segment:position>
+        </rdf:segment>
+
+
+</rdf:RDF>
