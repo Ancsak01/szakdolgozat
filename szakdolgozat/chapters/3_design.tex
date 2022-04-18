@@ -93,7 +93,7 @@ Ezt a példakottát használva, ha tárolni szeretnénk xml-be, az akkordokat, v
 </sheet>
 \end{xml}
 
-Egy kis szó a sémáról
+Ennek a kottának a doboz-illesztés szerint, amiről később szó lesz, 19 szegmense van. Így egy sémával bemutatva látható, hogy az xml lényegi része hogyan épülne fel.
 
 \begin{xml}
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
@@ -172,7 +172,7 @@ Miután meg lehet különböztetni a mol-t a dúrtól, ezután mivel akkordról 
 \end{xml}
 
 \Section{RDF szerializációk}
-\SubSection{RDF/XML}
+
 \SubSection{RDFa}
 
 \cite{rdfa_with_example}
@@ -243,27 +243,69 @@ A Turtle lehetőséget ad a base révén arra, hogy egy, a jelenleginél értelm
 
 Látható, hogy a @base-ben megadott érték többször szerepel az elsőnek megadott példában, így megoldható az, hogy leegyszerűsítve egy @base annotációval olvashatóbb legyen a szerializáció. Emellett fontos megemlíteni azt, hogy ez a szerializáció úgy fordul le, ha .-al zárul le egy-egy hármas.
 
+\SubSection{RDF/XML}
+A már létrehozott szimpla xml-ből látható, hogy mit is jelent az RDF/XML. Egy ugyanolyan xml kiterjesztésű fájlról beszélünk, viszont egyértelműen a felhasználása arra irányul, hogy egy bármely rdf könyvtárral használható, lekérdezhető legyen. Ebben segítenek a névterek. Ezek a névterek úgy jönnek létre, ahogy az irányított gráfokban látható név nélküli csomópontok is. Itt úgymond ezek a "név nélküli" csomópontok nevet kapnak a névterezés által.
+Így néz ki egy részlete:
+
+\begin{xml}
+	<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+	<rdf:RDF 
+			xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+			xmlns:key="http://sheet_example.com/key/"
+			xmlns:segment="http://sheet_example.com/segment/"
+			key:chord="http://sheet_example.com/key/chord/"
+			segment:chord="http://sheet_example.com/segment/chord/">
+	
+	    
+	        <rdf:key>
+	            <key:chord>C</key:chord>
+	            <key:tone>major</key:tone>
+	        </rdf:key>
+	        <rdf:segment id="1">
+	            <segment:note>C</segment:note>
+	            <segment:text>Tied a dicsőség, </segment:text>
+	            <segment:position>őség</segment:position>
+	        </rdf:segment>
+	        <rdf:segment id="2">
+	            <segment:note>em7</segment:note>
+	            <segment:text>és imádás,\n</segment:text>
+	            <segment:position>im</segment:position>
+	        </rdf:segment>
+	        ...
+	        <rdf:segment id="19">
+	            <segment:note>C</segment:note>
+	            <segment:text>mas!</segment:text>
+	            <segment:position>mas</segment:position>
+	        </rdf:segment>
+	
+	
+	</rdf:RDF>
+\end{xml}
+
+A példaként szolgáló programomban a lekérdezés bemutatásához azért ezt a szerializációt használtam, mert ez a legelemibb tárolásra képes. A Turtle és az RDFa az sokkal inkább a megjelenítéskor játszhat szerepet, legfőképp az RDFa a html struktúrája miatt. A jelenlegi szerializációban, az első verziót használtam, lényegében csak a pozíció, a szöveg és az akkord egyedülálló letárolása van meg.
+
+
 \Section{Szemantikus ábrázolás RDF-el}
 
 
 
 \begin{figure}[h]
 	\includegraphics[scale=0.5]{images/img_src/rdf_graph_2.png}
-	\caption{Konkrét szemantikai ábrázolása a dalnak.}
+	\caption{Konkrét szemantikai ábrázolása a dal egy szegmensének.}
 	\label{fig:graph2}
 \end{figure}
 \par
-A 3.3-as ábrán látható, hogy az adott példa kottánkban hogy nézne ki egy szegmens. A szegmens most jelen esetben az akkord és az ahhoz tartozó szöveg leírása. A jelenlegi kottához 19 db ilyen szegmens tartozik, indexelve az akkord alapján, tehát 19 akkord van a dalban. A kiinduló elemből az első elágazás az id-hoz vezet, nagyon egyszerűen, ez csak az azonosító száma a dalban szereplő szegmensnek. Ezek alapján például úgy csináltam meg a programot, hogy egy tömb adatstruktúrába adtam meg neki, hogy melyik szegmensnél történik a sortörés, és azoknál a szegmenseknél belefut a program egy plusz ágba, ahol sortörés és a változók újrainicializálása történik. Onnantól következik a pozíció, ami azt a szövegrészt tárolja a szegmensből, ami egyedien azonosítja, hogy az akkord pontosan hol helyezkedik el a szegmensben, egyenlőre ez egy változó hosszúságú string, de érdemes meghatározni, hogy 3 esetleg 4 hosszúsággal történjen ugye a kiolvasás a következetesség szempontjából. 
+A \ref{fig:graph2}-es ábrán látható, hogy az adott példa kottánkban hogy nézne ki egy szegmens. A szegmens most jelen esetben az akkord és az ahhoz tartozó szöveg leírása. A jelenlegi kottához 19 db ilyen szegmens tartozik, indexelve az akkord alapján, tehát 19 akkord van a dalban. A kiinduló elemből az első elágazás az id-hoz vezet, nagyon egyszerűen, ez csak az azonosító száma a dalban szereplő szegmensnek. Ezek alapján például úgy csináltam meg a programot, hogy egy tömb adatstruktúrába adtam meg neki, hogy melyik szegmensnél történik a sortörés, és azoknál a szegmenseknél belefut a program egy plusz ágba, ahol sortörés és a változók újrainicializálása történik. Onnantól következik a pozíció, ami azt a szövegrészt tárolja a szegmensből, ami egyedien azonosítja, hogy az akkord pontosan hol helyezkedik el a szegmensben, egyenlőre ez egy változó hosszúságú string, de érdemes meghatározni, hogy 3 esetleg 4 hosszúsággal történjen ugye a kiolvasás a következetesség szempontjából. 
 \par 
 A következő elágazás a szövegre mutat, tehát ami konkrétan benne lesz majd a végkifejletbe, ebből származik a pozíció, amiről fentebb szó volt már. Ezután következik az akkord, ami a jelenlegi ábrázolásba úgy néz ki, hogy a szegmens akkordja az egy C, viszont a tonika az külön meghatározandó, vagyis, hogy dúr vagy mol az adott akkord. Az akkordból 3 predikátum mutat objektumokra és ez az amiből felépül egy akkord. Az első fok mutat az alaphangra, a harmadik a tercére az alaphangnak, amiből megállapítható, hogy mol vagy dúr az akkord, mert ha mol, akkor az alaphangra épített kis tercről van szó ami jelen esetben nem így van, hiszen a C - re épített nagy terc az E hang, tehát ez az akkord dúr. És a harmadik objektum az ötödik fok, tehát az alaphang, vagyis a C hang tiszta kvintre levő távolsága, azaz a G hang.\newpage
 
 \begin{figure}[h]
-	\includegraphics[scale=0.5]{images/img_src/rdf_graph_3.png}
+	\includegraphics[scale=0.22]{images/misc/comparison_graph_3.jpg}
 	\caption{Egy másik szegmens leírása}
 	\label{fig:graph3}
 \end{figure}
 
-Ebben a szegmensben figyelhető meg, hogy az akkordhoz tartozik egy per basszus hang, ami most a G hang. Ez a kottában a következőképpen jelenik meg: \texttt{F/G} ekkor, az F kék színnel, míg a G az piros színnel van jelölve. Ahogy látható a 3.4-es ábrán is ez nem az akkordhoz tartozik, hanem magához a szegmenshez, tehát nem az akkordot írja le ez az objektum, hanem a szegmenst. \par
+Ebben a szegmensben figyelhető meg, hogy az akkordhoz tartozik egy per basszus hang, ami most a G hang. Ez a kottában a következőképpen jelenik meg: \texttt{F/G} ekkor, az F kék színnel, míg a G az piros színnel van jelölve. Ahogy látható a \ref{fig:graph3}-ös ábrán is, a régi megoldásban nem az akkordhoz tartozik a basszus hang, hanem magához a szegmenshez, tehát nem az akkordot írja le ez az objektum, hanem a szegmenst. Habár nem mindegyik akkordnál jelez a kotta per basszus hangot, és azért tűnt egyszerűbbnek a szemantikus ábrázolása a basszus hangnak, mégis helytelen volt ebben az állapotában, ezért igényelt újragondolást. Az újragondolt ábrázolásban, már az akkordot írja le a basszus hang, hiszen az szintén az akkord, mint hármas hangzatnak a predikátuma. Alapesetben, mikor nincs a kottában jelezve a per basszus, akkor az akkord első fokát (I.) vesszük alapértelmezettnek. \par
 A basszus hang, amikor nincs jelölve, akkor az akkord alaphangja, általában az akkord diatonikus harmadik foka szokott lenni még a basszus hang, de ez egy teljesen változó hang ilyen szempontból. Abban az esetben, ha kellene változó szeparáló elem, akkor külön lenne szedve valószínűleg, hogy a szegmenshez tartozna egy sima basszus, annak lenne a hangja a G és a szeparáló elem lenne mondjuk a \textbackslash. De mivel egységes a szeparáló elem a basszus hangnál ezért ez nem is szükséges, egyébként a szeparáló elem: \texttt{/}.
 \par
 Ha ugyanazt a szegmenst nézzük, akkor behozható a következő eset, amikor ugyanis meg kellene határozni, hogy az akkord az mol vagy dúr tonikájú. Ez mindenképpen egy olyan jelölő, ami az akkordot írja le, tehát azon belül szerepelne ez, és ahogy lesz szó arról, hogy miként épül fel egy hármas, így látni fogjuk majd, hogy a bemeneti oldalról miként lesz megkülönböztethető.
@@ -319,7 +361,7 @@ A sima ábrázolásban látható, hogy a legbonyolultabb kotta szegmens az már 
 
 \begin{figure}[h]
 	\includegraphics[scale=0.5]{images/img_src/rdf_graph_7.png}
-	\caption{Szegmens alternatív leírása}
+	\caption{Szegmens redundancia mentes leírása}
 	\label{fig:graph7}
 \end{figure}
 \newpage
@@ -334,6 +376,13 @@ Ezen felül észrevehető az, hogy minden akkord, ami jelölve van, annak az els
 \Section{Adatfeldolgozás}
 \SubSection{Kottaadatok tárolása}
 
+Kiindulópontnak egy xml fájlt veszünk, ahol az egyszerű adatok kerülnek letárolásra, szegmentálva akkordok, szövegek és az akkordok pozíciói a szöveghez képest. 
+
+\begin{figure}[h]
+	\includegraphics[scale=0.45]{images/presentation/data_flow.png}
+	\caption{Adatáramlás és feldolgozás}
+	\label{fig:flow1}
+\end{figure}
 
 \Section{Ábrázolás előnyei, hátrányai}
 \SubSection{Irányított gráf ábrázolás}
@@ -350,15 +399,9 @@ Ezen felül észrevehető az, hogy minden akkord, ami jelölve van, annak az els
 \end{center}
 
 \begin{figure}[h]
-	\includegraphics[scale=0.5]{images/img_src/representation_of_sheet.png}
+	\includegraphics[scale=0.45]{images/img_src/representation_of_sheet.png}
 	\caption{A kotta első három szegmense}
 	\label{fig:repres1}
-\end{figure}
-
-\begin{figure}[h]
-	\includegraphics[scale=0.26]{images/representated_sheet.png}
-	\caption{Az előző ábra végeredménye}
-	\label{fig:repres2}
 \end{figure}
 
 \begin{center}
@@ -370,3 +413,11 @@ Ezen felül észrevehető az, hogy minden akkord, ami jelölve van, annak az els
 		\hline
 	\end{tabular}
 \end{center}
+
+\begin{figure}[h]
+	\includegraphics[scale=0.26]{images/representated_sheet.png}
+	\caption{Az előző ábra végeredménye}
+	\label{fig:repres2}
+\end{figure}
+
+

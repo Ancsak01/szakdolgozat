@@ -1,6 +1,6 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:key="http://sheet_example.com/key" xmlns:segment="http://sheet_example.com/segment"
-        key:chord="http://sheet_example.com/key/chord" segment:chord="http://sheet_example.com/segment/chord">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:key="http://sheet_example.com/key/" xmlns:segment="http://sheet_example.com/segment/"
+        key:chord="http://sheet_example.com/key/chord/" segment:chord="http://sheet_example.com/segment/chord/">
 
     
         <rdf:key>
