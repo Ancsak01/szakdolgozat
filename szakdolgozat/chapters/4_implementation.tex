@@ -45,4 +45,61 @@ A lokális környezetbe való fejlesztés erejéig volt használatba ez az elér
 \Section{Lekérdezések kezelése}
 Ebben a szekcióban lesz taglalva, hogy miként valósult meg az rdf egyes szerializációjának a betöltése és lekérdezése.
 
-\SubSection{}
+\SubSection{SPARQL}
+
+Az RDF/XML féle szerializációval készítettem egy olyan programot ami betölti, majd feldolgozza az xml-t, hogy lekérdezéseket lehessen írni belőle. A következő lekérdezés kilistázza azokat az akkordokat, amelyek megtalálhatók a kottában.
+
+\begin{python}
+query_string_all_chord = """
+    SELECT DISTINCT?o
+    WHERE {
+        ?s segment:note ?o .
+        ?s ?p ?o .
+    }
+"""
+
+q_res = g.query(query_string_all_chord)
+for row in q_res:
+    print(f"Akkord: {row.o}")
+\end{python}
+\begin{verbatim}
+OUTPUT:
+Akkord: C
+Akkord: em7
+Akkord: F
+Akkord: dm
+Akkord: F/G
+Akkord: G
+Akkord: G7
+Akkord: am
+Akkord: dm7
+\end{verbatim}
+
+Lekérdezhető az is, hogy milyen akkordhoz milyen szövegrész tartozik, vagy fordítva, ha szeretném megtudni azt, hogy egy szövegrészhez milyen akkord társul. Ehhez szükséges volna egy olyasfajta validáció, ami először végigpásztázza, hogy a kapott input az pontosan úgy megtalálható e a szerializált xml-ben, vagy sem.
+
+\begin{python}
+query_string_one_chord = """
+    SELECT ?s ?p ?o ?p1 ?o1
+    WHERE {
+        ?s ?p 'C' .
+        ?s ?p ?o .
+        ?s segment:text ?o1 .
+        ?s ?p1 ?o1 .
+    }
+"""
+
+q_res = g.query(query_string_one_chord)
+for row in q_res:
+    print(f"{row.o}\n {row.o1}")
+\end{python}
+\begin{verbatim}
+OUTPUT:
+C
+ Tied a dicsőség, 
+C
+ mas, 
+C
+ mas, 
+C
+ mas!
+\end{verbatim}
