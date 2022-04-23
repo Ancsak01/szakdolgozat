@@ -314,7 +314,9 @@ Ha ugyanazt a szegmenst nézzük, akkor behozható a következő eset, amikor ug
 	\caption{Bővített leírása a szegmensnek}
 	\label{fig:graph4}
 \end{figure}
-A tonika az egy olyan predikátum, amivel leírható, hogy a hármashangzat, tehát az akkord az mol hangzású, avagy dúr hangzású, ami a kimenetnél abban hordozza a jelentőséget, hogy szemantikusan kisbetűvel -,és m-el végződve legyen megjelenítve az akkord vagy egyszerűen nagybetűvel. A 3.5-ös ábra mutatja, hogy az akkord a tonika predikátummal kiegészítve már 4 objektummal van leírva.
+A tonika az egy olyan predikátum, amivel leírható, hogy a hármashangzat, tehát az akkord az mol hangzású, avagy dúr hangzású, ami a kimenetnél abban hordozza a jelentőséget, hogy szemantikusan kisbetűvel -,és m-el végződve legyen megjelenítve az akkord vagy egyszerűen nagybetűvel. A \ref{fig:graph4}-os ábra mutatja, hogy az akkord a tonika predikátummal kiegészítve már 4 objektummal van leírva.
+\par
+Abban az esetben, hogy ha ismerjük az akkord hangjait, ugyanis abból már megállapítható az akkord, ha ismerjük az első fokot, akkor a három hang vagyis a három fok ismeretében egyértelműen megállapítható a tonika is. Egy dúr akkord ugye az első foktól számított nagy terc, majd kis tercből épül fel. Ezzel szemben egy moll tonikájú akkord az első foktól számított kis terc, majd nagy tercből épül fel. Így a három hangot ismerve rá lehet jönni arra, hogy dúr akkordról vagy moll akkordról van szó.
 \par
 Amikor meg tudjuk határozni a tonikát, akkor jöhet a következő lépés, ami arról szólna, hogy mi történik akkor, amikor a bemeneti kottában előfordul olyan, hogy transzponált akkord, és mi is ez valójában? Tömören, egy dal mindig egy meghatározott hangnemben van.
 \newpage
@@ -354,7 +356,7 @@ Abban az esetben, hogyha van transzponált akkord a kottában, akkr azt egy más
 	\label{fig:graph6}
 \end{figure}
 
-A sima ábrázolásban látható, hogy a legbonyolultabb kotta szegmens az már elég szerteágazó irányított gráf lett. Itt amit érdemes megfigyelni, hogy az id, szöveg, pozíción kívül előfordulhatnak redundáns csomópontok. Például a tonika a basszus hang predikátumok többször is előfordulhatnak, sőt, ha tonikáról beszélünk, akkor ott nem történhet olyan, hogy a szegmens akkordjának a tonikája különböző legyen, mint a transzponált akkord tonikája, tehát abban az esetben az az objektum biztosan többször is szerepelne az ábrán. Mindemellett az a vizsgálata a szegmensnek, hogy transzponált-e az egy egyszerű bool értékkel van leírva, ami ugyanúgy előfordulhat az ábrán más alanyhoz rendelve. Így a következő ábrán lehet látni, hogy az egyszerűsítés érdekében hogyan lehetne ezeket az ismétlődő objektumokat megszüntetni.
+A sima ábrázolásban látható, hogy a legbonyolultabb kotta szegmens az már elég szerteágazó irányított gráf lett. Itt amit érdemes megfigyelni, hogy az id, szöveg, pozíción kívül előfordulhatnak redundáns objektumok. Például a tonika a basszus hang predikátumok többször is előfordulhatnak, sőt, ha tonikáról beszélünk, akkor ott nem történhet olyan, hogy a szegmens akkordjának a tonikája különböző legyen, mint a transzponált akkord tonikája, tehát abban az esetben az az objektum biztosan többször is szerepelne az ábrán. Mindemellett az a vizsgálata a szegmensnek, hogy transzponált-e az egy egyszerű bool értékkel van leírva, ami ugyanúgy előfordulhat az ábrán más alanyhoz rendelve. Így a következő ábrán lehet látni, hogy az egyszerűsítés érdekében hogyan lehetne ezeket az ismétlődő objektumokat megszüntetni.
 
 \begin{figure}[h]
 	\includegraphics[scale=0.5]{images/img_src/rdf_graph_7.png}
@@ -368,12 +370,12 @@ Változtatások:
 	\item[--] Az akkordokhoz tartozó fokok átnevezése
 \end{itemize}
 
-Ezen felül észrevehető az, hogy minden akkord, ami jelölve van, annak az első foka ugyanazt az értéket fogja kapni. Innen két irányba is mehetne az ábrázolás. Az első az lehetne, hogy akkor az akkord és a hang az külön jelentőséget képvisel, emiatt nem hivatkoztatható önmagába, tehát akkor a 3.9-es ábra maradna. A másik viszont az, hogy a predikátum egy üres objektumra mutatna, és ezáltal létezne egy új predikátum ami az üresből elemből mutatna kifelé.
+Ezen felül észrevehető az, hogy minden akkord, ami jelölve van, annak az első foka ugyanazt az értéket fogja kapni. Innen két irányba is mehetne az ábrázolás. Az első az lehetne, hogy akkor az akkord és a hang az külön jelentőséget képvisel, emiatt nem hivatkoztatható önmagába, tehát akkor a \ref{fig:graph7}-es ábra maradna. A másik viszont az, hogy a predikátum egy üres objektumra mutatna, és ezáltal létezne egy új predikátum ami az üresből elemből mutatna kifelé.
 
 \Section{Adatfeldolgozás}
 \SubSection{Kottaadatok tárolása}
 
-Kiindulópontnak egy xml fájlt veszünk, ahol az egyszerű adatok kerülnek letárolásra, szegmentálva akkordok, szövegek és az akkordok pozíciói a szöveghez képest. 
+Kiindulópontnak egy xml fájlt veszünk, ahol az egyszerű adatok kerülnek letárolásra, szegmentálva akkordok, szövegek és az akkordok pozíciói a szöveghez képest. Ehhez társul egy olyan program, ami betölti az xml fájlt, feldolgozza azt, hogy ezek az adatok elérhetővé váljanak ábrázolásra, valamint ezáltal lekérdezésre is. A programnak képesnek kell lennie arra, hogy az adott kotta adathalmazt elérje lekérdezések formájában.
 
 \begin{figure}[h]
 	\includegraphics[scale=0.45]{images/presentation/data_flow.png}
@@ -400,21 +402,43 @@ Kiindulópontnak egy xml fájlt veszünk, ahol az egyszerű adatok kerülnek let
 	\caption{A kotta első három szegmense}
 	\label{fig:repres1}
 \end{figure}
-
+\newpage
+\SubSection{A \ref{fig:repres1}-es szemantikus ábra}
 \begin{center}
 	\begin{tabular}{ |p{7cm}|p{7cm}| }
 		\hline
-		Előnyök & Hátrányok\\
+		Előnyök 
+		& 
+		Hátrányok
+		\\
 		\hline
-		Az egyszerűsített ábrázolás redukálja a gráf túlságos szétterjedését & A jelenlegi kotta 19 szegmensből áll, ezt viszont így ábrázolni nem lehetne megfelelően \\ 
+		Az egyszerűsített ábrázolás redukálja a gráf túlságos szétterjedését 
+		& 
+		A jelenlegi kotta 19 szegmensből áll, ezt viszont így ábrázolni nem lehetne megfelelően 
+		\\ 
+		\hline
+		Színezett predikátum-nyilak egyértelműsítik azt, hogy melyik objektumról van szó és az mely csomóponthoz tartozik pontosan
+		& 
+		Zavaró ellenben az, hogy a predikátum elnevezés melyik nyílhoz tartozhat pontosan. Ilyenkor érdemes leszögezni, hogy az ábrán milyen séma szerint van jelölve (jelen esetben a predikátum elnevézese mindig a nyil fölött lesz)
+		\\ 
+		\hline
+		Az ábrán egyértelműen megkülönböztethető mindegyik szegmens, ez átláthatóvá teszi azt, hogy miként épül fel a kotta
+		& 
+		A sorrendiség nincs letárolva, ehhez szükséges lenne mindegyik szegmensnek beiktatni egy 'order' vagy egy 'rank' objektumot ami egyértelműen meghatározza, hogy az adott szegmens az melyik szegmens után jön netán az első e.
+		\\ 
 		\hline
 	\end{tabular}
 \end{center}
 
 \begin{figure}[h]
-	\includegraphics[scale=0.26]{images/representated_sheet.png}
+	\includegraphics[scale=0.25]{images/representated_sheet.png}
 	\caption{Az előző ábra végeredménye}
 	\label{fig:repres2}
 \end{figure}
 
-
+\SubSection{Validáció}
+A jelenlegi ábrázolás rendelkezik némi redundanciával. Ugye, ha azt tekintjük, hogy egy akkord három hanggal leírható, abban az esetben teljesen így lehet ábrázolni, de akkor kíván ez az adatszerkezet alidálást. Mi történik abban az esetben, ha az akkord három hangja, mondjuk mindegyik C hang. Ebben az esetben nem beszélhetünk akkordról, avagy hármas hangzatról, hiszen a hangköz távolság az nem megfelelő.
+\par
+Ehhez lenne szükség egy olyan fordítóra, ami az adatszerkezetet képes validálni. Itt viszont szükséges az, hogy a fordító ismerje az oktáv mind a tizenkettő hangját, ami alapján pontosan meg tudja határozni a hangközöket. A validálás egy olyan menetet követne, ahol az akkord, mint a 12-es szegmenst bemutató bővített xml struktúra a 3.3-as fejezetben, lenne vizsgálva, hogy megfelel e az akkrod típusnak azáltal, hogy a hangközök nagy - és kisterc távolságot követnek e.
+\par
+Emellett érdemes megfigyelni azt is, hogy a pozíció minden esetben csak a szegmenshez tartozó szövegből származhat. Így a fordító egy string visszakereséssel tudja majd leellenőrizni azt, hogy ez megvalósul e.

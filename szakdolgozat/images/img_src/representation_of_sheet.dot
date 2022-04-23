@@ -66,7 +66,7 @@ digraph g {
         segment_2_Chord -> segment_2_Deg1 [label="bass note"]
     }
     
-    Sheet -> segment_0_ID [label="id"]
-    Sheet -> segment_1_ID [label="id"]
-    Sheet -> segment_2_ID [label="id"]
+    Sheet -> segment_0_ID [label="segment"]
+    Sheet -> segment_1_ID [label="segment"]
+    Sheet -> segment_2_ID [label="segment"]
 }
