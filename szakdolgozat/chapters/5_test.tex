@@ -1,11 +1,15 @@
 \Chapter{Használati esetek bemutatása}
 
-A fejezetben be kell mutatni, hogy az elkészült alkalmazás hogyan használható.
-(Az, hogy hogyan kell, hogy működjön, és hogy hogy lett elkészítve, az előző fejezetekben már megtörtént.)
-
-Jellemzően az alábbi dolgok kerülhetnek ide.
-\begin{itemize}
-\item Tesztfuttatások. Le lehet írni a futási időket, memória és tárigényt.
-\item Felhasználói kézikönyv jellegű leírás. Kifejezetten a végfelhasználó szempontjából lehet azt bemutatni, hogy mit hogy lehet majd használni.
-\item Kutatás kapcsán ide főként táblázatok, görbék és egyéb részletes összesítések kerülhetnek.
-\end{itemize}
+A felhsznált programok, legyen az a kép forrás betöltése és feldolgozása, vagy az rdf/xml szerializáció lekérdezése mind egy helyen található az ImageProcessing mappába azon belül is az src-ben. Ezek mind mind python nyelven íródtak, azon blül is a jupyter notebook-ot használtam a futtatásokhoz. Van egy virtuális környezet(virtual environment) telepítva ezen a néven: \texttt{szakdoga}. Ebben lehet aktiválni a virtuális környezetet, amihez feltétel, hogy a cél számítógépen telepítve legyen a Python. Az aktiváláshoz a következő kód szükséges (ez a konzolra kell):
+\begin{python}
+	.\szakdoga\Scripts\activate.bat #in case of PowerShell
+	start .\szakdoga\Scripts\activate.bat #in case of windows console
+\end{python}
+Lefuttatja azt a .bat file-t ami aktiválja a virtuális környezetet, ezután futtathatóak lesznek a kódok. Alapvetően a virtuális környezet  lokális fejlesztésre használják, viszont sok függőséget tartalmaz a projektem, ezért érdemes volt úgymond konténerizálni a környezetet.
+\par
+Ezután le kell futtatni a következő parancsot ahhoz, hogy a scriptek futtathatóvá váljanak. Fontos megjegyezni azt, hogy ez a jupyter notebook elrendezés hasznos a bemutatás céljára. Ha valamikor release fázisba kerülne ez a projekt, akkor mindenképpen más konfiguráció szükséges hozzá, erről később a 6-os fejezetben. Ez a parancs segít abban, hogy elinduljon egy szerver, ami hostolja azt az oldalt, ahol böngészni lehet a megadott mappában szereplő kódokat. Celláról cellára vagy az összeset egyszerre is akár le lehet futtatni.
+\begin{python}
+	jupyter-notebook
+\end{python}
+\par
+Ha sorrendiséget akarnék felállítani a programok között, akkor először javasolnám az \texttt{image\_process} nevezetű fájlt. Ebben található az a kód, ami betölti a képet, majd feldarabolja az akkordokat. Szín szerint kiválogatja és kimenti őket képpé, valamint egy szöveges fájlba is.
