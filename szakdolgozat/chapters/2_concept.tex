@@ -1,61 +1,65 @@
-\Chapter{Koncepció}
+\Chapter{A témakörök alapfogalmai}
+
+A dolgozat témája egyidejűleg kapcsolódik a szemantikus ábrázolási módokhoz és rendszerekhez, illetve a képfeldolgozáshoz. A következő szakaszokban ezek alapfogalmai kerülnek bemutatásra.
 
 \Section{RDF bemutatása}
 
-Subject – predicate  - object
+% TODO: Hivatkozni kellene az RDF-et.
 
-Az RDF az egy interneten levő adatokhoz tartozó standard modell. Lehetővé teszi, hogy adat összefésülést hajtson végre még abban az esetben is, mikor a séma alatt szereplő adatok hiányosak, és kifejezetten támogatja a séma fejlődését az adatok megváltoztatása nélkül.
-Az RDF az URI-val nevezi meg azt a kapcsolatot, amivel a link működik az interneten, hogy egyik pontból a másikba elnavigáljon. (Ezt nevezzük hármasoknak) Ezzel az egyszerű modellel lehetővé válik az, hogy struktúrált vagy félig struktúrált adathalmazok is keverhetővé, közzétehetővé és megoszthatóvá váljanak.
+Az RDF (\textit{Resource Description Framework}) az egy Interneten levő adatokhoz tartozó standard modell []. Az információk elemi egységei a mondatok, amelyek \textit{alany-állítmány-tárgy} (\textit{subject-predicate-object}) hármasok. Lehetővé teszi, hogy adat összefésülést hajtson végre még abban az esetben is, mikor a séma alatt szereplő adatok hiányosak, és kifejezetten támogatja a séma fejlődését az adatok megváltoztatása nélkül.
 
-Ez a kapcsolati struktúra úgy működik, hogy a két forrás adja a csomópontokat, és az él pedig a kapcsolat nevét. Lényegében ez egy gráf, a csomópont a forrás az él pedig a predikátum, így ha két webhelyet szeretnék összekötni, akkor a kiinduló webhely lesz a tárgy(subject) a link megnevezés, ami átirányítja a másik csomópontba, az lesz a predikátum(predicate) és ahova érkezik pedig az objektum(object).
+Az RDF az URI-val nevezi meg azt a kapcsolatot, amivel a link működik az interneten, hogy egyik pontból a másikba elnavigáljon. Ezzel az egyszerű modellel lehetővé válik az, hogy strukturált vagy félig strukturált adathalmazok is keverhetővé, közzétehetővé és megoszthatóvá váljanak.
 
-Az RDF subject-je(tárgya) az vagy valamely egységes erőforrás-azonosító(URI) vagy egy üres elem, mind a kettő erőforrásra mutat. Azok az erőforrások amik üres elemre mutatnak, azokat nevezzük névtelen erőforrásnak.Ezek közvetlenül nem azonosíthatók az RDF-ből. A predicate(predikátum) az egy olyan URI(link) ami egyben kapcsolatot is jelent és a forrásra mutat. Az object(objektum) az egy URI vagy üres elem vagy egy Unicode szöveg literál. Az RDF 1.1-től kezdve az IRI(Internationalized Resource Identifier) standardizálta az URI-kat.
+Ez a kapcsolati struktúra úgy működik, hogy a két forrás adja a csomópontokat, és az él pedig a kapcsolat nevét. Lényegében ez egy gráf, a csomópont a forrás az él pedig a predikátum, így ha két webhelyet szeretnék összekötni, akkor a kiinduló webhely lesz a tárgy (subject) a link megnevezés, ami átirányítja a másik csomópontba, az lesz a predikátum (predicate) és ahova érkezik pedig az objektum (object).
 
-A szemantikus web alapú alkalmazásokban és a relatíve elterjedt alkalmazásokban, amik RDF-et használnak, mint az RSS, vagy a FOAF(Friend of a Friend), az erőforrások olyan URI-k, amelyek szándékos mutatók, és használhatók arra, hogy konkrét adatokat érjenek el a World Wide Web-en, röviden interneten.De az RDF az nem csak az internet erőforrásainak a leírására van limitálva. Tulajdonképpen az az URI, amely megnevez, vagyis mutat egy erőforrásra, annak nem kell hivatkozásnak lennie. Például, ha van egy URI amely "http:"-vel kezdődik és tárgy szerepe van az RDF-ben, akkor sem kell egy olyan hivatkozásra mutatnia, amely csak HTTP-n keresztül érhető el, vagy nem is kell, hogy egy kézzel fogható interneten elérhető erőforrás legyen, mivel abszolút mindent mutathat az URI. Azonban van közös megegyezés azzal kapcsolatban, hogy egy csupasz URI(ami nem tartalmaz \# szimbólumot) ami 300-al kezdődő státuszkóddal tér vissza egy HTTP GET kérésre, annak egy internet alapú erőforrásra kell mutatni, amely sikeresen elérhető lett.
+Az RDF subject-je (tárgya) az vagy valamely egységes erőforrás-azonosító (URI) vagy egy üres elem, mind a kettő erőforrásra mutat. Azok az erőforrások amik üres elemre mutatnak, azokat nevezzük névtelen erőforrásnak.Ezek közvetlenül nem azonosíthatók az RDF-ből. A predicate (predikátum) az egy olyan URI (link) ami egyben kapcsolatot is jelent és a forrásra mutat. Az object (objektum) az egy URI vagy üres elem vagy egy Unicode szöveg literál. Az RDF 1.1-től kezdve az IRI (Internationalized Resource Identifier) standardizálta az URI-kat.
 
+A szemantikus web alapú alkalmazásokban és a relatíve elterjedt alkalmazásokban, amik RDF-et használnak, mint az RSS, vagy a FOAF (\textit{Friend of a Friend}), az erőforrások olyan URI-k, amelyek szándékos mutatók, és használhatók arra, hogy konkrét adatokat érjenek el a World Wide Web-en, röviden interneten. Az RDF az nem kizárólagosan csak az internet erőforrásainak a leírására alkalmas. Tulajdonképpen az az URI, amely megnevez, vagyis mutat egy erőforrásra, annak nem kell hivatkozásnak lennie. Például, ha van egy URI amely "http:"-vel kezdődik és tárgy szerepe van az RDF-ben, akkor sem kell egy olyan hivatkozásra mutatnia, amely csak HTTP-n keresztül érhető el, vagy nem is kell, hogy egy kézzel fogható interneten elérhető erőforrás legyen, mivel abszolút mindent mutathat az URI. Azonban van közös megegyezés azzal kapcsolatban, hogy egy csupasz URI (ami nem tartalmaz \# szimbólumot) ami 300-al kezdődő státuszkóddal tér vissza egy HTTP GET kérésre, annak egy internet alapú erőforrásra kell mutatni, amely sikeresen elérhető lett.
 
 \Section{OCR bemutatása}
 
-Az OCR jelentése: Optical Character Recognition, tehát Optikai Karakterfelismerés. Ez az eszköz szükséges ahhoz, hogy a kép, amit a program beolvas szöveggé alakuljon.
+Az OCR jelentése: \textit{Optical Character Recognition}, tehát Optikai Karakterfelismerés. Ez az eszköz szükséges ahhoz, hogy a képből, amit beolvas a program, szöveges információkat tudjunk kinyerni.
 
-Az optikai karakterfelismerés, amit OCR-nek rövidítenek, az egy dokumentum digitalizálására szolgáló átalakító eszköz. Papír alapú adatbázisok digitális tárolásához nagyon hasznos, mint pédlául útlevelek, számlák, bankszámlakivonatok. Előnye mindenképp az, hogy a tárolás révén visszakereshető például bizonyos szövegrészlet az adott dokumentumból, valamint online gyorsan, kompakt módon megjeleníthető, amire segítségül szolgálnak a különböző böngészők motorjai (ilyen a Chromium). 
+Az optikai karakterfelismerés lehet egy dokumentum digitalizálására szolgáló átalakító eszköz. Papír alapú adatbázisok digitális tárolásához nagyon hasznos, mint például útlevelek, számlák, bankszámlakivonatok. Előnye mindenképpen az, hogy a tárolás révén visszakereshető például bizonyos szövegrészlet az adott dokumentumból, valamint online gyorsan, kompakt módon megjeleníthető, amire segítségül szolgálnak a különböző böngészők motorjai. 
 
-Az OCR folyamatosan tanul, eleinte a karaktereket egyesével kellett betanítani, ahogy hasonlóan tanulja az első osztályos is a betűket. Később, ahogy a program folyamatosan elsajátítja a különböző betűkészleteket, stílusokat, esetleg zajos képek alapján már könnyebben és pontosabban fogja felismerni a karaktereket. Bemenet és kimenet szempontjából ma már szélesebb a paletta, képes a mesterséges intelligencia már több képformátummal is dolgozni, valamint vannak rendszerek, amik képesek az eredeti oldalhoz megközelítő elrendezést létrehozni.
+Az OCR-ekkel kapcsolatos eredmények folyamatosan fejlődnek a kutatásoknak köszönhetően. Eleinte a karaktereket egyesével kellett betanítani, ahogy hasonlóan tanulja az első osztályos tanuló is a betűket. Később, ahogy a program folyamatosan elsajátítja a különböző betűkészleteket, stílusokat, esetleg zajos képek alapján már könnyebben és pontosabban fogja felismerni a karaktereket. Bemenet és kimenet szempontjából ma már szélesebb a paletta, képes a mesterséges intelligencia már több képformátummal is dolgozni, valamint vannak rendszerek, amik képesek az eredeti oldalhoz megközelítő elrendezést létrehozni.
+
+% TODO: Az előzőekhez is kellenének hivatkozások!
 
 \SubSection{Előfeldolgozás}
 
-A pontosság javítására szolgál az előfeldolgozás metódusa, ilyenkor az OCR különböző technikákat használ arra, hogy sikeresek legyenek a karakterfelsimerések. Ezek a technikák a következőek:
+A pontosság javítására szolgál az előfeldolgozás metódusa. Ebben az esetben az OCR különböző technikákat használ arra, hogy sikeresek legyenek a karakterfelismerések. Ezek a technikák például a következőek.
 \begin{itemize}
-	\item De-skew - A dokumentumot elforgatja annyi fokkal, hogy vízszintes vagy függőleges állapotba kerüljön
+	\item \textit{De-skew} -- A dokumentumot elforgatja annyi fokkal, hogy vízszintes vagy függőleges állapotba kerüljön
 	
-	\item Despeckle - a pozitív és negatív foltok, simítóélek eltávolítása
+	\item \textit{Despeckle} -- a pozitív és negatív foltok, simítóélek eltávolítása
 	
-	\item Binarizáció - Egy kép színből vagy szürkeárnyalatosból fekete-fehérre konvertálható (úgynevezett "bináris kép", mert két szín van). A binarizáció feladata a szöveg (vagy bármely
-	más kívánt képkomponens) háttérről való elválasztásának egyszerű módja. A binarizáció feladata maga is szükséges, mivel a legtöbb kereskedelmi felismerési algoritmus csak bináris képeken működik, mivel ez egyszerűbbnek bizonyul. Ezen túlmenően a binarizációs lépés hatékonysága jelentős mértékben befolyásolja a karakterfelismerő szakasz minőségét, és az adott bemeneti képtípushoz alkalmazott binárisítás kiválasztásakor gondos döntéseket hoznak; mivel a bináris eredmény eléréséhez használt binarizációs módszer minősége a bemeneti kép típusától függ (szkennelt dokumentum, jelenet szöveges kép, történelmi romlott dokumentum stb.).
+	\item \textit{Binarizáció} -- Egy kép színből vagy szürkeárnyalatosból fekete-fehérre konvertálható (úgynevezett "bináris kép", mert két szín van). A binarizáció feladata a szöveg (vagy bármely
+	más kívánt képkomponens) háttérről való elválasztásának egyszerű módja. A binarizáció feladata maga is szükséges, mivel a legtöbb kereskedelmi felismerési algoritmus csak bináris képeken működik, mivel ez egyszerűbbnek bizonyul. Ezen túlmenően a binarizációs lépés hatékonysága jelentős mértékben befolyásolja a karakterfelismerő szakasz minőségét, és az adott bemeneti képtípushoz alkalmazott bináris konverzió kiválasztásakor gondos döntéseket hoznak; mivel az eredmény eléréséhez használt módszer minősége a bemeneti kép típusától függ.
 	
-	\item Vonal eltávolítása - Tisztítja meg a nem glifikus dobozokat és vonalakat
+	\item \textit{Vonal eltávolítása} -- Tisztítja meg a nem glifikus dobozokat és vonalakat
 	
-	\item Elrendezési elemzés vagy "zónázás" - Az oszlopokat, bekezdéseket, feliratokat stb. Különösen fontos a többoszlopos elrendezéseknél és táblázatoknál.
+	\item \textit{Elrendezési elemzés} vagy \textit{"zónázás"} -- Az oszlopokat, bekezdéseket, feliratokat stb. Különösen fontos a többoszlopos elrendezéseknél és táblázatoknál.
 	
-	\item Vonal és szó észlelése - A szó- és karakterformák alapvonalát határozza meg, szükség esetén elválasztja a szavakat.
+	\item \textit{Vonal és szó észlelése} -- A szó- és karakterformák alapvonalát határozza meg, szükség esetén elválasztja a szavakat.
 	
-	\item Script felismerés - A többnyelvű dokumentumokban a szkript változhat a szavak szintjén, és ezért a szkript azonosítása szükséges, mielőtt a megfelelő OCR-t meg lehetne hívni az
+	\item \textit{Script felismerés} -- A többnyelvű dokumentumokban a szkript változhat a szavak szintjén, és ezért a szkript azonosítása szükséges, mielőtt a megfelelő OCR-t meg lehetne hívni az
 	adott parancsfájl kezelésére.
 	
-	\item Karakter izolálás vagy "szegmentálás" - A karakterenkénti OCR-nél a képelemek miatt több karaktert kell elkülöníteni; A tárgyak miatt több darabra bontott karaktereket kell
+	\item \textit{Karakter izolálás} vagy \textit{szegmentálás} -- A karakterenkénti OCR-nél a képelemek miatt több karaktert kell elkülöníteni; A tárgyak miatt több darabra bontott karaktereket kell
 	csatlakoztatni.
 	
-	\item A képarány és a méretarány normalizálása
+	\item A képarány és a méretarány normalizálása.
 	
-	\item A rögzített hangmagasságú betűtípusok szegmentálása viszonylag egyszerűen megvalósítható úgy, hogy a képet egy egységes rácshoz igazítja, amely alapján a függőleges rácsvonalak a legkevésbé gyakran keresztezik a fekete területeket. Az arányos betűtípusokhoz kifinomultabb technikákra van szükség, mivel a betűk közötti hely néha nagyobb lehet, mint a szavak között, és a függőleges vonalak több karaktert metszhetnek.
+	\item A rögzített magasságú betűtípusok szegmentálása viszonylag egyszerűen megvalósítható úgy, hogy a képet egy egységes rácshoz igazítja, amely alapján a függőleges rácsvonalak a legkevésbé gyakran keresztezik a fekete területeket. Az arányos betűtípusokhoz kifinomultabb technikákra van szükség, mivel a betűk közötti hely néha nagyobb lehet, mint a szavak között, és a függőleges vonalak több karaktert metszhetnek.
 \end{itemize}
 
 \SubSection{Karakterfelismerés}
-\cite{bradski2000opencv}
-A fő OCR algoritmusnak két olyan típusa létezik, amelyek a jelölt karakterekből rangsorolt listát hoznak létre.
 
-Mátrix illesztésnél pixel-pixel alapon történik az összehasonlítása a tárolt karakterjelnek és a képnek. Másnéven "mintaillesztés" vagy "mintázatfelismerés" vagy "kép korreláció". Ez a bemeneti szimbólum alapul azon, hogy a kép többi részétől izolált, valaminta tárolt szimbólum hasonló beűtípussal és ugyanazon a skálán legyen. Ez a technika nem működik más betűtípusokkal, azokat új szimbólumként definiálná, ezért a géppel írott szövegre alkalmas leginkább.
+A fő OCR algoritmusnak két olyan típusa létezik, amelyek a jelölt karakterekből rangsorolt listát hoznak létre \cite{bradski2000opencv}.
 
-A jellemző kinyerés típusú algoritmus lebontja a szimbólumokat jellemzőkre, legyen az vonás, vagy egy előfordulás, egy vonalirány, vagy egy vonalmetszés. Csökkenti az ábrázolást, emellett a számításhoz hatékonnyá teszi a folyamatot. Ezután egy vektorszerű ábrázolással történik az összehasonlítás, és egy vagy több szimbólum keletkezik. Az intelligens kézírást is felismerő szoftverek ezen típusú OCR algoritmuson alapul, ehhez például használják a k-legközelebbi szomszéd algoritmust, ami arra szolgál, hogy összeveti a szimbólumokat és egyezőségeket keres.
+Mátrix illesztésnél pixel-pixel alapon történik az összehasonlítása a tárolt karakterjelnek és a képnek. Más néven "mintaillesztés" vagy "mintázatfelismerés" vagy "kép korreláció". Ez a bemeneti szimbólum alapul azon, hogy a kép többi részétől izolált, valamint a tárolt szimbólum hasonló betűtípussal és ugyanazon a skálán legyen. Ez a technika nem működik más betűtípusokkal, azokat új szimbólumként definiálná, ezért a géppel írott szövegre alkalmas leginkább.
 
-Az olyan szoftverek, mint például a Tesseract, vagy a Cuneiform azok kétfázisú megközelítést használnak karakterfelismerésre. A második fázis, amit gyakran hívnak "adaptív felismerésnek" erősen alapszik az első fázisra, ahol a szimbólumok letárolásra kerülnek, hogy a többi karaktert a második fázisban jobban felismerhesse. Ez nagyon előnyös abban az esetben, ha nagyon alacsony minőségű, vagy kézzel írt dokumentumról van szó, legyen az akár elhalványult, vagy elmosódott.
+A jellemző kinyerés típusú algoritmus lebontja a szimbólumokat jellemzőkre, legyen az vonás, vagy egy előfordulás, egy vonalirány, vagy egy vonalmetszés. Csökkenti az ábrázolást, emellett a számításhoz hatékonnyá teszi a folyamatot. Ezután egy vektorszerű ábrázolással történik az összehasonlítás, és egy vagy több szimbólum keletkezik. Az intelligens kézírást is felismerő szoftverek ezen típusú OCR algoritmuson alapul. Ehhez például használják a $k$-legközelebbi szomszéd (röviden KNN) algoritmust, ami arra szolgál, hogy összeveti a szimbólumokat és egyezőségeket keres.
+
+Az olyan szoftverek, mint például a \textit{Tesseract}, vagy a \textit{Cuneiform} azok kétfázisú megközelítést használnak karakterfelismerésre. A második fázis, amit gyakran hívnak "adaptív felismerésnek" erősen épül az első fázisra, ahol a szimbólumok letárolásra kerülnek, hogy a többi karaktert a második fázisban jobban felismerhesse. Ez nagyon előnyös abban az esetben, ha nagyon alacsony minőségű, vagy kézzel írt dokumentumról van szó, legyen az akár elhalványult, vagy elmosódott.
