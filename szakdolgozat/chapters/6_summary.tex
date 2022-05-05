@@ -2,6 +2,8 @@
 
 A probléma megoldása bemutatta, hogy miként lehetne úgy tárolni kottákat, hogy azok visszakereshetőek, manipulálhatóak és létrehozhatóak legyenek. Ez a megoldás, ahogy a dolgozatom elején beszélek is róla, csak a megadott mintaadathalmaz alapján nyújt segítséget. Fontos elemek a kék színnel jelölt akkordok, a piros színnel jelölt basszus hangok és a zöld színnel jelölt transzponált akkordok, mellette a narancssárga színnel jelölt transzponált basszus hangok. Ez a standard, amivel tudna működni a képbeolvasó program is, valamint a megjelenítés és a tárolás. Jelenleg a folyamatból hiányzik az az elem, hogy a beolvasott kottát lehessen manipulálni.
 
-Az akadály az volt, hogy a szövegként kinyert akkordok nem voltak megfelelőek, nem találta meg pontosan azt a betűt amit kellett volna, így több idő szükséges arra, hogy kitapasztalhassam a megfelelő inputokat egy-egy kottánál. Ebben tud még fejlődni ez a program, és képes lesz szerializálni legyen az sima XML, vagy RDF/XML formátum.
+Az akadály az volt, hogy a szövegként kinyert akkordok nem voltak megfelelőek, nem találta meg pontosan azt a betűt amit kellett volna, így több idő szükséges arra, hogy kitapasztalhassam a megfelelő inputokat egy-egy kottánál. Ebben tud még fejlődni ez a program, és képes lesz szerializálni a kapott kottát legyen az sima XML, vagy RDF/XML formátum.
+
+Ezt a megoldást, ahogy korábban említettem, csak erre a mintaadathalmazra lehetne használni. Ennek egy olyan platform kellene, ami mindenki számára elérhető lenne, ehhez a legjobb megoldás egy webes applikáció lenne. Külön felülettel történne meg a képfeltöltés, így a kották tárolása is, és a szerveren történne meg az, hogy a python algoritmus feldolgozza ezeket a képeket és szerkeszthetővé válnak a kották, majd ezek ugyanúgy exportálhatóak és tárolhatóak képként.
 
 % TODO: Legalább egy oldalt jó lenne, hogy ha kitöltene az Összegzés.

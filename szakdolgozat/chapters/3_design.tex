@@ -137,7 +137,7 @@ A jelen példában 3 részre van bontva a kotta: szövegre, akkordra és pozíci
 Az első komolyabb megoldandó problémát az egy sorba történő többszöri előfordulású szöveg okozta, amit úgy oldottam meg, hogy ha már egyszer megtalálható a sorban az adott részszöveg, akkor azt megszámolja hányszor fordul elő, annyiszor kihagyja azt, és a következőt vegye számításba az indexelésnél. Ehhez tartozik a számláló, ami olyan értéket kap, amennyi előfordulása van a szubsztring-nek az addig befűzött sorba.
 
 A beolvasás célja egyelőre csak az, hogy a kotta kikerüljön a konzolra, lényegében, ha transzponálási műveletet akarunk végrehajtani a kottán, akkor ennél részletesebben szükséges megadni az akkordot. Ugye, ahogy fentebb is írtam, az akkord hármashangzatba (vagy négyeshangzat, a jelölésektől függően) gondolva alapvetően az első a harmadik és az ötödik fokból áll, amikor dúrról beszélünk. Ehhez már szükséges, akkor az, hogy az XML létrehozásakor külön legyen választva a mol és a dúr. Egységesen meg van oldva ez az összes kottára nézve, ami mol akkordokat jellemzik, azok a következők:
-% TODO: A szűkített és bővített akkordokkal mi a helyzet?
+
 \begin{itemize}
 	\item az akkord kisbetűvel van,
 	\item az akkord kisbetűvel van és mellette egy kis m betű áll (pl.: am egy a-molt jelöl).
@@ -146,6 +146,11 @@ Ami pedig a dúr akkordokat jellemzik:
 \begin{itemize}
 	\item az akkord nagybetűvel van.
 \end{itemize}
+% DONE: A szűkített és bővített akkordokkal mi a helyzet?
+A hármas hangzatoknál(ugyanígy a négyesnél is) léteznek az úgy nevezett szűkített és bővített akkordok. Ezek mindegyike az ötödik fok voltoztatásával történik. A szűkített akkord, az első hangtól egy szűkített kvint távolságra, míg a bővített akkord, az első hangtól egy bővített kvint távolságra helyezkedik el. Ez gyakorlatban a következőt jelenti:
+Ha le akarom írni a C-dúr szűkített változatát, akkor a következő hangokból fog felépülni: C E F\#(Gb).
+Az hogy a hang az F\# vagy Gb-ként van jelölve csak az előjegyzéstől függ, amit jelenleg nem tárol a rendszer. De ez is kinyerhető a hangnem által, mindegyik hangnemnek megvan az előjegyzése, így ez is egy származtatott érték lehet. A bővített akkord hasonlóképpen épül fel, csak a F\# hang helyett G\# vagy Ab szerepel.
+
 Ezeket amikor képes megkülönböztetni a program, akkor ennek megfelelően fogja tudni lementeni a \textit{note} mellé azt a \textit{property}-t ami jelöli, hogy az akkord az mol vagy dúr. Legyen a neve például \textit{tone}. Ebből kiindulva így nézne ki az egyik szegmens:
 \begin{xml}
 <segment id="12">
