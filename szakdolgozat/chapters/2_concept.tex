@@ -1,12 +1,25 @@
 \Chapter{A témakörök alapfogalmai}
 
-A dolgozat témája egyidejűleg kapcsolódik a szemantikus ábrázolási módokhoz és rendszerekhez, illetve a képfeldolgozáshoz. A következő szakaszokban ezek alapfogalmai kerülnek bemutatásra.
+A dolgozat témája egyidejűleg kapcsolódik a zeneelmélethez, szemantikus ábrázolási módokhoz és rendszerekhez, illetve a képfeldolgozáshoz. A következő szakaszokban ezek alapfogalmai kerülnek bemutatásra.
+
+\Section{Zeneelméleti alapfogalmak}
+
+A dolgozat a szemantikus reprezentáció kapcsán azzal a problémakörrel foglalkozik, hogy a kották segítségével leírt információkat hogyan lehet valamilyen általánosabb, gépek számára könnyebben feldolgozható, metainformációkkal könnyen kibővíthető formátumra hozni. Ehhez viszont elengedhetetlen ismerni és áttekinteni maguknak a zenei lejegyzési módoknak az alapvető fogalmait.
+
+A zene lejegyzési módjával korszakonként, műfajokként, hangszerenként, országonként, esetlegesen akár szerzőnként is külön foglalkozni kell. Általánosságban azonban kijelenthető, hogy a klasszikus összhangzattan egy biztos kiindulópontot adhat, elegendő lehet annak keretei között maradni. Tekintsük is át röviden ezek alapfogalmait a klasszikus irodalmak alapján \cite{kesztler1952,frank1997}.
+
+Először vizsgáljuk a hangmagasság problémakörét.
+A hangrendszerünkben megkülönböztetünk 12 hangot, amelyeket valamelyest indokol a rezgéstan. A tonális hangrendszerekben azonban ebből 7-nek szokott kitüntetett szerepe lenni, amelyek közé a kis- és nagyszekundok váltakozása alapján kerül be még 5 félhangnyi lépés. (Elegendő csak a zongora billentyűire gondolnunk.)
+
+A jelölésrendszer a betű és számírásról fokozatosan tért át a komplikáltabb, grafikus jelölésrendszerekre. Betűk esetében az \textit{a, b, c, d, e, f, g, h} betűkre van szükség. Ez nyilvánvalóan 8 féle hangmagasság. Történelmi okok miatt az a és c közötti félhang megadására a német és a magyar jelölésrendszerben is a \textit{h} hang, míg például az angolszász jelölésrendszerben a \textit{b} hang terjedt el.
+
+A hangok mellett foglalkozni kell az akkordok megadási módjaival is. Betűkották esetében (mint amilyenek a dolgozat tárgyköréhez elsődlegesen tartoznak) az akkordokat fokszámsorok formájában rögzítik. Ekkor római számmal adják meg az alaphangokat I, II, $\ldots$, VII formájában. Hármas hangzatok esetében az alap, a szext és kvártszext, míg négyeshangzatok esetén az alap, a terckvárt, a kvintszext és a szeptim fordításokat különböztetik meg. Ehhez tartozhatnak még hozzá különféle kiegészítések, módosítások. A kiírt fokszám azonban a hangnem ismeretében meghatározza az akkordhoz tartozó hangokat.
+
+A hangok hosszának lejegyzési módjai szintén változatosan, korszakonként, kultúránként különböző formában alakultak. A leginkább elfogadott, egységesnek tekinthető változat esetében a kör jelzi az egészet, amelyet aztán kiegészítésekkel részekre lehet bontani, tipikusan felezgetve azt. Így beszélhetünk fél-, negyed-, nyolcad-, tizenhatod- vagy egyéb, tetszőlegesen kicsit kettő alapú negatív egész kitevős hanghosszakról.
 
 \Section{RDF bemutatása}
-\cite{rdfa_with_example}
-% DONE: Hivatkozni kellene az RDF-et.
 
-Az RDF (\textit{Resource Description Framework}) az egy Interneten levő adatokhoz tartozó standard modell []. Az információk elemi egységei a mondatok, amelyek \textit{alany-állítmány-tárgy} (\textit{subject-predicate-object}) hármasok. Lehetővé teszi, hogy adat összefésülést hajtson végre még abban az esetben is, mikor a séma alatt szereplő adatok hiányosak, és kifejezetten támogatja a séma fejlődését az adatok megváltoztatása nélkül.
+Az RDF (\textit{Resource Description Framework}) az egy Interneten levő adatokhoz tartozó standard modell \cite{rdfa_with_example}. Az információk elemi egységei a mondatok, amelyek \textit{alany-állítmány-tárgy} (\textit{subject-predicate-object}) hármasok. Lehetővé teszi, hogy adat összefésülést hajtson végre még abban az esetben is, mikor a séma alatt szereplő adatok hiányosak, és kifejezetten támogatja a séma fejlődését az adatok megváltoztatása nélkül.
 
 Az RDF az URI-val nevezi meg azt a kapcsolatot, amivel a link működik az interneten, hogy egyik pontból a másikba elnavigáljon. Ezzel az egyszerű modellel lehetővé válik az, hogy strukturált vagy félig strukturált adathalmazok is keverhetővé, közzétehetővé és megoszthatóvá váljanak.
 

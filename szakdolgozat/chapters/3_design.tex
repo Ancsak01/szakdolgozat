@@ -7,6 +7,7 @@ Ennek a fejezetnek a célja bemutatni a kották tárolásának különböző mó
 Az esetünkben felhasznált adatok ábrázolására a következőképpen nézne ki az RDF modell. Az akkord reprezentálná a hármasok közül a témát, vagyis a subject-et, mivel azt kellene először definiálni. Az akkord (jelen esetben többségében hármas hangzat), több hangból épül fel. Van a fő hang, ami tegyük fel, ha C-dúr akkordot akarunk modellezni, az a C hang lesz. Erre épül a dúr esetében a nagy terc, ami az E hangot fogja adni, valamint a C hanghoz igazított kvint távolságra levő G hang. Tehát a C-dúr akkordot a C E és G hangokból lehet összeállítani, ezek egyben fokok is, amiket predikátumként fogunk jelölni, hogy melyik hang az akkord hanyadik foka. Ennek a gráfját \aref{fig:graph1}. ábrán lehet megtekinteni.
 
 \begin{figure}[h]
+	\centering
 	\includegraphics[scale=1]{images/img_src/rdf_graph.png}
 	\caption{Szemantikus ábrázolás az RDF szerint.}
 	\label{fig:graph1}
@@ -66,7 +67,7 @@ A MusicXML Michael Good találmánya és a Recordare LLC alatt történt a fejle
 A mintaadathalmaz a kották, másképpen épülnek fel, nincsenek vonalak, vagy hangjegyek, ez egy ún. akkordos kotta, amelyek például \aref{fig:song1}. ábrán látható formában néznek ki.
 
 \begin{figure}[h]
-	\includegraphics[width=\textwidth]{images/samples/Tied_a_dicsoseg.jpg}
+	\frame{\includegraphics[width=\textwidth]{images/samples/Tied_a_dicsoseg.jpg}}
 	\caption{A példa kotta.}
 	\label{fig:song1}
 \end{figure}
@@ -205,6 +206,7 @@ Az RDFa egy olyan szerializáció, ami a legjobban egy HTML stílusú felépít�
 Egy fő \texttt{div} elem adja meg a kiinduló csomópontot. Ez például az XML-ben volt a \texttt{segment} elem. Ez alá hierarchikusan felépülnek szinte irányított gráfként a további csomópontok, amik lehetnek egyszerű tulajdonságok, vagy referenciák egy másik objektumra (\ref{fig:rdfa}. ábra).
 
 \begin{figure}[h]
+	\centering
 	\includegraphics[scale=0.8]{images/misc/RDFa_serialization_example.jpg}
 	\caption{Az RDFa szerializáció ábrázolása.}
 	\label{fig:rdfa}
@@ -291,6 +293,7 @@ A példaként szolgáló programomban a lekérdezés bemutatásához azért ezt 
 A \ref{fig:graph2}-es ábrán látható, hogy az adott példa kottánkban hogy nézne ki egy szegmens.
 
 \begin{figure}[h]
+	\centering
 	\includegraphics[scale=0.5]{images/img_src/rdf_graph_2.png}
 	\caption{Konkrét szemantikai ábrázolása a dal egy szegmensének.}
 	\label{fig:graph2}
@@ -313,6 +316,7 @@ A basszus hang, amikor nincs jelölve, akkor az akkord alaphangja, általában a
 Ha ugyanazt a szegmenst nézzük, akkor behozható a következő eset, amikor ugyanis meg kellene határozni, hogy az akkord az mol vagy dúr tonikájú. Ez mindenképpen egy olyan jelölő, ami az akkordot írja le, tehát azon belül szerepelne ez, és ahogy lesz szó arról, hogy miként épül fel egy hármas, így látni fogjuk majd, hogy a bemeneti oldalról miként lesz megkülönböztethető.
 
 \begin{figure}[h]
+	\centering
 	\includegraphics[scale=0.5]{images/img_src/rdf_graph_4.png}
 	\caption{Bővített leírása a szegmensnek}
 	\label{fig:graph4}
@@ -343,6 +347,7 @@ A következő esetek merülhetnek fel ezzel a kottával kapcsolatban:
 A problémák megoldásához a doboz-kezelést át kell formázni úgy, hogy képes legyen több akkordot is egybesűríteni és ezáltal a pozíciót rendesen belőni, és emellett az egybesűrűsített akkordok egymástól levő távolságát is megtartani.
 
 \begin{figure}[h]
+	\centering
 	\includegraphics[scale=0.6]{images/img_src/rdf_graph_5.png}
 	\caption{Szegmens leírása ahol transzponálás is van}
 	\label{fig:graph5}
@@ -351,6 +356,7 @@ A problémák megoldásához a doboz-kezelést át kell formázni úgy, hogy ké
 Abban az esetben, hogyha van transzponált akkord a kottában, akkor azt egy másik akkordként lehet kezelni (\ref{fig:graph6}. ábra). Ez nem egy gyakori eset, tehát lehet először ahhoz kötni, hogy az nincsen, abban az esetben a 'transzponált' nevű predikátum a 'Nem' objektumra mutat. Így viszont ugyanúgy kezelendő mint egy akkord, van tonikája és legalább 3 foka, amiből felépül az akkord.
 
 \begin{figure}[h]
+	\centering
 	\includegraphics[scale=0.5]{images/img_src/rdf_graph_6.png}
 	\caption{Szegmens leírása ahol a transzponálásban basszus hang van}
 	\label{fig:graph6}
@@ -359,6 +365,7 @@ Abban az esetben, hogyha van transzponált akkord a kottában, akkor azt egy má
 A sima ábrázolásban látható, hogy a legbonyolultabb kotta szegmens az már elég szerteágazó irányított gráf lett. Itt amit érdemes megfigyelni, hogy az id, szöveg, pozíción kívül előfordulhatnak redundáns objektumok. Például a tonika a basszus hang predikátumok többször is előfordulhatnak, sőt, ha tonikáról beszélünk, akkor ott nem történhet olyan, hogy a szegmens akkordjának a tonikája különböző legyen, mint a transzponált akkord tonikája, tehát abban az esetben az az objektum biztosan többször is szerepelne az ábrán. Mindemellett az a vizsgálata a szegmensnek, hogy transzponált-e az egy egyszerű bool értékkel van leírva, ami ugyanúgy előfordulhat az ábrán más alanyhoz rendelve. Így \aref{fig:graph7}. ábrán lehet látni, hogy az egyszerűsítés érdekében hogyan lehetne ezeket az ismétlődő objektumokat megszüntetni.
 
 \begin{figure}[h]
+	\centering
 	\includegraphics[scale=0.5]{images/img_src/rdf_graph_7.png}
 	\caption{Szegmens redundancia mentes leírása}
 	\label{fig:graph7}
@@ -374,9 +381,17 @@ Ezen felül észrevehető az, hogy minden akkord, ami jelölve van, annak az els
 
 \Section{Adatfeldolgozás}
 
-A következőkben az adattárolás módját és lépéseit tekintjük át.
+Az adatfeldolgozás folyamatának áttekintését \aref{fig:flow1}. ábrán láthatjuk.
+%A következő szakaszokban ennek a lépéseit, az adatok átalakításának módjairól lesz szó.
 
-\SubSection{Kottaadatok tárolása}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.45]{images/presentation/data_flow.png}
+	\caption{Adatáramlás és feldolgozás}
+	\label{fig:flow1}
+\end{figure}
+
+%\SubSection{Kottaadatok tárolása}
 
 Kiindulópontnak egy XML fájlt veszünk, ahol az egyszerű adatok kerülnek letárolásra, szegmentálva akkordok, szövegek és az akkordok pozíciói a szöveghez képest. Ehhez társul egy olyan program, ami betölti az XML fájlt, feldolgozza azt, hogy ezek az adatok elérhetővé váljanak ábrázolásra, valamint ezáltal lekérdezésre is. A programnak képesnek kell lennie arra, hogy az adott kotta adathalmazt elérje lekérdezések formájában.
 
@@ -384,33 +399,42 @@ Kiindulópontnak egy XML fájlt veszünk, ahol az egyszerű adatok kerülnek let
 
 % TODO: Minden ábrát és táblázatot ellenőrízni kellene, hogy megfelelően hivatkozásra került a szövegből!
 
-\begin{figure}[h]
-	\includegraphics[scale=0.45]{images/presentation/data_flow.png}
-	\caption{Adatáramlás és feldolgozás}
-	\label{fig:flow1}
-\end{figure}
-
 \Section{Ábrázolás előnyei, hátrányai}
-\SubSection{Irányított gráf ábrázolás}
+
+\Aref{tab:dagcomp}. táblázatban egy összehasonlítást láthatunk arról, hogy milyen előnyei és hátrányai vannak az irányított gráffal történő ábrázolásnak.
+
+\begin{table}[h!]
+\caption{Irányított gráfos ábrázolás}
+\label{tab:dagcomp}
 \begin{center}
 	\begin{tabular}{ |p{7cm}|p{7cm}| }
 		\hline
 		Előnyök & Hátrányok\\
 		\hline
-		Részletesen leírható bármilyen alany az ábrázolással & A gyökér, vagyis a kiinduló elem Szegmens-ként lett elnevezve, viszont mint elnevezés létezik csak, a gyökér elem hiánya \\ 
+		Részletesen leírható bármilyen alany az ábrázolással. & A gyökér, vagyis a kiinduló elem Szegmens-ként lett elnevezve, viszont mint elnevezés létezik csak, a gyökér elem hiányzik. \\ 
 		\hline
-		Az elnevezett élekkel pontosan megadható az, hogy mi jellemzi az alanyt & Az egy-egy kapcsolat miatt, nem lehet meghatározni ugyanazon predikátum alatt több tulajdonságot az alanyról\\
+		Az elnevezett élekkel pontosan megadható az, hogy mi jellemzi az alanyt. & Az egy-egy kapcsolat miatt, nem lehet meghatározni ugyanazon predikátum alatt több tulajdonságot az alanyról.\\
 		\hline
 	\end{tabular}
 \end{center}
+\end{table}
 
 \begin{figure}[h]
+	\centering
 	\includegraphics[scale=0.45]{images/img_src/representation_of_sheet.png}
 	\caption{A kotta első három szegmense}
 	\label{fig:repres1}
 \end{figure}
-\newpage
-\SubSection{A \ref{fig:repres1}-es szemantikus ábra}
+
+\SubSection{Redundancia csökkentés}
+
+Egy alternatív ábrázolási mód \aref{fig:repres1}. ábrán látható. Ennek célja, hogy próbálja csökkenteni a redundanciát a korábban bemutatott ábrázolási módokhoz képest.
+
+Az ábrázolási mód előnyeiről és hátrányairól láthatunk egy áttekintést \aref{tab:redcomp}. táblázatban.
+
+\begin{table}[h!]
+	\caption{A redundancia csökkentését célzó változat előnyei és hátrányai}
+	\label{tab:redcomp}
 \begin{center}
 	\begin{tabular}{ |p{7cm}|p{7cm}| }
 		\hline
@@ -419,26 +443,28 @@ Kiindulópontnak egy XML fájlt veszünk, ahol az egyszerű adatok kerülnek let
 		Hátrányok
 		\\
 		\hline
-		Az egyszerűsített ábrázolás redukálja a gráf túlságos szétterjedését 
+		Az egyszerűsített ábrázolás redukálja a gráf túlságos szétterjedését.
 		& 
-		A jelenlegi kotta 19 szegmensből áll, ezt viszont így ábrázolni nem lehetne megfelelően 
+		A jelenlegi kotta 19 szegmensből áll, ezt viszont így ábrázolni nem lehetne megfelelően.
 		\\ 
 		\hline
-		Színezett predikátum-nyilak egyértelműsítik azt, hogy melyik objektumról van szó és az mely csomóponthoz tartozik pontosan
+		Színezett predikátum-nyilak egyértelműsítik azt, hogy melyik objektumról van szó és az mely csomóponthoz tartozik pontosan.
 		& 
-		Zavaró ellenben az, hogy a predikátum elnevezés melyik nyílhoz tartozhat pontosan. Ilyenkor érdemes leszögezni, hogy az ábrán milyen séma szerint van jelölve (jelen esetben a predikátum elnevézese mindig a nyil fölött lesz)
+		Zavaró ellenben az, hogy a predikátum elnevezés melyik nyílhoz tartozhat pontosan. Ilyenkor érdemes leszögezni, hogy az ábrán milyen séma szerint van jelölve (jelen esetben a predikátum elnevézese mindig a nyil fölött lesz).
 		\\ 
 		\hline
-		Az ábrán egyértelműen megkülönböztethető mindegyik szegmens, ez átláthatóvá teszi azt, hogy miként épül fel a kotta
+		Az ábrán egyértelműen megkülönböztethető mindegyik szegmens, ez átláthatóvá teszi azt, hogy miként épül fel a kotta.
 		& 
 		A sorrendiség nincs letárolva, ehhez szükséges lenne mindegyik szegmensnek beiktatni egy 'order' vagy egy 'rank' objektumot ami egyértelműen meghatározza, hogy az adott szegmens az melyik szegmens után jön netán az első e.
 		\\ 
 		\hline
 	\end{tabular}
 \end{center}
+\end{table}
 
 \begin{figure}[h]
-	\includegraphics[scale=0.25]{images/representated_sheet.png}
+	\centering
+	\frame{\includegraphics[scale=0.25]{images/representated_sheet.png}}
 	\caption{Az előző ábra végeredménye}
 	\label{fig:repres2}
 \end{figure}
@@ -447,7 +473,7 @@ Kiindulópontnak egy XML fájlt veszünk, ahol az egyszerű adatok kerülnek let
 
 A jelenlegi ábrázolás rendelkezik némi redundanciával. Ugye, ha azt tekintjük, hogy egy akkord három hanggal leírható, abban az esetben így  teljesen lehet ábrázolni, de akkor ez az adatszerkezet validálást kíván. Mi történik abban az esetben, ha az akkord három hangja, mondjuk mindegyik C hang? Ebben az esetben nem beszélhetünk akkordról, avagy hármas hangzatról, hiszen a hangköz távolság az nem megfelelő.
 
-Ehhez volna egy olyan fordító, ami az adatszerkezetet képes validálni. Itt viszont szükséges az, hogy ez a fordító ismerje az oktáv mind a tizenkettő hangját, ami alapján pontosan meg tudja határozni a hangközöket. A validálás egy olyan menetet követne, ahol az akkord, mint a 12-es szegmenst bemutató bővített xml struktúra a 3.3-as fejezetben, lenne vizsgálva, hogy megfelel e az akkord típusnak azáltal, hogy a hangközök nagy -, és kisterc távolságot követnek e. Szintén meghatározható, ez által az, hogy az akkord dúr vagy moll tonikájú. Ez megint egy olyan lehetőséget ad, ami által redukálható az objektumok száma. Hiszen abban az esetben, mikor az első hangtól egy kis terc távolságra van a következő hang, mollról beszélünk, míg amennyiben az első hangtól nagy terc távolságra van a következő hang, akkor dúrról beszélünk.
+Ehhez volna egy olyan fordító, ami az adatszerkezetet képes validálni. Itt viszont szükséges az, hogy ez a fordító ismerje az oktáv mind a tizenkettő hangját, ami alapján pontosan meg tudja határozni a hangközöket. A validálás egy olyan menetet követne, ahol az akkord, mint a 12-es szegmenst bemutató bővített XML struktúra a 3.3-as fejezetben, lenne vizsgálva, hogy megfelel e az akkord típusnak azáltal, hogy a hangközök nagy -, és kisterc távolságot követnek e. Szintén meghatározható, ez által az, hogy az akkord dúr vagy moll tonikájú. Ez megint egy olyan lehetőséget ad, ami által redukálható az objektumok száma. Hiszen abban az esetben, mikor az első hangtól egy kis terc távolságra van a következő hang, mollról beszélünk, míg amennyiben az első hangtól nagy terc távolságra van a következő hang, akkor dúrról beszélünk.
 
 Emellett érdemes megfigyelni azt is, hogy a pozíció minden esetben csak a szegmenshez tartozó szövegből származhat. Így a fordító egy string visszakereséssel tudja majd leellenőrizni azt, hogy ez megvalósul e. Alapvető kötöttségeket is érdemes megvizsgálni, mint például, ha jelölve van minden szegmensnek a sorszáma, akkor azt ellenőrizni kell, hogy a sorszám minden kottánál teljesül a következő:
 $	n\; \epsilon \; N; a\; \epsilon \; S_{n} \\$
