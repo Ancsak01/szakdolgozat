@@ -3,18 +3,7 @@
 \noindent \textbf{\Large CD Használati útmutató}
 
 \vskip 1cm
-
-Ennek a címe lehet például \textit{A mellékelt CD tartalma} vagy \textit{Adathordozó használati útmutató} is.
-
-Ez jellemzően csak egy fél-egy oldalas leírás.
-Arra szolgál, hogy ha valaki kézhez kapja a szakdolgozathoz tartozó CD-t, akkor tudja, hogy mi hol van rajta.
-Jellemzően elég csak felsorolni, hogy milyen jegyzékek vannak, és azokban mi található.
-Az elkészített programok telepítéséhez, futtatásához tartozó instrukciók kerülhetnek ide.
-
-A CD lemezre mindenképpen rá kell tenni
-\begin{itemize}
-\item a dolgozatot egy \texttt{dolgozat.pdf} fájl formájában,
-\item a \LaTeX\ forráskódját a dolgozatnak,
-\item az elkészített programot, fontosabb futási eredményeket (például ha kép a kimenet),
-\item egy útmutatót a CD használatához (ami lehet ez a fejezet külön PDF-be vagy MarkDown fájlként kimentve).
-\end{itemize}
+A CD-n található forráskód az ImageProcessing mappában van. Onnan lehet futtatni a kódokat is. Ehhez először létre kell hozni a virtuális környezetet, ami pedig a szakdoga nevű mappában található.
+A fő kód az ./ImageProcessing/src mappában található meg image\_process.ipynb néven, ehhez szükséges lesz a virtuális környezet aktiválása. Emellett kell egy python is arra a számítógépre, ahol futtatva lesz.
+Az ./ImageProcessing/samples almappában található 2 mappa images valaminet recognized\_texts néven. Az images mappában szereplő fájlok a bemeneti képeket szolgáltatták, emellett a ./recognized\_texts/images mappa pedig azokat a kimeneti képeket, amik a képfeldolgozó program kiad akkordonként egy kottából.
+És végül az ./ImageProcessing/Examples mappában találhatóak azok a kódok, amik a szerializálást mutatják be, van hogy konzolos kimenettel, van amelyik gráfos kimenettel szolgál, és itt van az az rdf\_query.ipynb ami a SPARQL-es lekérdezést valósítja meg. Emellett itt találhatóak a programok által felhasznált XML források és az egyikhez megadott XMLSchema is.
